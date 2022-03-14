@@ -3,6 +3,9 @@ package com.company;
 import java.util.Scanner;
 
 public class Adventure {
+    //Initializes world map.
+    private Room currentRoom;
+
     public void worldMap() {
         Room room1 = new Room("Room1", "This is room 1");
         Room room2 = new Room("Room2", "This is room 2");
@@ -69,12 +72,12 @@ public class Adventure {
         room9.setS(null);
         room9.setW(room8);
 
+        currentRoom = room1;
     }
 
     public void execute() {
-
         // Part 1: The room.
-        int currentRoom = 1;
+        worldMap();
         System.out.println("Dit nuværende rum er " + currentRoom);
         userInput();
     }
@@ -96,6 +99,7 @@ public class Adventure {
 
                 case "go east":
                     System.out.println("Going East.");
+                    currentRoom.getE();
                     break;
 
                 case "go west":
@@ -104,7 +108,7 @@ public class Adventure {
 
                 case "look":
                     System.out.println("Looking around.");
-
+                    System.out.println(currentRoom.getDescription());
                     break;
 
                 case "help":
@@ -122,7 +126,6 @@ public class Adventure {
                     break;
             }
         } while(true);
-
     }
 
 
