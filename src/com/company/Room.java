@@ -14,16 +14,16 @@ public class Room {
     this.w = w;
   }
 
+  public String getName() {
+    return name;
+  }
+
+  public String getDescription() {
+    return description;
+  }
+
   public Room getN() {
     return n;
-  }
-
-  public void setN(Room n) {
-    this.n = n;
-  }
-
-  public void setE(Room e) {
-    this.e = e;
   }
 
   public Room getE() {
@@ -34,12 +34,28 @@ public class Room {
     return s;
   }
 
-  public void setS(Room s) {
-    this.s = s;
-  }
-
   public Room getW() {
     return w;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+  public void setN(Room n) {
+    this.n = n;
+  }
+
+  public void setE(Room e) {
+    this.e = e;
+  }
+
+  public void setS(Room s) {
+    this.s = s;
   }
 
   public void setW(Room w) {
