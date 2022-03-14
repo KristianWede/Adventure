@@ -1,5 +1,5 @@
 package com.company;
 
-public class Rum {
+public class Room {
 
 }

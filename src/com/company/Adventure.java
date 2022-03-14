@@ -3,10 +3,10 @@ package com.company;
 public class Adventure {
 
     public static void main(String[] args) {
-        // Part 1: Rummene.
+        // Part 1: The room.
         int currentRoom = 1;
-        Rum room = new Rum();
+        Room room = new Room();
 
-        System.out.println("Denne kode virker:");
+        System.out.println("This code works:");
     }
 }
