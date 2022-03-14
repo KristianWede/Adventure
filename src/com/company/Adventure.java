@@ -3,7 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 public class Adventure {
-    public void theBackRooms() {
+    public void worldMap() {
         Room room1 = new Room("Room1", "Something something story here");
         Room room2 = new Room("Room1", "Something something story here");
         Room room3 = new Room("Room1", "Something something story here");
@@ -13,12 +13,42 @@ public class Adventure {
         Room room7 = new Room("Room1", "Something something story here");
 
 
+        //Maps out what "fields" are available to each other, use the map for reference.
+        //Room 1
         room1.setN(null);
         room1.setE(room2);
-        room1.setS();
+        room1.setS(room4);
+        room1.setW(null);
 
+        //Room 2
+        room2.setN(null);
+        room2.setE(room3);
+        room2.setS(null);
+        room2.setW(room1);
 
+        //Room 3
+        room3.setN(null);
+        room3.setE(null);
+        room3.setS(room6);
+        room3.setW(room2);
 
+        //Room 4
+        room4.setN(room1);
+        room4.setE(null);
+        room4.setS(room7);
+        room4.setW(null);
+
+        //Room 5
+        room5.setN(null);
+        room5.setE(null);
+        room5.setS(room8);
+        room5.setW(null);
+
+        //Room 6
+        room6.setN(room3);
+        room6.setE(null);
+        room6.setS(room9);
+        room6.setW(null);
 
     }
 
