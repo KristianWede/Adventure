@@ -3,15 +3,27 @@ package com.company;
 import java.util.Scanner;
 
 public class Adventure {
-    Room room1 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room2 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room3 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room4 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room5 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room6 = new Room("Room1","Something something story here", null,null,null,null);
-    Room room7 = new Room("Room1","Something something story here", null,null,null,null);
+    public void theBackRooms() {
+        Room room1 = new Room("Room1", "Something something story here");
+        Room room2 = new Room("Room1", "Something something story here");
+        Room room3 = new Room("Room1", "Something something story here");
+        Room room4 = new Room("Room1", "Something something story here");
+        Room room5 = new Room("Room1", "Something something story here");
+        Room room6 = new Room("Room1", "Something something story here");
+        Room room7 = new Room("Room1", "Something something story here");
+
+
+        room1.setN(null);
+        room1.setE(room2);
+        room1.setS();
+
+
+
+
+    }
 
     public void execute() {
+
         // Part 1: The room.
         int currentRoom = 1;
         System.out.println("Dit nuværende rum er " + currentRoom);
@@ -43,7 +55,7 @@ public class Adventure {
 
                 case "look":
                     System.out.println("Looking around.");
-                    lookAction();
+
                     break;
 
                 case "help":
@@ -64,10 +76,6 @@ public class Adventure {
 
     }
 
-
-    public void lookAction(){
-        System.out.println(room1.getDescription());
-    }
 
 
     public static void main(String[] args) {

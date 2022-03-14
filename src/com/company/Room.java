@@ -5,13 +5,9 @@ public class Room {
   private String description;
   private Room n, e, s, w;
 
-  public Room(String name, String description, Room n, Room e, Room s, Room w) {
+  public Room(String name, String description) {
     this.name = name;
     this.description = description;
-    this.n = n;
-    this.e = e;
-    this.s = s;
-    this.w = w;
   }
 
 
