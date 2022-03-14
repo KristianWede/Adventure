@@ -5,13 +5,14 @@ import java.util.Scanner;
 public class Adventure {
     public void worldMap() {
         Room room1 = new Room("Room1", "Something something story here");
-        Room room2 = new Room("Room1", "Something something story here");
-        Room room3 = new Room("Room1", "Something something story here");
-        Room room4 = new Room("Room1", "Something something story here");
-        Room room5 = new Room("Room1", "Something something story here");
-        Room room6 = new Room("Room1", "Something something story here");
-        Room room7 = new Room("Room1", "Something something story here");
-
+        Room room2 = new Room("Room2", "Something something story here");
+        Room room3 = new Room("Room3", "Something something story here");
+        Room room4 = new Room("Room4", "Something something story here");
+        Room room5 = new Room("Room5", "Something something story here");
+        Room room6 = new Room("Room6", "Something something story here");
+        Room room7 = new Room("Room7", "Something something story here");
+        Room room8 = new Room("Room8", "Something something story here");
+        Room room9 = new Room("Room9", "Something something story here");
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
@@ -49,6 +50,24 @@ public class Adventure {
         room6.setE(null);
         room6.setS(room9);
         room6.setW(null);
+
+        //Room 7
+        room7.setN(room4);
+        room7.setE(room8);
+        room7.setS(null);
+        room7.setW(null);
+
+        //Room 8
+        room8.setN(room5);
+        room8.setE(room9);
+        room8.setS(null);
+        room8.setW(room7);
+
+        //Room 9
+        room9.setN(room6);
+        room9.setE(null);
+        room9.setS(null);
+        room9.setW(room8);
 
     }
 
