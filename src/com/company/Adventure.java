@@ -7,7 +7,7 @@ public class Adventure {
     public void execute() {
         // Part 1: The room.
         int currentRoom = 1;
-        //Room room1 = new Room();
+        Room room1 = new Room("Room1","Something something story here", null,null,null,null);
         System.out.println("Dit nuværende rum er " + currentRoom);
         userInput();
     }
@@ -37,6 +37,7 @@ public class Adventure {
 
                 case "look":
                     System.out.println("Looking around.");
+                    lookAction();
                     break;
 
                 case "help":
@@ -54,6 +55,11 @@ public class Adventure {
                     break;
             }
         } while(true);
+
+    }
+
+
+    public void lookAction(){
 
     }
 
