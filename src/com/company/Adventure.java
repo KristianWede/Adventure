@@ -23,8 +23,5 @@ public class Adventure {
 
 
         System.out.println("This code works:");
-
-
-
     }
 }
