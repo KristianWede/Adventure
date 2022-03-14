@@ -78,8 +78,14 @@ public class Adventure {
     public void execute() {
         // Part 1: The room.
         worldMap();
+
+        introduction();
         //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
         userInput();
+    }
+
+    private void introduction() {
+        System.out.println("Some random introduction to an adventure.");
     }
 
     public String userInput(){
@@ -90,38 +96,38 @@ public class Adventure {
             String descesion = sc.nextLine().toLowerCase();
             switch (descesion) {
                 case "go north":
-                    System.out.println("Going North.");
                     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
                     if (currentRoom.getN() == null){
                         System.out.println("Seems like that way is blocked.");
                     } else {
+                        System.out.println("Going North.");
                         currentRoom = currentRoom.getN();
                     }
                     break;
 
                 case "go south":
-                    System.out.println("Going South.");
                     if (currentRoom.getS() == null){
                         System.out.println("Seems like that way is blocked.");
                     } else {
+                        System.out.println("Going South.");
                         currentRoom = currentRoom.getS();
                     }
                     break;
 
                 case "go east":
-                    System.out.println("Going East.");
                     if (currentRoom.getE() == null){
                         System.out.println("Seems like that way is blocked.");
                     } else {
+                        System.out.println("Going East.");
                         currentRoom = currentRoom.getE();
                     }
                     break;
 
                 case "go west":
-                    System.out.println("Going West.");
                     if (currentRoom.getW() == null){
                         System.out.println("Seems like that way is blocked.");
                     } else {
+                        System.out.println("Going West.");
                         currentRoom = currentRoom.getW();
                     }
                     break;
