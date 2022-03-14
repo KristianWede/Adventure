@@ -14,6 +14,8 @@ public class Room {
     this.w = w;
   }
 
+
+  //Getters
   public String getName() {
     return name;
   }
@@ -37,6 +39,8 @@ public class Room {
   public Room getW() {
     return w;
   }
+
+  //Setters
 
   public void setName(String name) {
     this.name = name;
