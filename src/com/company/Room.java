@@ -3,9 +3,9 @@ package com.company;
 public class Room {
   private String name;
   private String description;
-  private int n,e,s, w;
+  private Room n,e,s, w;
 
-  public Room(String name, String description, int n, int e, int s, int w) {
+  public Room(String name, String description, Room n, Room e, Room s, Room w) {
     this.name = name;
     this.description = description;
     this.n = n;
