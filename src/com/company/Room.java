@@ -4,10 +4,12 @@ public class Room {
   private String name;
   private String description;
   private Room n, e, s, w;
+  private boolean visited;
 
   public Room(String name, String description) {
     this.name = name;
     this.description = description;
+    this.visited = false;
   }
 
 
@@ -36,7 +38,16 @@ public class Room {
     return w;
   }
 
+  public boolean isVisited() {
+    return visited;
+  }
+
   //Setters
+
+
+  public void setVisited(boolean visited) {
+    this.visited = visited;
+  }
 
   public void setName(String name) {
     this.name = name;

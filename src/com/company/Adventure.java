@@ -102,6 +102,12 @@ public class Adventure {
                     } else {
                         System.out.println("Going North.");
                         currentRoom = currentRoom.getN();
+                        if ( !currentRoom.isVisited() ){
+                            currentRoom.setVisited(true);
+                            System.out.println(currentRoom.getDescription());
+                        } else {
+                            System.out.println(currentRoom.getName());
+                        }
                     }
                     break;
 
@@ -111,6 +117,12 @@ public class Adventure {
                     } else {
                         System.out.println("Going South.");
                         currentRoom = currentRoom.getS();
+                        if ( !currentRoom.isVisited() ){
+                            currentRoom.setVisited(true);
+                            System.out.println(currentRoom.getDescription());
+                        } else {
+                            System.out.println(currentRoom.getName());
+                        }
                     }
                     break;
 
@@ -120,6 +132,12 @@ public class Adventure {
                     } else {
                         System.out.println("Going East.");
                         currentRoom = currentRoom.getE();
+                        if ( !currentRoom.isVisited() ){
+                            currentRoom.setVisited(true);
+                            System.out.println(currentRoom.getDescription());
+                        } else {
+                            System.out.println(currentRoom.getName());
+                        }
                     }
                     break;
 
@@ -129,6 +147,12 @@ public class Adventure {
                     } else {
                         System.out.println("Going West.");
                         currentRoom = currentRoom.getW();
+                        if ( !currentRoom.isVisited() ){
+                            currentRoom.setVisited(true);
+                            System.out.println(currentRoom.getDescription());
+                        } else {
+                            System.out.println(currentRoom.getName());
+                        }
                     }
                     break;
 
