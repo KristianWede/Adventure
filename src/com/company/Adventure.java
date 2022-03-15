@@ -212,10 +212,19 @@ public class Adventure {
         worldMap();
 
         introduction();
+
+
         //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
         userInput();
 
 
+    }
+
+    private void mainMenu(){
+        System.out.println("Welcome to Terminator Maze");
+        System.out.println("You're about to go on an epic journey in a mysterious maze");
+        System.out.println("In order to navigate the maze, you must type your desired direction." +
+                "");
     }
 
     private void introduction() {
