@@ -455,6 +455,8 @@ public class Adventure {
                         if (requestedRoom.isLockedRoom()) {
                             requestedRoom.setLockedRoom(false);
                             System.out.println("I unlocked the door.");
+                        } else if (!requestedRoom.isLockedRoom()) {
+                            System.out.println("The room is already unlocked!");
                         }
                     } else {
                         System.out.println("I don't see anything to unlock!");
