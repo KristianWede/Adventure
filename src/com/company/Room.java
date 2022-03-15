@@ -21,7 +21,7 @@ public class Room {
     this.discoveredDoorW = false;
     this.discoveredDoorS = false;
     this.lockedRoom = false;
-    this.isRoomDark = true;
+    this.isRoomDark = false;
   }
 
 
