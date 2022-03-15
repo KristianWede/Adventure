@@ -211,6 +211,7 @@ public class Adventure {
         // Part 1: The room.
         worldMap();
 
+        mainMenu();
         introduction();
 
 
@@ -221,10 +222,21 @@ public class Adventure {
     }
 
     private void mainMenu(){
-        System.out.println("Welcome to Terminator Maze");
-        System.out.println("You're about to go on an epic journey in a mysterious maze");
+        System.out.println("Welcome to Terminator Maze!");
+        System.out.println("You're about to go on an epic journey in a mysterious maze..");
         System.out.println("In order to navigate the maze, you must type your desired direction." +
-                "");
+                "Useful commands: \n" +
+                "                            You can go either north, east, west or south by: 'go (direction)'\n" +
+                "                            'help' to repeat this message.\n" +
+                "                            'look' to look around in current room.\n" +
+                "                            'unlock' to try and unlock a door.\n" +
+                "                            'turn on light' turns on light.\n" +
+                "                            'turn off light' turns off light.\n" +
+                "                            'exit' to exit game and end program");
+
+        System.out.println("Press \"ENTER\" to continue...");
+        Scanner sc = new Scanner(System.in);
+        sc.nextLine();
     }
 
     private void introduction() {
