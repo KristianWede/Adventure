@@ -39,7 +39,7 @@ public class Adventure {
         room3.setW(room2);
 
         //Locking Room 4.
-        room4.setLockedRoom(true);
+        room4.setLockedRoom(false);
 
         //Room 4
         room4.setN(room1);
@@ -97,6 +97,13 @@ public class Adventure {
         }
     }
 
+    public void roomArt(){
+        //For layout for each room, PROBLEM; where to refer to room?
+        if (currentRoom == room1){
+
+        }
+    }
+
     public void execute() {
         // Part 1: The room.
         worldMap();
@@ -146,6 +153,7 @@ public class Adventure {
                             } else {
                                 System.out.println(currentRoom.getName());
                                 availableDoors();
+                                roomArt();
                             }
                         }
                     }
