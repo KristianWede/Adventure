@@ -1,6 +1,8 @@
 package com.company;
 
+import java.io.IOException;
 import java.util.Scanner;
+
 
 public class Adventure {
     //Initializes world map.
@@ -194,6 +196,7 @@ public class Adventure {
         System.out.println("Better look for a lightswitch or something somewhere.");
     }
 
+
     public void magicWord(){
     //Xyzzy magic word
         //First teleports the player from anywhere on the map to room1.
@@ -219,6 +222,8 @@ public class Adventure {
         worldMap();
 
         mainMenu();
+        clearScreen();
+
         introduction();
 
 
@@ -246,6 +251,10 @@ public class Adventure {
         sc.nextLine();
     }
 
+    public void clearScreen (){
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    }
+
     private void introduction() {
         //Adding main menu.
 
@@ -269,6 +278,7 @@ public class Adventure {
             System.out.println("What is your next move?");
             System.out.println("Type 'help' for help.");
             String decision = sc.nextLine().toLowerCase();
+            clearScreen();
             switch (decision) {
                 case "go north":
                     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
