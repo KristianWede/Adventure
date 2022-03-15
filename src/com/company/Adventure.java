@@ -1,8 +1,8 @@
 package com.company;
 
-import java.io.IOException;
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.util.Scanner;
-
 
 public class Adventure {
     //Initializes world map.
@@ -196,7 +196,6 @@ public class Adventure {
         System.out.println("Better look for a lightswitch or something somewhere.");
     }
 
-
     public void magicWord(){
     //Xyzzy magic word
         //First teleports the player from anywhere on the map to room1.
@@ -245,21 +244,22 @@ public class Adventure {
                 "                            'unlock' to try and unlock a door.\n" +
                 "                            'turn on light' turns on light.\n" +
                 "                            'turn off light' turns off light.\n" +
-                "                            'exit' to exit game and end program");
+                "                            'exit' to exit game and end program \n");
 
+        System.out.println("You can also during the game type 'help' to display the above commands again. \n");
         System.out.println("Press \"ENTER\" to continue...");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
 
+
     public void clearScreen (){
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
+
     private void introduction() {
         //Adding main menu.
-
-
 
         System.out.println("""
                 A tiny ray of light pierces through the heavy cloud-like smog which covers the sky and hits you in the face. 
