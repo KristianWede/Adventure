@@ -11,10 +11,10 @@ public class Adventure {
     private Room tempEntangleRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
     Room room1 = new Room("Arrival", """
-                A square room with writings on the wall. 
-                This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
-                Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
-                """);
+            A square room with writings on the wall. 
+            This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
+            Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
+            """);
 
     public void worldMap() {
         Room room2 = new Room("Corridor", """
@@ -59,7 +59,7 @@ public class Adventure {
                 You move closer to study your findings. It sure does look like a hand
                 but where the elbow is supposed to be a weird metal part sticks out.
                 You notice a few wires as well. What in the world is this? 
-                
+                                
                 Opposite of the entrance you spot tables lined up alongside the wall. 
                 A black puddle of something is dripping down from one of the tables. 
                 You start to connect the dots. Is this some kind of factory? Perhaps a car shop?
@@ -70,7 +70,7 @@ public class Adventure {
                 And there? A Rembrandt, a Picasso, several van Gogh's. What is this? 
                 Is this a museum? In the middle, you notice a red carpet. As if
                 it is intended for someone special. And... is that a throne?
-                
+                                
                 You walk around the room. You spot something next to the throne.
                 Sitting on the floor, leaning against the throne is a... man?
                 You run over... You noticed his chest moving - he's ALIVE!
@@ -192,7 +192,7 @@ public class Adventure {
     } //Unused for the time being. //TODO: Add graphics for each scene.
 
     public void lightsAreOff() {
-        if (currentRoom.isRoomDarkIntro()){
+        if (currentRoom.isRoomDarkIntro()) {
             System.out.println(currentRoom.getDescription());
             currentRoom.setRoomDarkIntro(false);
         } else {
@@ -202,24 +202,24 @@ public class Adventure {
     }
 
 
-    public void magicWord(){
-    //Xyzzy magic word
+    public void magicWord() {
+        //Xyzzy magic word
         //First teleports the player from anywhere on the map to room1.
         //Then it saves the place from which the player comes from.
         //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
         if (currentRoom == entangledRoom) {
             System.out.println("huh, nothing happened.");
-        } else if (entangledRoom == room1){
+        } else if (entangledRoom == room1) {
             entangledRoom = currentRoom;
             currentRoom = room1;
             System.out.println("Poof! Seems like I teleported to the first room?");
         } else {
-                tempEntangleRoom = entangledRoom;
-                entangledRoom = currentRoom;
-                currentRoom = tempEntangleRoom;
-                System.out.println("Woosh! Seems like I teleported somewhere?");
+            tempEntangleRoom = entangledRoom;
+            entangledRoom = currentRoom;
+            currentRoom = tempEntangleRoom;
+            System.out.println("Woosh! Seems like I teleported somewhere?");
             System.out.println(currentRoom.getName());
-            }
+        }
     }
 
 
@@ -258,13 +258,12 @@ public class Adventure {
         sc.nextLine();
     }
 
-    public void clearScreen (){
+    public void clearScreen() {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     private void introduction() {
         //Adding main menu.
-
 
 
         System.out.println("""
@@ -472,7 +471,7 @@ public class Adventure {
                     }
                     break;
 
-                    //The cases for turn on/off light only work for Room3 and nothing else. Could be upgraded in the future.
+                //The cases for turn on/off light only work for Room3 and nothing else. Could be upgraded in the future.
                 case "turn on light":
                     if (currentRoom.isRoomHasSwitch()) {
                         System.out.println("There's a lightswitch!");
@@ -480,10 +479,10 @@ public class Adventure {
                             currentRoom.setRoomDark(false);
                             //Not very effective.
                             currentRoom.setDescription("""
-                            You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
-                            It must be at least 200x200 meters with more than 20 meters to the ceiling. 
-                            You see a lot of shelves, almost all of them are empty as if someone looted the place.
-                            """);
+                                    You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
+                                    It must be at least 200x200 meters with more than 20 meters to the ceiling. 
+                                    You see a lot of shelves, almost all of them are empty as if someone looted the place.
+                                    """);
                             System.out.println(currentRoom.getDescription());
                         } else {
                             System.out.println("The light is already on!");
