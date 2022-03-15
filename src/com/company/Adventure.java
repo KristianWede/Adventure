@@ -39,7 +39,7 @@ public class Adventure {
         room3.setW(room2);
 
         //Locking Room 4.
-        room4.setLockedRoom(false);
+        room4.setLockedRoom(true);
 
         //Room 4
         room4.setN(room1);
@@ -134,7 +134,7 @@ public class Adventure {
                         //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                         requestedRoom = currentRoom.getN();
                         if (requestedRoom.isLockedRoom()) {
-                            System.out.println("Seems like that room is locked.");
+                            System.out.println("Seems like that door is locked.");
                         } else {
                             System.out.println("Going North.");
                             //Makes an exception for Room1, so Room1 is already known.
@@ -167,7 +167,7 @@ public class Adventure {
                         //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                         requestedRoom = currentRoom.getS();
                         if (requestedRoom.isLockedRoom()) {
-                            System.out.println("Seems like that room is locked.");
+                            System.out.println("Seems like that door is locked.");
                         } else {
                             System.out.println("Going South.");
                             if (currentRoom == room1) {
@@ -196,7 +196,7 @@ public class Adventure {
                                 //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                                 requestedRoom = currentRoom.getE();
                                 if (requestedRoom.isLockedRoom()) {
-                                    System.out.println("Seems like that room is locked.");
+                                    System.out.println("Seems like that door is locked.");
                                 } else {
                                     System.out.println("Going East.");
                                     if (currentRoom == room1) {
@@ -225,7 +225,7 @@ public class Adventure {
                                 //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                                 requestedRoom = currentRoom.getW();
                                 if (requestedRoom.isLockedRoom()) {
-                                    System.out.println("Seems like that room is locked.");
+                                    System.out.println("Seems like that door is locked.");
                                 } else {
                                     System.out.println("Going West.");
                                     if (currentRoom == room1) {
@@ -257,6 +257,7 @@ public class Adventure {
                                     You can go either north, east, west or south by: 'go (direction)'
                                     'help' to repeat this message.
                                     'look' to look around in current room.
+                                    'unlock' to try and unlock a door.
                                     'exit' to exit game and end program.""");
                             break;
 
@@ -265,6 +266,17 @@ public class Adventure {
                             System.out.println("Hope you saved your progress, cause I didn't!");
                             System.exit(0);
                             break;
+
+                case "unlock":
+                    if (requestedRoom != null) {
+                        if (requestedRoom.isLockedRoom()) {
+                            requestedRoom.setLockedRoom(false);
+                            System.out.println("I unlocked the door.");
+                            }
+                        } else {
+                            System.out.println("I don't see anything to unlock!");
+                    }
+                    break;
 
                         default:
                             System.out.println("Not a valid choice!");
