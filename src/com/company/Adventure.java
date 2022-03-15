@@ -93,8 +93,8 @@ public class Adventure {
         do{
             System.out.println("What is your next move?");
             System.out.println("Type 'help' for help.");
-            String descesion = sc.nextLine().toLowerCase();
-            switch (descesion) {
+            String decision = sc.nextLine().toLowerCase();
+            switch (decision) {
                 case "go north":
                     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
                     if (currentRoom.getN() == null){
@@ -181,8 +181,6 @@ public class Adventure {
             }
         } while(true);
     }
-
-
 
     public static void main(String[] args) {
         Adventure obj = new Adventure();
