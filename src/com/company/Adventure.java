@@ -6,18 +6,19 @@ public class Adventure {
     //Initializes world map.
     private Room currentRoom;
     private Room requestedRoom;
+    private Room entangledRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
-    Room room1 = new Room("Room1", "This is room 1");
+    Room room1 = new Room("Room1", "This is room 1"); //TODO: Add story
 
     public void worldMap() {
-        Room room2 = new Room("Room2", "This is room 2");
-        Room room3 = new Room("Room3", "This is room 3");
-        Room room4 = new Room("Room4", "This is room 4");
-        Room room5 = new Room("Room5", "This is room 5");
-        Room room6 = new Room("Room6", "This is room 6");
-        Room room7 = new Room("Room7", "This is room 7");
-        Room room8 = new Room("Room8", "This is room 8");
-        Room room9 = new Room("Room9", "This is room 9");
+        Room room2 = new Room("Room2", "This is room 2");//TODO: Add story
+        Room room3 = new Room("Room3", "This is room 3");//TODO: Add story
+        Room room4 = new Room("Room4", "This is room 4");//TODO: Add story
+        Room room5 = new Room("Room5", "This is room 5");//TODO: Add story
+        Room room6 = new Room("Room6", "This is room 6");//TODO: Add story
+        Room room7 = new Room("Room7", "This is room 7");//TODO: Add story
+        Room room8 = new Room("Room8", "This is room 8");//TODO: Add story
+        Room room9 = new Room("Room9", "This is room 9");//TODO: Add story
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
@@ -109,11 +110,26 @@ public class Adventure {
         if (currentRoom == room1) {
 
         }
-    } //Unused for the time being.
+    } //Unused for the time being. //TODO: Add graphics for each scene.
 
     public void lighstAreOff() {
         System.out.println("It's very dark in here! I can barely see anything.");
         System.out.println("Better look for a lightswitch or something somewhere.");
+    }
+
+    public void magicWord(){
+
+        if (entangledRoom == room1){
+
+        } else {
+            if (currentRoom != room1) {
+                entangledRoom = room1;
+                currentRoom = entangledRoom;
+                System.out.println("Woa! I'm back here again!");
+            } else if (currentRoom == room1) {
+                System.out.println("huh, nothing happened.");
+            }
+        }
     }
 
     public void execute() {
@@ -343,6 +359,10 @@ public class Adventure {
                     }
 
                     break;
+
+                case "connor":
+                    magicWord();
+
                 default:
                     System.out.println("Not a valid choice!");
                     break;
