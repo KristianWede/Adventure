@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class Adventure {
     //Initializes world map.
     private Room currentRoom;
+    private Room requestedRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
     Room room1 = new Room("Room1", "This is room 1");
 
@@ -36,6 +37,9 @@ public class Adventure {
         room3.setE(null);
         room3.setS(room6);
         room3.setW(room2);
+
+        //Locking Room 4.
+        room4.setLockedRoom(true);
 
         //Room 4
         room4.setN(room1);
@@ -100,27 +104,36 @@ public class Adventure {
         introduction();
         //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
         userInput();
+
+
     }
 
     private void introduction() {
         System.out.println("Some random introduction to an adventure.");
     }
 
-    public String userInput(){
+    public String userInput() {
         Scanner sc = new Scanner(System.in);
-        do{
+        do {
             System.out.println("What is your next move?");
             System.out.println("Type 'help' for help.");
             String decision = sc.nextLine().toLowerCase();
             switch (decision) {
                 case "go north":
                     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
-                    if (currentRoom.getN() == null){
+                    if (currentRoom.getN() == null) {
                         System.out.println("Seems like that way is blocked.");
                     } else {
+                        //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
+                        requestedRoom = currentRoom.getN();
+                        if (requestedRoom.isLockedRoom()) {
+                            System.out.println("Seems like that room is locked.");
+                        } else {
+
+
                         System.out.println("Going North.");
                         //Makes an exception for Room1, so Room1 is already known.
-                        if (currentRoom == room1){
+                        if (currentRoom == room1) {
                             currentRoom.setVisited(true);
                         }
                         //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
@@ -128,7 +141,7 @@ public class Adventure {
                         currentRoom = currentRoom.getN();
                         currentRoom.setDiscoveredDoorS(true);
                         //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                        if ( !currentRoom.isVisited() ){
+                        if (!currentRoom.isVisited()) {
                             currentRoom.setVisited(true);
                             System.out.println(currentRoom.getDescription());
                             availableDoors();
@@ -140,95 +153,111 @@ public class Adventure {
                     break;
 
                 case "go south":
-                    if (currentRoom.getS() == null){
+                    if (currentRoom.getS() == null) {
                         System.out.println("Seems like that way is blocked.");
-                    } else {
-                        System.out.println("Going South.");
-                        if (currentRoom == room1){
-                            currentRoom.setVisited(true);
-                        }
-                        currentRoom.setDiscoveredDoorS(true);
-                        currentRoom = currentRoom.getS();
-                        currentRoom.setDiscoveredDoorN(true);
-                        if ( !currentRoom.isVisited() ){
-                            currentRoom.setVisited(true);
-                            System.out.println(currentRoom.getDescription());
-                            availableDoors();
-                        } else {
-                            System.out.println(currentRoom.getName());
-                            availableDoors();
-                        }
                     }
-                    break;
-
-                case "go east":
-                    if (currentRoom.getE() == null){
-                        System.out.println("Seems like that way is blocked.");
-                    } else {
-                        System.out.println("Going East.");
-                        if (currentRoom == room1){
-                            currentRoom.setVisited(true);
-                        }
-                        currentRoom.setDiscoveredDoorE(true);
-                        currentRoom = currentRoom.getE();
-                        currentRoom.setDiscoveredDoorW(true);
-                        if ( !currentRoom.isVisited() ){
-                            currentRoom.setVisited(true);
-                            System.out.println(currentRoom.getDescription());
-                            availableDoors();
+                        requestedRoom = currentRoom.getS();
+                        if (requestedRoom.isLockedRoom()) {
+                            System.out.println("Seems like that room is locked.");
                         } else {
-                            System.out.println(currentRoom.getName());
-                            availableDoors();
+                            System.out.println("Going South.");
+                            if (currentRoom == room1) {
+                                currentRoom.setVisited(true);
+                            }
+                            currentRoom.setDiscoveredDoorS(true);
+                            currentRoom = currentRoom.getS();
+                            currentRoom.setDiscoveredDoorN(true);
+                            if (!currentRoom.isVisited()) {
+                                currentRoom.setVisited(true);
+                                System.out.println(currentRoom.getDescription());
+                                availableDoors();
+                            } else {
+                                System.out.println(currentRoom.getName());
+                                availableDoors();
+                            }
                         }
-                    }
-                    break;
+                        break;
 
-                case "go west":
-                    if (currentRoom.getW() == null){
-                        System.out.println("Seems like that way is blocked.");
-                    } else {
-                        System.out.println("Going West.");
-                        if (currentRoom == room1){
-                            currentRoom.setVisited(true);
-                        }
-                        currentRoom.setDiscoveredDoorW(true);
-                        currentRoom = currentRoom.getW();
-                        currentRoom.setDiscoveredDoorE(true);
-                        if ( !currentRoom.isVisited() ){
-                            currentRoom.setVisited(true);
+                        case "go east":
+                            if (currentRoom.getE() == null) {
+                                System.out.println("Seems like that way is blocked.");
+                            } else {
+                                requestedRoom = currentRoom.getE();
+
+                            } if (requestedRoom.isLockedRoom()) {
+                                    System.out.println("Seems like that room is locked.");
+                            } else {
+                                System.out.println("Going East.");
+                                if (currentRoom == room1) {
+                                    currentRoom.setVisited(true);
+                                }
+                                currentRoom.setDiscoveredDoorE(true);
+                                currentRoom = currentRoom.getE();
+                                currentRoom.setDiscoveredDoorW(true);
+                                if (!currentRoom.isVisited()) {
+                                    currentRoom.setVisited(true);
+                                    System.out.println(currentRoom.getDescription());
+                                    availableDoors();
+                                } else {
+                                    System.out.println(currentRoom.getName());
+                                    availableDoors();
+                                }
+                            }
+                            break;
+
+                        case "go west":
+                            if (currentRoom.getW() == null) {
+                                System.out.println("Seems like that way is blocked.");
+                                }
+
+                                requestedRoom = currentRoom.getW();
+
+                                if (requestedRoom.isLockedRoom()) {
+                                    System.out.println("Seems like that room is locked.");
+                                } else {
+                                System.out.println("Going West.");
+                                if (currentRoom == room1) {
+                                    currentRoom.setVisited(true);
+                                }
+                                currentRoom.setDiscoveredDoorW(true);
+                                currentRoom = currentRoom.getW();
+                                currentRoom.setDiscoveredDoorE(true);
+
+                                if (!currentRoom.isVisited()) {
+                                    currentRoom.setVisited(true);
+                                    System.out.println(currentRoom.getDescription());
+                                    availableDoors();
+                                } else {
+                                    System.out.println(currentRoom.getName());
+                                    availableDoors();
+                                }
+                            }
+                            break;
+
+                        case "look":
+                            System.out.println("Looking around.");
                             System.out.println(currentRoom.getDescription());
-                            availableDoors();
-                        } else {
-                            System.out.println(currentRoom.getName());
-                            availableDoors();
-                        }
+                            break;
+
+                        case "help":
+                            System.out.println("""
+                                    You can go either north, east, west or south by: 'go (direction)'
+                                    'help' to repeat this message.
+                                    'look' to look around in current room.
+                                    'exit' to exit game and end program.""");
+                            break;
+
+                        case "exit":
+                            System.out.println("Exiting game...");
+                            System.out.println("Hope you saved your progress, cause I didn't!");
+                            System.exit(0);
+                            break;
+
+                        default:
+                            System.out.println("Not a valid choice!");
+                            break;
                     }
-                    break;
-
-                case "look":
-                    System.out.println("Looking around.");
-                    System.out.println(currentRoom.getDescription());
-                    break;
-
-                case "help":
-                    System.out.println("""
-                            You can go either north, east, west or south by: 'go (direction)'
-                            'help' to repeat this message.
-                            'look' to look around in current room.
-                            'exit' to exit game and end program.""");
-                    break;
-
-                case "exit":
-                    System.out.println("Exiting game...");
-                    System.out.println("Hope you saved your progress, cause I didn't!");
-                    System.exit(0);
-                    break;
-
-                default:
-                    System.out.println("Not a valid choice!");
-                    break;
-            }
-        } while(true);
+            }  while (true) ;
     }
 
     public static void main(String[] args) {

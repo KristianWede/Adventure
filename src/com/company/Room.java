@@ -5,6 +5,7 @@ public class Room {
   private String description;
   private Room n, e, s, w;
   private boolean visited;
+  private boolean lockedRoom;
   private boolean discoveredDoorN;
   private boolean discoveredDoorE;
   private boolean discoveredDoorW;
@@ -18,10 +19,17 @@ public class Room {
     this.discoveredDoorE = false;
     this.discoveredDoorW = false;
     this.discoveredDoorS = false;
+    this.lockedRoom = false;
   }
 
 
   //Getters
+
+
+  public boolean isLockedRoom() {
+    return lockedRoom;
+  }
+
   public String getName() {
     return name;
   }
@@ -68,6 +76,10 @@ public class Room {
 
   //Setters
 
+
+  public void setLockedRoom(boolean lockedRoom) {
+    this.lockedRoom = lockedRoom;
+  }
 
   public void setDiscoveredDoorN(boolean discoveredDoorN) {
     this.discoveredDoorN = discoveredDoorN;
