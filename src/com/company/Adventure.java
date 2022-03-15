@@ -355,6 +355,8 @@ public class Adventure {
                             'help' to repeat this message.
                             'look' to look around in current room.
                             'unlock' to try and unlock a door.
+                            'turn on light' turns on light.
+                            'turn off light' turns off light.
                             'exit' to exit game and end program.""");
                     break;
 
