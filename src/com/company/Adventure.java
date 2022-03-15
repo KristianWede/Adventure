@@ -7,6 +7,7 @@ public class Adventure {
     private Room currentRoom;
     private Room requestedRoom;
     private Room entangledRoom;
+    private Room tempEntangleRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
     Room room1 = new Room("Arrival", """
                 A square room with writings on the wall. 
@@ -158,12 +159,13 @@ public class Adventure {
         room9.setW(room8);
 
         currentRoom = room1;
+        entangledRoom = room1;
     }
 
     public void availableDoors() {
         //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
         if (currentRoom.isDiscoveredDoorN()) {
-            System.out.println("There's a door to the North"); //PROBLEM, How does program know what rooms we've been to?
+            System.out.println("There's a door to the North");
             System.out.println();
         }
         if (currentRoom.isDiscoveredDoorE()) {
@@ -193,19 +195,24 @@ public class Adventure {
     }
 
     public void magicWord(){
-
-        if (entangledRoom == room1){
-
+    //Xyzzy magic word
+        //First teleports the player from anywhere on the map to room1.
+        //Then it saves the place from which the player comes from.
+        //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
+        if (currentRoom == entangledRoom) {
+            System.out.println("huh, nothing happened.");
+        } else if (entangledRoom == room1){
+            entangledRoom = currentRoom;
+            currentRoom = room1;
+            System.out.println("Poof! Seems like I teleported to the first room?");
         } else {
-            if (currentRoom != room1) {
-                entangledRoom = room1;
-                currentRoom = entangledRoom;
-                System.out.println("Woa! I'm back here again!");
-            } else if (currentRoom == room1) {
-                System.out.println("huh, nothing happened.");
+                tempEntangleRoom = entangledRoom;
+                entangledRoom = currentRoom;
+                currentRoom = tempEntangleRoom;
+                System.out.println("Woosh! Seems like I teleported somewhere?");
             }
-        }
     }
+
 
     public void execute() {
         // Part 1: The room.
@@ -240,6 +247,10 @@ public class Adventure {
     }
 
     private void introduction() {
+        //Adding main menu.
+
+
+
         System.out.println("""
                 A tiny ray of light pierces through the heavy cloud-like smog which covers the sky and hits you in the face. 
                 As you start gaining consciousness you notice that your surroundings are unfamiliar. 
@@ -444,6 +455,7 @@ public class Adventure {
                         System.out.println("There's a lightswitch!");
                         if (currentRoom.isRoomDark()) {
                             currentRoom.setRoomDark(false);
+                            //Not very effective.
                             System.out.println("""
                             You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
                             It must be at least 200x200 meters with more than 20 meters to the ceiling. 
@@ -473,14 +485,13 @@ public class Adventure {
 
                 case "connor":
                     magicWord();
-
+                    break;
                 default:
                     System.out.println("Not a valid choice!");
                     break;
             }
         } while (true);
     }
-
 
     public static void main(String[] args) {
         Adventure obj = new Adventure();
