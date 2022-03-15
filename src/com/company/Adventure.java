@@ -1,7 +1,5 @@
 package com.company;
 
-import java.awt.*;
-import java.awt.event.KeyEvent;
 import java.util.Scanner;
 
 public class Adventure {
@@ -12,10 +10,10 @@ public class Adventure {
     private Room tempEntangleRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
     Room room1 = new Room("Arrival", """
-                A square room with writings on the wall. 
-                This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
-                Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
-                """);
+            A square room with writings on the wall. 
+            This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
+            Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
+            """);
 
     public void worldMap() {
         Room room2 = new Room("Corridor", """
@@ -60,7 +58,7 @@ public class Adventure {
                 You move closer to study your findings. It sure does look like a hand
                 but where the elbow is supposed to be a weird metal part sticks out.
                 You notice a few wires as well. What in the world is this? 
-                
+                                
                 Opposite of the entrance you spot tables lined up alongside the wall. 
                 A black puddle of something is dripping down from one of the tables. 
                 You start to connect the dots. Is this some kind of factory? Perhaps a car shop?
@@ -71,7 +69,7 @@ public class Adventure {
                 And there? A Rembrandt, a Picasso, several van Gogh's. What is this? 
                 Is this a museum? In the middle, you notice a red carpet. As if
                 it is intended for someone special. And... is that a throne?
-                
+                                
                 You walk around the room. You spot something next to the throne.
                 Sitting on the floor, leaning against the throne is a... man?
                 You run over... You noticed his chest moving - he's ALIVE!
@@ -191,29 +189,29 @@ public class Adventure {
         }
     } //Unused for the time being. //TODO: Add graphics for each scene.
 
-    public void lighstAreOff() {
+    public void lightsAreOff() {
         System.out.println("It's very dark in here! I can barely see anything.");
         System.out.println("Better look for a lightswitch or something somewhere.");
     }
 
-    public void magicWord(){
-    //Xyzzy magic word
+    public void magicWord() {
+        //Xyzzy magic word
         //First teleports the player from anywhere on the map to room1.
         //Then it saves the place from which the player comes from.
         //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
         if (currentRoom == entangledRoom) {
             System.out.println("huh, nothing happened.");
-        } else if (entangledRoom == room1){
+        } else if (entangledRoom == room1) {
             entangledRoom = currentRoom;
             currentRoom = room1;
             System.out.println("Poof! Seems like I teleported to the first room?");
         } else {
-                tempEntangleRoom = entangledRoom;
-                entangledRoom = currentRoom;
-                currentRoom = tempEntangleRoom;
-                System.out.println("Woosh! Seems like I teleported somewhere?");
+            tempEntangleRoom = entangledRoom;
+            entangledRoom = currentRoom;
+            currentRoom = tempEntangleRoom;
+            System.out.println("Woosh! Seems like I teleported somewhere?");
             System.out.println(currentRoom.getName());
-            }
+        }
     }
 
 
@@ -233,7 +231,7 @@ public class Adventure {
 
     }
 
-    private void mainMenu(){
+    private void mainMenu() {
         System.out.println("Welcome to Terminator Maze!");
         System.out.println("You're about to go on an epic journey in a mysterious maze..");
         System.out.println("In order to navigate the maze, you must type your desired direction." +
@@ -253,7 +251,7 @@ public class Adventure {
     }
 
 
-    public void clearScreen (){
+    public void clearScreen() {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
@@ -303,7 +301,7 @@ public class Adventure {
 
                             //Checks if the room is dark, if it is, it doesn't display any description or name.
                             if (currentRoom.isRoomDark()) {
-                                lighstAreOff();
+                                lightsAreOff();
 
                                 //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                             } else if (!currentRoom.isVisited()) {
@@ -339,7 +337,7 @@ public class Adventure {
                             currentRoom.setDiscoveredDoorN(true);
                             //Checks if the room is dark, if it is, it doesn't display any description or name.
                             if (currentRoom.isRoomDark()) {
-                                lighstAreOff();
+                                lightsAreOff();
 
                                 //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                             } else if (!currentRoom.isVisited()) {
@@ -373,7 +371,7 @@ public class Adventure {
                             currentRoom.setDiscoveredDoorW(true);
                             //Checks if the room is dark, if it is, it doesn't display any description or name.
                             if (currentRoom.isRoomDark()) {
-                                lighstAreOff();
+                                lightsAreOff();
 
                                 //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                             } else if (!currentRoom.isVisited()) {
@@ -407,7 +405,7 @@ public class Adventure {
                             currentRoom.setDiscoveredDoorE(true);
                             //Checks if the room is dark, if it is, it doesn't display any description or name.
                             if (currentRoom.isRoomDark()) {
-                                lighstAreOff();
+                                lightsAreOff();
 
                                 //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                             } else if (!currentRoom.isVisited()) {
@@ -426,7 +424,7 @@ public class Adventure {
                 case "look":
                     //Checks if the room is dark, if it is, it doesn't display any description or name.
                     if (currentRoom.isRoomDark()) {
-                        lighstAreOff();
+                        lightsAreOff();
                     } else {
                         System.out.println("Looking around.");
                         System.out.println(currentRoom.getDescription());
@@ -470,10 +468,10 @@ public class Adventure {
                             currentRoom.setRoomDark(false);
                             //Not very effective.
                             System.out.println("""
-                            You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
-                            It must be at least 200x200 meters with more than 20 meters to the ceiling. 
-                            You see a lot of shelves, almost all of them are empty as if someone looted the place.
-                                """);
+                                    You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
+                                    It must be at least 200x200 meters with more than 20 meters to the ceiling. 
+                                    You see a lot of shelves, almost all of them are empty as if someone looted the place.
+                                        """);
                         } else {
                             System.out.println("The light is already on!");
                         }
