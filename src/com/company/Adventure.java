@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 
@@ -123,6 +122,7 @@ public class Adventure {
         //Setting Room 3 to darkness.
         room3.setRoomDark(true);
         room3.setRoomHasSwitch(true);
+        room3.setRoomDarkIntro(true);
 
         //Room 4
         room4.setN(room1);
@@ -192,9 +192,13 @@ public class Adventure {
     } //Unused for the time being. //TODO: Add graphics for each scene.
 
     public void lightsAreOff() {
-        System.out.println(currentRoom.getDescription());
-        System.out.println("It's very dark in here! I can barely see anything.");
-        System.out.println("Better look for a lightswitch or something somewhere.");
+        if (currentRoom.isRoomDarkIntro()){
+            System.out.println(currentRoom.getDescription());
+            currentRoom.setRoomDarkIntro(false);
+        } else {
+            System.out.println("It's very dark in here! I can barely see anything.");
+            System.out.println("Better look for a lightswitch or something somewhere.");
+        }
     }
 
 

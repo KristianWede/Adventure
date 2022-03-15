@@ -94,6 +94,11 @@ public class Room {
 
   //Setters
 
+
+  public void setRoomDarkIntro(boolean roomDarkIntro) {
+    this.roomDarkIntro = roomDarkIntro;
+  }
+
   public void setRoomHasSwitch(boolean roomHasSwitch) {
     this.roomHasSwitch = roomHasSwitch;
   }
