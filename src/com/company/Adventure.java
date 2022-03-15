@@ -10,6 +10,7 @@ public class Adventure {
     private Room tempEntangleRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
     Room room1 = new Room("Arrival", """
+            Test
             A square room with writings on the wall. 
             This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
             Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
