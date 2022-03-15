@@ -275,8 +275,8 @@ public class Adventure {
                             }
                         } else {
                             System.out.println("I don't see anything to unlock!");
-                    }
-                    break;
+                        }
+                        break;
 
                         default:
                             System.out.println("Not a valid choice!");
