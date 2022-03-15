@@ -129,33 +129,34 @@ public class Adventure {
                         if (requestedRoom.isLockedRoom()) {
                             System.out.println("Seems like that room is locked.");
                         } else {
-
-
-                        System.out.println("Going North.");
-                        //Makes an exception for Room1, so Room1 is already known.
-                        if (currentRoom == room1) {
-                            currentRoom.setVisited(true);
-                        }
-                        //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
-                        currentRoom.setDiscoveredDoorN(true);
-                        currentRoom = currentRoom.getN();
-                        currentRoom.setDiscoveredDoorS(true);
-                        //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                        if (!currentRoom.isVisited()) {
-                            currentRoom.setVisited(true);
-                            System.out.println(currentRoom.getDescription());
-                            availableDoors();
-                        } else {
-                            System.out.println(currentRoom.getName());
-                            availableDoors();
+                            System.out.println("Going North.");
+                            //Makes an exception for Room1, so Room1 is already known.
+                            if (currentRoom == room1) {
+                                currentRoom.setVisited(true);
+                            }
+                            //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
+                            currentRoom.setDiscoveredDoorN(true);
+                            currentRoom = currentRoom.getN();
+                            currentRoom.setDiscoveredDoorS(true);
+                            //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
+                            if (!currentRoom.isVisited()) {
+                                currentRoom.setVisited(true);
+                                System.out.println(currentRoom.getDescription());
+                                availableDoors();
+                            } else {
+                                System.out.println(currentRoom.getName());
+                                availableDoors();
+                            }
                         }
                     }
                     break;
 
                 case "go south":
+                    //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
                     if (currentRoom.getS() == null) {
                         System.out.println("Seems like that way is blocked.");
-                    }
+                    } else {
+                        //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                         requestedRoom = currentRoom.getS();
                         if (requestedRoom.isLockedRoom()) {
                             System.out.println("Seems like that room is locked.");
@@ -176,60 +177,64 @@ public class Adventure {
                                 availableDoors();
                             }
                         }
+                    }
                         break;
 
                         case "go east":
+                            //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
                             if (currentRoom.getE() == null) {
                                 System.out.println("Seems like that way is blocked.");
                             } else {
+                                //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                                 requestedRoom = currentRoom.getE();
-
-                            } if (requestedRoom.isLockedRoom()) {
+                                if (requestedRoom.isLockedRoom()) {
                                     System.out.println("Seems like that room is locked.");
-                            } else {
-                                System.out.println("Going East.");
-                                if (currentRoom == room1) {
-                                    currentRoom.setVisited(true);
-                                }
-                                currentRoom.setDiscoveredDoorE(true);
-                                currentRoom = currentRoom.getE();
-                                currentRoom.setDiscoveredDoorW(true);
-                                if (!currentRoom.isVisited()) {
-                                    currentRoom.setVisited(true);
-                                    System.out.println(currentRoom.getDescription());
-                                    availableDoors();
                                 } else {
-                                    System.out.println(currentRoom.getName());
-                                    availableDoors();
+                                    System.out.println("Going East.");
+                                    if (currentRoom == room1) {
+                                        currentRoom.setVisited(true);
+                                    }
+                                    currentRoom.setDiscoveredDoorE(true);
+                                    currentRoom = currentRoom.getE();
+                                    currentRoom.setDiscoveredDoorW(true);
+                                    if (!currentRoom.isVisited()) {
+                                        currentRoom.setVisited(true);
+                                        System.out.println(currentRoom.getDescription());
+                                        availableDoors();
+                                    } else {
+                                        System.out.println(currentRoom.getName());
+                                        availableDoors();
+                                    }
                                 }
                             }
                             break;
 
                         case "go west":
+                            //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
                             if (currentRoom.getW() == null) {
                                 System.out.println("Seems like that way is blocked.");
-                                }
-
+                            } else {
+                                //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
                                 requestedRoom = currentRoom.getW();
-
                                 if (requestedRoom.isLockedRoom()) {
                                     System.out.println("Seems like that room is locked.");
                                 } else {
-                                System.out.println("Going West.");
-                                if (currentRoom == room1) {
-                                    currentRoom.setVisited(true);
-                                }
-                                currentRoom.setDiscoveredDoorW(true);
-                                currentRoom = currentRoom.getW();
-                                currentRoom.setDiscoveredDoorE(true);
+                                    System.out.println("Going West.");
+                                    if (currentRoom == room1) {
+                                        currentRoom.setVisited(true);
+                                    }
+                                    currentRoom.setDiscoveredDoorW(true);
+                                    currentRoom = currentRoom.getW();
+                                    currentRoom.setDiscoveredDoorE(true);
 
-                                if (!currentRoom.isVisited()) {
-                                    currentRoom.setVisited(true);
-                                    System.out.println(currentRoom.getDescription());
-                                    availableDoors();
-                                } else {
-                                    System.out.println(currentRoom.getName());
-                                    availableDoors();
+                                    if (!currentRoom.isVisited()) {
+                                        currentRoom.setVisited(true);
+                                        System.out.println(currentRoom.getDescription());
+                                        availableDoors();
+                                    } else {
+                                        System.out.println(currentRoom.getName());
+                                        availableDoors();
+                                    }
                                 }
                             }
                             break;
