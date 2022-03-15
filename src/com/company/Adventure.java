@@ -5,9 +5,10 @@ import java.util.Scanner;
 public class Adventure {
     //Initializes world map.
     private Room currentRoom;
+    //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
+    Room room1 = new Room("Room1", "This is room 1");
 
     public void worldMap() {
-        Room room1 = new Room("Room1", "This is room 1");
         Room room2 = new Room("Room2", "This is room 2");
         Room room3 = new Room("Room3", "This is room 3");
         Room room4 = new Room("Room4", "This is room 4");
@@ -75,6 +76,23 @@ public class Adventure {
         currentRoom = room1;
     }
 
+    public void availableDoors(){
+        //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
+        if (currentRoom.isDiscoveredDoorN()){
+            System.out.println("There's a door to the North"); //PROBLEM, How does program know what rooms we've been to?
+            System.out.println();
+        } if (currentRoom.isDiscoveredDoorE()) {
+            System.out.println("There's a door to the East.");
+            System.out.println();
+        } if (currentRoom.isDiscoveredDoorW()) {
+            System.out.println("There's a door to the West");
+            System.out.println();
+        } if (currentRoom.isDiscoveredDoorS()) {
+            System.out.println("There's a door to the South");
+            System.out.println();
+        }
+    }
+
     public void execute() {
         // Part 1: The room.
         worldMap();
@@ -101,12 +119,22 @@ public class Adventure {
                         System.out.println("Seems like that way is blocked.");
                     } else {
                         System.out.println("Going North.");
+                        //Makes an exception for Room1, so Room1 is already known.
+                        if (currentRoom == room1){
+                            currentRoom.setVisited(true);
+                        }
+                        //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
+                        currentRoom.setDiscoveredDoorN(true);
                         currentRoom = currentRoom.getN();
+                        currentRoom.setDiscoveredDoorS(true);
+                        //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                         if ( !currentRoom.isVisited() ){
                             currentRoom.setVisited(true);
                             System.out.println(currentRoom.getDescription());
+                            availableDoors();
                         } else {
                             System.out.println(currentRoom.getName());
+                            availableDoors();
                         }
                     }
                     break;
@@ -116,12 +144,19 @@ public class Adventure {
                         System.out.println("Seems like that way is blocked.");
                     } else {
                         System.out.println("Going South.");
+                        if (currentRoom == room1){
+                            currentRoom.setVisited(true);
+                        }
+                        currentRoom.setDiscoveredDoorS(true);
                         currentRoom = currentRoom.getS();
+                        currentRoom.setDiscoveredDoorN(true);
                         if ( !currentRoom.isVisited() ){
                             currentRoom.setVisited(true);
                             System.out.println(currentRoom.getDescription());
+                            availableDoors();
                         } else {
                             System.out.println(currentRoom.getName());
+                            availableDoors();
                         }
                     }
                     break;
@@ -131,12 +166,19 @@ public class Adventure {
                         System.out.println("Seems like that way is blocked.");
                     } else {
                         System.out.println("Going East.");
+                        if (currentRoom == room1){
+                            currentRoom.setVisited(true);
+                        }
+                        currentRoom.setDiscoveredDoorE(true);
                         currentRoom = currentRoom.getE();
+                        currentRoom.setDiscoveredDoorW(true);
                         if ( !currentRoom.isVisited() ){
                             currentRoom.setVisited(true);
                             System.out.println(currentRoom.getDescription());
+                            availableDoors();
                         } else {
                             System.out.println(currentRoom.getName());
+                            availableDoors();
                         }
                     }
                     break;
@@ -146,12 +188,19 @@ public class Adventure {
                         System.out.println("Seems like that way is blocked.");
                     } else {
                         System.out.println("Going West.");
+                        if (currentRoom == room1){
+                            currentRoom.setVisited(true);
+                        }
+                        currentRoom.setDiscoveredDoorW(true);
                         currentRoom = currentRoom.getW();
+                        currentRoom.setDiscoveredDoorE(true);
                         if ( !currentRoom.isVisited() ){
                             currentRoom.setVisited(true);
                             System.out.println(currentRoom.getDescription());
+                            availableDoors();
                         } else {
                             System.out.println(currentRoom.getName());
+                            availableDoors();
                         }
                     }
                     break;
