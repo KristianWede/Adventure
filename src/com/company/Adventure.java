@@ -210,6 +210,7 @@ public class Adventure {
                 entangledRoom = currentRoom;
                 currentRoom = tempEntangleRoom;
                 System.out.println("Woosh! Seems like I teleported somewhere?");
+            System.out.println(currentRoom.getName());
             }
     }
 
@@ -471,7 +472,7 @@ public class Adventure {
                 case "turn off light":
                     if (currentRoom.isRoomHasSwitch()) {
                         System.out.println("There's a lightswitch!");
-                        if (currentRoom.isRoomDark()) {
+                        if (!currentRoom.isRoomDark()) {
                             currentRoom.setRoomDark(true);
                             System.out.println("You turn off the lightswitch next to you and it's pitch black. ");
                         } else {
