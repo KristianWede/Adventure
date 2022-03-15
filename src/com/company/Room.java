@@ -11,6 +11,7 @@ public class Room {
   private boolean discoveredDoorW;
   private boolean discoveredDoorS;
   private boolean isRoomDark;
+  private boolean roomHasSwitch;
 
   public Room(String name, String description) {
     this.name = name;
@@ -22,11 +23,16 @@ public class Room {
     this.discoveredDoorS = false;
     this.lockedRoom = false;
     this.isRoomDark = false;
+    this.roomHasSwitch = false;
   }
 
 
   //Getters
 
+
+  public boolean isRoomHasSwitch() {
+    return roomHasSwitch;
+  }
 
   public boolean isRoomDark() {
     return isRoomDark;
@@ -82,6 +88,9 @@ public class Room {
 
   //Setters
 
+  public void setRoomHasSwitch(boolean roomHasSwitch) {
+    this.roomHasSwitch = roomHasSwitch;
+  }
 
   public void setRoomDark(boolean roomDark) {
     isRoomDark = roomDark;
