@@ -8,17 +8,51 @@ public class Adventure {
     private Room requestedRoom;
     private Room entangledRoom;
     //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
-    Room room1 = new Room("Room1", "This is room 1"); //TODO: Add story
+    Room room1 = new Room("Room1", """
+            A square room with writings on the wall. 
+            This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
+            Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
+            """);
 
     public void worldMap() {
-        Room room2 = new Room("Room2", "This is room 2");//TODO: Add story
-        Room room3 = new Room("Room3", "This is room 3");//TODO: Add story
+        Room room2 = new Room("Room2", """
+        You are standing in a long corridor. You can’t see the other end of the corridor. 
+        Along the walls you notice big piles of what seems to be trash. 
+        There is a faint sweet smell, almost as if something has started to rot. 
+        At the other end you notice a flash of green light. You freeze and wait for another flash. 
+        There! You see the flash one more time.
+        """);
+        Room room3 = new Room("Room3", """
+                The door closes behind you. It is pitch black. 
+                You cant even see your hand in front of you. 
+                You have no idea how big the room is, but as you take your first steps inside the room, you notice a slight echo. 
+                You are under the impression that you are inside a very big room.
+                """);
         Room room4 = new Room("Room4", "This is room 4");//TODO: Add story
         Room room5 = new Room("Room5", "This is room 5");//TODO: Add story
-        Room room6 = new Room("Room6", "This is room 6");//TODO: Add story
+        Room room6 = new Room("Room6", """
+                As soon as you enter the room, you hear a buzzing sound.
+                Suddenly the whole room is lit up by the ceiling lights.
+                You look around and notice the peculiar surroundings. 
+                The floor is made of big white tiles, giving the room a very ‘clinical’ feeling. 
+                In the far corner you see a few metal trolleys with what appears to be trays for medical equipment. 
+                There are a few used instruments on the floor and some drops of what looks like blood. What is this place?
+                """);
         Room room7 = new Room("Room7", "This is room 7");//TODO: Add story
         Room room8 = new Room("Room8", "This is room 8");//TODO: Add story
-        Room room9 = new Room("Room9", "This is room 9");//TODO: Add story
+        Room room9 = new Room("Room9", """
+                As you enter the room you instantly feel the change in temperature. 
+                The room is hot with torches hanging from the walls, giving the room a very dungeon-like feeling. 
+                 can’t see all the corners, but you can easily see the main part of the room. 
+                 As you move towards the middle you hear a cracking noise from underneath your feet. 
+                 It sounded almost as if you stepped on a twig. Looking down you realise what it is you stepped on - bones! 
+                 You jump forward but lose you balance instantly. Luckily, your landing is softened by something piled up in front of you. 
+                 You look up and find yourself staring into the lifeless eyes of middleaged man. You scream like a little girl. 
+                 As you get your breathing under control you hear a noise. It sounded a lot like rubble being pushed around. 
+                 What is lurking around in the shadows? Red eyes emerge from the shadows. 
+                 ‘Clonk, clonk, clonk’. You look back towards the door you entered through. It is closed. What now?!
+                                
+                """);
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
@@ -144,7 +178,16 @@ public class Adventure {
     }
 
     private void introduction() {
-        System.out.println("Some random introduction to an adventure.");
+        System.out.println("""
+                A tiny ray of light pierces through the heavy cloud-like smog which covers the sky and hits you in the face. 
+                As you start gaining consciousness you notice that your surroundings are unfamiliar. 
+                You find yourself in a room consisting of 4 walls with some doors and one big ceiling window.  
+                You have no recollection of how you ended up here but you sense that something is off. 
+                You get up on your feet and start dusting yourself off. As you look around you notice 2 doors - one to the east and one to the south. 
+                Each wall has writing on them. You look closer: 
+                ‘They are here’, ‘Judgement day has come’, ‘Connor’ and ‘Deus Ex Machina?’ are just some of the words written. 
+                You don’t think much of it, it could just be kids blowing of some steam .
+                """);
     }
 
     public String userInput() {
@@ -337,7 +380,11 @@ public class Adventure {
                         System.out.println("There's a lightswitch!");
                         if (currentRoom.isRoomDark()) {
                             currentRoom.setRoomDark(false);
-                            System.out.println("You turn on the lightswitch next to you and ..."); //TODO Add story
+                            System.out.println("""
+                            You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
+                            It must be at least 200x200 meters with more than 20 meters to the ceiling. 
+                            You see a lot of shelves, almost all of them are empty as if someone looted the place.
+                                """);
                         } else {
                             System.out.println("The light is already on!");
                         }
@@ -350,7 +397,7 @@ public class Adventure {
                         System.out.println("There's a lightswitch!");
                         if (currentRoom.isRoomDark()) {
                             currentRoom.setRoomDark(true);
-                            System.out.println("You turn off the lightswitch next to you and ..."); //TODO Add story
+                            System.out.println("You turn off the lightswitch next to you and it's pitch black. ");
                         } else {
                             System.out.println("The light is already off!");
                         }
