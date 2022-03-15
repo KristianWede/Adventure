@@ -12,6 +12,7 @@ public class Room {
   private boolean discoveredDoorS;
   private boolean isRoomDark;
   private boolean roomHasSwitch;
+  private boolean roomDarkIntro;
 
   public Room(String name, String description) {
     this.name = name;
@@ -24,11 +25,16 @@ public class Room {
     this.lockedRoom = false;
     this.isRoomDark = false;
     this.roomHasSwitch = false;
+    this.roomDarkIntro = false;
   }
 
 
   //Getters
 
+
+  public boolean isRoomDarkIntro() {
+    return roomDarkIntro;
+  }
 
   public boolean isRoomHasSwitch() {
     return roomHasSwitch;
