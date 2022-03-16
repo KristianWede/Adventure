@@ -293,6 +293,8 @@ public class Adventure {
                 ‘They are here’, ‘Judgement day has come’, ‘Connor’ and ‘Deus Ex Machina?’ are just some of the words written. 
                 You don’t think much of it, it could just be kids blowing of some steam .
                 """);
+
+        //Music method
     }
         void playMusic(){
             try
