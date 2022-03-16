@@ -223,11 +223,12 @@ public class Adventure {
     }
 
 
-    public void execute() {
+    public void execute() throws InterruptedException {
         // Part 1: The room.
         worldMap();
 
         mainMenu();
+
         clearScreen();
 
         introduction();
@@ -239,10 +240,10 @@ public class Adventure {
 
     }
 
-    private void mainMenu() {
-        System.out.println("Welcome to Terminator Maze!");
-        System.out.println("You're about to go on an epic journey in a mysterious maze..");
-        System.out.println("In order to navigate the maze, you must type your desired direction." +
+    private void mainMenu() throws InterruptedException {
+        soutPrinter("Welcome to Terminator Maze!");
+        soutPrinter("You're about to go on an epic journey in a mysterious maze..");
+        soutPrinter("In order to navigate the maze, you must type your desired direction." +
                 "Useful commands: \n" +
                 "                            You can go either north, east, west or south by: 'go (direction)'\n" +
                 "                            'help' to repeat this message.\n" +
@@ -262,11 +263,21 @@ public class Adventure {
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
-    private void introduction() {
+    public void soutPrinter(String text) throws InterruptedException {
+
+        for (int i = 0; i <= text.length()-1; i++){
+            System.out.print(text.charAt(i));
+            Thread.sleep(20);
+        }
+        System.out.println();
+    }
+
+    private void introduction() throws InterruptedException {
         //Adding main menu.
 
 
-        System.out.println("""
+        soutPrinter
+                ("""
                 A tiny ray of light pierces through the heavy cloud-like smog which covers the sky and hits you in the face. 
                 As you start gaining consciousness you notice that your surroundings are unfamiliar. 
                 You find yourself in a room consisting of 4 walls with some doors and one big ceiling window.  
@@ -464,7 +475,7 @@ public class Adventure {
                             requestedRoom.setLockedRoom(false);
                             System.out.println("I unlocked the door.");
                         } else if (!requestedRoom.isLockedRoom()) {
-                            System.out.println("The room is already unlocked!");
+                            System.out.println("I don't see anything to unlock!");
                         }
                     } else {
                         System.out.println("I don't see anything to unlock!");
@@ -516,7 +527,7 @@ public class Adventure {
         } while (true);
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Adventure obj = new Adventure();
         obj.execute();
     }
