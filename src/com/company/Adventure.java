@@ -3,7 +3,6 @@ package com.company;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
-import javax.swing.*;
 import java.io.File;
 import java.util.Scanner;
 
@@ -11,6 +10,7 @@ import java.util.Scanner;
 public class Adventure {
     //Initializes world map.
     private WorldCreator creator;
+    private Music music;
 
     private Room currentRoom;
     private Room requestedRoom;
@@ -85,12 +85,11 @@ public class Adventure {
 
         creator.createWorldMap();
         currentRoom = creator.getStarterRoom();
+        entangledRoom = creator.getStarterRoom();
 
-        playMusic();
+        music = new Music();
 
-        System.out.println("""
-                
-                """);
+        music.playMusic();
 
         mainMenu();
 
@@ -155,38 +154,7 @@ public class Adventure {
 
         //Music method
     }
-        void playMusic(){
-            try
-            {
-                String musicLocation = "musik.wav";
-                File musicPath = new File(musicLocation);
-                if (musicPath.exists()) {
-                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                    Clip clip = AudioSystem.getClip();
-                    clip.open(audioInput);
-                    clip.start();
-                    clip.loop(Clip.LOOP_CONTINUOUSLY);
 
-                    //JOptionPane.showMessageDialog(null, "hit OK to pause");
-                    long clipTimePosition = clip.getMicrosecondPosition();
-                    clip.stop();
-
-                    //JOptionPane.showMessageDialog(null, "hit OK to resume");
-                    clip.setMicrosecondPosition(clipTimePosition);
-                    clip.start();
-
-                    //JOptionPane.showMessageDialog(null, "hit OK to stop");
-                }
-                else
-                {
-                    System.out.println("Can't find file");
-                }
-            }
-            catch (Exception ex)
-            {
-                ex.printStackTrace();
-            }
-        }
 
     public String userInput() {
         Scanner sc = new Scanner(System.in);
