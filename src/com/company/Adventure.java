@@ -233,6 +233,9 @@ public class Adventure {
         worldMap();
         playMusic();
 
+        System.out.println("""
+                
+                """);
         mainMenu();
 
         clearScreen();
@@ -569,6 +572,8 @@ public class Adventure {
 
     public static void main(String[] args) throws InterruptedException {
         Adventure obj = new Adventure();
+        ProgramFlow flow = new ProgramFlow();
+        flow.theFlow();
         obj.execute();
     }
 }
