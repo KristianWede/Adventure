@@ -178,6 +178,8 @@ public class UserInterface {
         public void printLightIsOff(){
             System.out.println("The light is already off!");
         }
-
+        public void giveName(Room playerPos){
+        System.out.println(playerPos.getName());
+    }
 
 }

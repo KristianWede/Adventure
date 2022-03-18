@@ -62,7 +62,7 @@ public class ProgramFlow {
             entangledRoom = playerPos;
             playerPos = tempEntangledRoom;
             ui.printPlayerTeleported();
-            System.out.println(playerPos.getName());
+            ui.giveName(playerPos);
         }
     }
 
@@ -95,10 +95,10 @@ public class ProgramFlow {
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                 } else if (!playerPos.isVisited()) {
                     playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                    ui.giveDescription(playerPos);
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    ui.giveName(playerPos);
                     availableDoors();
                     roomArt();
                 }
@@ -131,10 +131,10 @@ public class ProgramFlow {
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                 } else if (!playerPos.isVisited()) {
                     playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                    ui.giveDescription(playerPos);
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    ui.giveName(playerPos);
                     availableDoors();
                 }
             }
@@ -165,10 +165,10 @@ public class ProgramFlow {
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                 } else if (!playerPos.isVisited()) {
                     playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                    ui.giveDescription(playerPos);
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    ui.giveName(playerPos);
                     availableDoors();
                 }
             }
@@ -199,10 +199,10 @@ public class ProgramFlow {
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
                 } else if (!playerPos.isVisited()) {
                     playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                    ui.giveDescription(playerPos);
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    ui.giveName(playerPos);
                     availableDoors();
                 }
             }
@@ -216,8 +216,8 @@ public class ProgramFlow {
             lightsAreOff();
         } else {
             ui.printPlayerLooksAround();
-            System.out.println(playerPos.getDescription());
-            System.out.println();
+            ui.giveDescription(playerPos);
+
         }
     }
 
@@ -261,7 +261,7 @@ public class ProgramFlow {
                                     It must be at least 200x200 meters with more than 20 meters to the ceiling. 
                                     You see a lot of shelves, almost all of them are empty as if someone looted the place.
                                     """);
-                System.out.println(playerPos.getDescription());
+                ui.giveName(playerPos);
             } else {
                 ui.printLightIsOn();
             }
