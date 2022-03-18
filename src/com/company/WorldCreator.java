@@ -163,8 +163,13 @@ private Room starterRoom;
         Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
 
         //Set rooms to have items.
-        room3.setHasItem(key);
-        room4.setHasItem(bucketOfLava);
+        room3.addRoomInventory(key);
+        room3.setItemPresent(true);
+
+        room4.addRoomInventory(bucketOfLava);
+        room4.setItemPresent(true);
+
+        System.out.println(room9);
     }
     //Getters
 

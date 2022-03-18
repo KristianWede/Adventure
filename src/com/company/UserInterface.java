@@ -1,7 +1,5 @@
 package com.company;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.Scanner;
 
 public class UserInterface {
@@ -178,6 +176,4 @@ public class UserInterface {
         public void printLightIsOff(){
             System.out.println("The light is already off!");
         }
-
-
 }

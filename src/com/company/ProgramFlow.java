@@ -7,8 +7,8 @@ public class ProgramFlow {
     private WorldCreator creator;
     private Music music;
     private UserInterface ui;
+    private Player player;
 
-    private Room playerPos;
     private Room requestedRoomPos;
     private Room entangledRoom;
     private Room tempEntangledRoom;
@@ -17,30 +17,30 @@ public class ProgramFlow {
 
     public void availableDoors() {
         //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
-        if (playerPos.isDiscoveredDoorN()) {
+        if (player.getPlayerPosition().isDiscoveredDoorN()) {
             ui.printDoorNorthAvailable();
         }
-        if (playerPos.isDiscoveredDoorE()) {
+        if (player.getPlayerPosition().isDiscoveredDoorE()) {
             ui.printDoorEastAvailable();
         }
-        if (playerPos.isDiscoveredDoorW()) {
+        if (player.getPlayerPosition().isDiscoveredDoorW()) {
             ui.printDoorWestAvailable();
         }
-        if (playerPos.isDiscoveredDoorS()) {
+        if (player.getPlayerPosition().isDiscoveredDoorS()) {
             ui.printDoorSouthAvailable();
         }
     }
 
     public void roomArt() {
-        if (playerPos == creator.getStarterRoom()) {
+        if (player.getPlayerPosition() == creator.getStarterRoom()) {
 
         }
     } //Unused for the time being. //TODO: Add graphics for each scene.
 
     public void lightsAreOff() {
-        if (playerPos.isRoomDarkIntro()) {
-            ui.giveDescription(playerPos);
-            playerPos.setRoomDarkIntro(false);
+        if (player.getPlayerPosition().isRoomDarkIntro()) {
+            ui.giveDescription(player.getPlayerPosition());
+            player.getPlayerPosition().setRoomDarkIntro(false);
         } else {
             ui.printPlayerReactionDark();
         }
@@ -51,54 +51,54 @@ public class ProgramFlow {
         //First teleports the player from anywhere on the map to room1.
         //Then it saves the place from which the player comes from.
         //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
-        if (playerPos == entangledRoom) {
+        if (player.getPlayerPosition() == entangledRoom) {
             ui.printPlayerReactionTeleNothing();
         } else if (entangledRoom == creator.getStarterRoom()) {
-            entangledRoom = playerPos;
-            playerPos = creator.getStarterRoom();
+            entangledRoom = player.getPlayerPosition();
+            player.setPlayerPosition(creator.getStarterRoom());
             ui.printPlayerReactionTeleFirstRoom();
         } else {
             tempEntangledRoom = entangledRoom;
-            entangledRoom = playerPos;
-            playerPos = tempEntangledRoom;
+            entangledRoom = player.getPlayerPosition();
+            player.setPlayerPosition(tempEntangledRoom);
             ui.printPlayerTeleported();
-            System.out.println(playerPos.getName());
+            System.out.println(player.getPlayerPosition().getName());
         }
     }
 
 
     public void userInputCaseNorth(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
-        if (playerPos.getN() == null) {
+        if (player.getPlayerPosition().getN() == null) {
             ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
-            requestedRoomPos = playerPos.getN();
+            requestedRoomPos = player.getPlayerPosition().getN();
             if (requestedRoomPos.isLockedRoom()) {
                 ui.printDoorIsLocked();
             } else {
                 ui.printPlayerGoesNorth();
                 //Makes an exception for Room1, so Room1 is already known.
-                if (playerPos == creator.getStarterRoom()) {
-                    playerPos.setVisited(true);
+                if (player.getPlayerPosition() == creator.getStarterRoom()) {
+                    player.getPlayerPosition().setVisited(true);
                 }
                 //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
-                playerPos.setDiscoveredDoorN(true);
+                player.getPlayerPosition().setDiscoveredDoorN(true);
                 requestedRoomPos.setDiscoveredDoorS(true);
-                playerPos = requestedRoomPos;
+                player.setPlayerPosition(requestedRoomPos);
                 //Checks if the room is dark, if it is, it doesn't display any description or name. <-NO
                 //Room 3 should have 2 states for name and description.
                 //One for each when the lights are off in the room.
                 //One for each when the lights are on in the room.
-                if (playerPos.isRoomDark()) {
+                if (player.getPlayerPosition().isRoomDark()) {
                     lightsAreOff();
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                } else if (!playerPos.isVisited()) {
-                    playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                } else if (!player.getPlayerPosition().isVisited()) {
+                    player.getPlayerPosition().setVisited(true);
+                    System.out.println(player.getPlayerPosition().getDescription());
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    System.out.println(player.getPlayerPosition().getName());
                     availableDoors();
                     roomArt();
                 }
@@ -109,32 +109,32 @@ public class ProgramFlow {
 
     public void userInputCaseSouth(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
-        if (playerPos.getS() == null) {
+        if (player.getPlayerPosition().getS() == null) {
             ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
-            requestedRoomPos = playerPos.getS();
+            requestedRoomPos = player.getPlayerPosition().getS();
             if (requestedRoomPos.isLockedRoom()) {
                 ui.printDoorIsLocked();
             } else {
                 ui.printPlayerGoesSouth();
-                if (playerPos == creator.getStarterRoom()) {
-                    playerPos.setVisited(true);
+                if (player.getPlayerPosition() == creator.getStarterRoom()) {
+                    player.getPlayerPosition().setVisited(true);
                 }
-                playerPos.setDiscoveredDoorS(true);
-                playerPos = playerPos.getS();
-                playerPos.setDiscoveredDoorN(true);
+                player.getPlayerPosition().setDiscoveredDoorS(true);
+                player.setPlayerPosition(player.getPlayerPosition().getS());
+                player.getPlayerPosition().setDiscoveredDoorN(true);
                 //Checks if the room is dark, if it is, it doesn't display any description or name.
-                if (playerPos.isRoomDark()) {
+                if (player.getPlayerPosition().isRoomDark()) {
                     lightsAreOff();
 
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                } else if (!playerPos.isVisited()) {
-                    playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                } else if (!player.getPlayerPosition().isVisited()) {
+                    player.getPlayerPosition().setVisited(true);
+                    System.out.println(player.getPlayerPosition().getDescription());
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    System.out.println(player.getPlayerPosition().getName());
                     availableDoors();
                 }
             }
@@ -143,32 +143,32 @@ public class ProgramFlow {
 
     public void userInputCaseEast(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
-        if (playerPos.getE() == null) {
+        if (player.getPlayerPosition().getE() == null) {
             ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
-            requestedRoomPos = playerPos.getE();
+            requestedRoomPos = player.getPlayerPosition().getE();
             if (requestedRoomPos.isLockedRoom()) {
                 ui.printDoorIsLocked();
             } else {
                 ui.printPlayerGoesEast();
-                if (playerPos == creator.getStarterRoom()) {
-                    playerPos.setVisited(true);
+                if (player.getPlayerPosition() == creator.getStarterRoom()) {
+                    player.getPlayerPosition().setVisited(true);
                 }
-                playerPos.setDiscoveredDoorE(true);
-                playerPos = playerPos.getE();
-                playerPos.setDiscoveredDoorW(true);
+                player.getPlayerPosition().setDiscoveredDoorE(true);
+                player.setPlayerPosition(player.getPlayerPosition().getE());
+                player.getPlayerPosition().setDiscoveredDoorW(true);
                 //Checks if the room is dark, if it is, it doesn't display any description or name.
-                if (playerPos.isRoomDark()) {
+                if (player.getPlayerPosition().isRoomDark()) {
                     lightsAreOff();
 
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                } else if (!playerPos.isVisited()) {
-                    playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                } else if (!player.getPlayerPosition().isVisited()) {
+                    player.getPlayerPosition().setVisited(true);
+                    System.out.println(player.getPlayerPosition().getDescription());
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    System.out.println(player.getPlayerPosition().getName());
                     availableDoors();
                 }
             }
@@ -177,32 +177,34 @@ public class ProgramFlow {
 
     public void userInputCaseWest(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
-        if (playerPos.getW() == null) {
+        if (player.getPlayerPosition().getW() == null) {
             ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
-            requestedRoomPos = playerPos.getW();
+            requestedRoomPos = player.getPlayerPosition().getW();
             if (requestedRoomPos.isLockedRoom()) {
                 ui.printDoorIsLocked();
             } else {
                 ui.printPlayerGoesWest();
-                if (playerPos == creator.getStarterRoom()) {
-                    playerPos.setVisited(true);
+                if (player.getPlayerPosition() == creator.getStarterRoom()) {
+                    player.getPlayerPosition().setVisited(true);
                 }
-                playerPos.setDiscoveredDoorW(true);
-                playerPos = playerPos.getW();
-                playerPos.setDiscoveredDoorE(true);
+                player.getPlayerPosition().setDiscoveredDoorW(true);
+                player.setPlayerPosition(player.getPlayerPosition().getW())
+
+                ;
+                player.getPlayerPosition().setDiscoveredDoorE(true);
                 //Checks if the room is dark, if it is, it doesn't display any description or name.
-                if (playerPos.isRoomDark()) {
+                if (player.getPlayerPosition().isRoomDark()) {
                     lightsAreOff();
 
                     //Checks if the room has already been visited before, if true, it gives the long description, if not, gives the "name" which is just the short description.
-                } else if (!playerPos.isVisited()) {
-                    playerPos.setVisited(true);
-                    System.out.println(playerPos.getDescription());
+                } else if (!player.getPlayerPosition().isVisited()) {
+                    player.getPlayerPosition().setVisited(true);
+                    System.out.println(player.getPlayerPosition().getDescription());
                     availableDoors();
                 } else {
-                    System.out.println(playerPos.getName());
+                    System.out.println(player.getPlayerPosition().getName());
                     availableDoors();
                 }
             }
@@ -212,18 +214,18 @@ public class ProgramFlow {
 
     public void userInputCaseLook(){
         //Checks if the room is dark, if it is, it doesn't display any description or name.
-        if (playerPos.isRoomDark()) {
+        if (player.getPlayerPosition().isRoomDark()) {
             lightsAreOff();
         } else {
             ui.printPlayerLooksAround();
-            System.out.println(playerPos.getDescription());
+            System.out.println(player.getPlayerPosition().getDescription());
             System.out.println();
         }
     }
 
-    public void userInputCaseLookItem(){
+    /*public void userInputCaseLookItem(){   ///TODO:USING THIS WHEN INVENTORY HAS BEEN MADE
         //Checks if the room has items
-        if (playerPos.isHasItem(true)) {
+        if (playerPos) {
 
 
         } else {
@@ -232,6 +234,7 @@ public class ProgramFlow {
             System.out.println();
         }
     }
+     */
 
     public void exitGame(){
         System.exit(0);
@@ -251,17 +254,17 @@ public class ProgramFlow {
     }
 
     public void userInputCaseOnLightOn(){
-        if (playerPos.isRoomHasSwitch()) {
+        if (player.getPlayerPosition().isRoomHasSwitch()) {
             ui.printFoundLightswitch();
-            if (playerPos.isRoomDark()) {
-                playerPos.setRoomDark(false);
+            if (player.getPlayerPosition().isRoomDark()) {
+                player.getPlayerPosition().setRoomDark(false);
                 //Not very effective.
-                playerPos.setDescription("""
+                player.getPlayerPosition().setDescription("""
                                     You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
                                     It must be at least 200x200 meters with more than 20 meters to the ceiling. 
                                     You see a lot of shelves, almost all of them are empty as if someone looted the place.
                                     """);
-                System.out.println(playerPos.getDescription());
+                System.out.println(player.getPlayerPosition().getDescription());
             } else {
                 ui.printLightIsOn();
             }
@@ -271,11 +274,11 @@ public class ProgramFlow {
     }
 
     public void userInputTakeItem(){
-        if (playerPos.isHasItem()) {
+        if (player.getPlayerPosition().isItemPresent()) {
             System.out.println("There's an item here");
-            if (playerPos.isHasItem()) {
-                playerPos.getDescription();
-                System.out.println(playerPos.getDescription());
+            if (player.getPlayerPosition().isItemPresent()) {
+                player.getPlayerPosition().getDescription();
+                System.out.println(player.getPlayerPosition().getDescription());
             } else {
                 System.out.println("You picked all items up");
             }
@@ -286,10 +289,10 @@ public class ProgramFlow {
 
 
     public void userInputCaseOnLightOff(){
-        if (playerPos.isRoomHasSwitch()) {
+        if (player.getPlayerPosition().isRoomHasSwitch()) {
             ui.printFoundLightswitch();
-            if (!playerPos.isRoomDark()) {
-                playerPos.setRoomDark(true);
+            if (!player.getPlayerPosition().isRoomDark()) {
+                player.getPlayerPosition().setRoomDark(true);
                 ui.printTurnOffLight();
             } else {
                 ui.printLightIsOff();
@@ -305,9 +308,10 @@ public class ProgramFlow {
         creator = new WorldCreator();
         music = new Music();
         ui = new UserInterface();
+        player = new Player();
 
         creator.createWorldMap();
-        playerPos = creator.getStarterRoom();
+        player.setPlayerPosition(creator.getStarterRoom());
         entangledRoom = creator.getStarterRoom();
 
 

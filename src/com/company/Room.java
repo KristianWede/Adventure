@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Room {
   private String name;
   private String description;
@@ -13,13 +15,13 @@ public class Room {
   private boolean isRoomDark;
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
-  private Item hasItem;
+  private ArrayList<Item> roomInventory = new ArrayList<>();
+  private boolean itemPresent;
 
 
   public Room(String name, String description) {
     this.name = name;
     this.description = description;
-    this.hasItem = null;
     this.visited = false;
     this.discoveredDoorN = false;
     this.discoveredDoorE = false;
@@ -29,11 +31,14 @@ public class Room {
     this.isRoomDark = false;
     this.roomHasSwitch = false;
     this.roomDarkIntro = false;
+    this.itemPresent = false;
   }
 
 
   //Getters
-
+  public boolean isItemPresent() {
+    return itemPresent;
+  }
 
   public boolean isRoomDarkIntro() {
     return roomDarkIntro;
@@ -50,9 +55,7 @@ public class Room {
   public boolean isLockedRoom() {
     return lockedRoom;
   }
-  public Item isHasItem() {
-    return hasItem;
-  }
+
 
   public String getName() {
     return name;
@@ -101,8 +104,12 @@ public class Room {
 
   //Setters
 
-  public void setHasItem(Item hasItem) {
-    this.hasItem = hasItem;
+  public void setItemPresent(boolean itemPresent) {
+    this.itemPresent = itemPresent;
+  }
+
+  public void addRoomInventory(Item item) {
+    roomInventory.add(item);
   }
 
   public void setRoomDarkIntro(boolean roomDarkIntro) {
@@ -175,7 +182,7 @@ public class Room {
             ", isRoomDark=" + isRoomDark +
             ", roomHasSwitch=" + roomHasSwitch +
             ", roomDarkIntro=" + roomDarkIntro +
-            ", hasItem=" + hasItem +
-            '}';
+            ", hasItem=" +  itemPresent +
+             "roomInventory" + roomInventory + '}';
   }
 }
