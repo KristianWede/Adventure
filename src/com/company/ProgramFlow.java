@@ -115,9 +115,9 @@ public class ProgramFlow {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
             requestedRoomPos = playerPos.getS();
             if (requestedRoomPos.isLockedRoom()) {
-                ui.printMessage("Seems like that door is locked.");
+                ui.printDoorIsLocked();
             } else {
-                System.out.println("Going South.");
+                ui.printPlayerGoesSouth();
                 if (playerPos == creator.getStarterRoom()) {
                     playerPos.setVisited(true);
                 }
@@ -144,14 +144,14 @@ public class ProgramFlow {
     public void userInputCaseEast(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (playerPos.getE() == null) {
-            System.out.println("Seems like that way is blocked.");
+            ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
             requestedRoomPos = playerPos.getE();
             if (requestedRoomPos.isLockedRoom()) {
-                System.out.println("Seems like that door is locked.");
+                ui.printDoorIsLocked();
             } else {
-                System.out.println("Going East.");
+                ui.printPlayerGoesEast();
                 if (playerPos == creator.getStarterRoom()) {
                     playerPos.setVisited(true);
                 }
@@ -178,14 +178,14 @@ public class ProgramFlow {
     public void userInputCaseWest(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (playerPos.getW() == null) {
-            System.out.println("Seems like that way is blocked.");
+            ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
             requestedRoomPos = playerPos.getW();
             if (requestedRoomPos.isLockedRoom()) {
-                System.out.println("Seems like that door is locked.");
+                ui.printDoorIsLocked();
             } else {
-                System.out.println("Going West.");
+                ui.printPlayerGoesWest();
                 if (playerPos == creator.getStarterRoom()) {
                     playerPos.setVisited(true);
                 }
@@ -215,7 +215,7 @@ public class ProgramFlow {
         if (playerPos.isRoomDark()) {
             lightsAreOff();
         } else {
-            System.out.println("Looking around.");
+            ui.printPlayerLooksAround();
             System.out.println(playerPos.getDescription());
             System.out.println();
         }
@@ -225,7 +225,7 @@ public class ProgramFlow {
         //Checks if the room has items
         if (playerPos.isHasItem()) {
         } else {
-            System.out.println("Looking around.");
+            ui.printPlayerLooksAround();
             System.out.println(playerPos.getDescription());
             System.out.println();
         }
@@ -239,18 +239,18 @@ public class ProgramFlow {
         if (requestedRoomPos != null) {
             if (requestedRoomPos.isLockedRoom()) {
                 requestedRoomPos.setLockedRoom(false);
-                System.out.println("I unlocked the door.");
+                ui.printDoorUnlocked();
             } else if (!requestedRoomPos.isLockedRoom()) {
-                System.out.println("I don't see anything to unlock!");
+                ui.printNothingToUnlock();
             }
         } else {
-            System.out.println("I don't see anything to unlock!");
+            ui.printNothingToUnlock();
         }
     }
 
     public void userInputCaseOnLightOn(){
         if (playerPos.isRoomHasSwitch()) {
-            System.out.println("There's a lightswitch!");
+            ui.printFoundLightswitch();
             if (playerPos.isRoomDark()) {
                 playerPos.setRoomDark(false);
                 //Not very effective.
@@ -261,10 +261,10 @@ public class ProgramFlow {
                                     """);
                 System.out.println(playerPos.getDescription());
             } else {
-                System.out.println("The light is already on!");
+                ui.printLightIsOn();
             }
         } else {
-            System.out.println("There is no lightswitch!");
+            ui.printNoLightSwitch();
         }
     }
 
@@ -285,15 +285,15 @@ public class ProgramFlow {
 
     public void userInputCaseOnLightOff(){
         if (playerPos.isRoomHasSwitch()) {
-            System.out.println("There's a lightswitch!");
+            ui.printFoundLightswitch();
             if (!playerPos.isRoomDark()) {
                 playerPos.setRoomDark(true);
-                System.out.println("You turn off the lightswitch next to you and it's pitch black. ");
+                ui.printTurnOffLight();
             } else {
-                System.out.println("The light is already off!");
+                ui.printLightIsOff();
             }
         } else {
-            System.out.println("There is no lightswitch!");
+            ui.printNoLightSwitch();
         }
     }
 

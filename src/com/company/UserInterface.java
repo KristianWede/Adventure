@@ -1,5 +1,7 @@
 package com.company;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Scanner;
 
 public class UserInterface {
@@ -130,4 +132,50 @@ public class UserInterface {
         public void printPlayerGoesNorth(){
             System.out.println("Going North.");
         }
+
+        public void printPlayerGoesSouth(){
+            System.out.println("Going South.");
+        }
+
+        public void printPlayerGoesEast(){
+            System.out.println("Going East.");
+
+        }
+
+        public void printPlayerGoesWest(){
+            System.out.println("Going West.");
+        }
+
+        public void printPlayerLooksAround(){
+            System.out.println("Looking around.");
+
+        }
+
+        public void printDoorUnlocked(){
+            System.out.println("I unlocked the door!");
+        }
+
+        public void printNothingToUnlock(){
+            System.out.println("I don't see anything to unlock!");
+        }
+
+        public void printFoundLightswitch(){
+            System.out.println("There's a lightswitch!");
+        }
+
+        public void printLightIsOn(){
+            System.out.println("Light is already on!");
+        }
+        public void printNoLightSwitch(){
+            System.out.println("There is no lightswitch!");
+        }
+
+        public void printTurnOffLight(){
+            System.out.println("You turn off the lightswitch next to you and it's pitch black.");
+        }
+        public void printLightIsOff(){
+            System.out.println("The light is already off!");
+        }
+
+
 }
