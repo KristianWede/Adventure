@@ -32,7 +32,7 @@ public class UserInterface {
 
         for (int i = 0; i <= text.length()-1; i++){
             System.out.print(text.charAt(i));
-            Thread.sleep(20);
+            Thread.sleep(0);
         }
         System.out.println();
     }

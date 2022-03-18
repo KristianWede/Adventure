@@ -158,6 +158,8 @@ private Room starterRoom;
 
         starterRoom = room1;
 
+        new Item("Old Key", "A very old-looking key. Wonder where it belongs", room3 );
+
     }
     //Getters
 

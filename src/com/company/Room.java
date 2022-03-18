@@ -13,6 +13,7 @@ public class Room {
   private boolean isRoomDark;
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
+  private boolean hasItem;
 
 
   public Room(String name, String description) {
@@ -49,6 +50,10 @@ public class Room {
     return lockedRoom;
   }
 
+  public boolean isHasItem() {
+    return hasItem;
+  }
+
   public String getName() {
     return name;
   }
@@ -56,6 +61,7 @@ public class Room {
   public String getDescription() {
     return description;
   }
+
 
   public Room getN() {
     return n;

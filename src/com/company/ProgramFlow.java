@@ -217,6 +217,17 @@ public class ProgramFlow {
         } else {
             System.out.println("Looking around.");
             System.out.println(playerPos.getDescription());
+            System.out.println();
+        }
+    }
+
+    public void userInputCaseLookItem(){
+        //Checks if the room has items
+        if (playerPos.isHasItem()) {
+        } else {
+            System.out.println("Looking around.");
+            System.out.println(playerPos.getDescription());
+            System.out.println();
         }
     }
 
@@ -256,6 +267,21 @@ public class ProgramFlow {
             System.out.println("There is no lightswitch!");
         }
     }
+
+    public void userInputTakeItem(){
+        if (playerPos.isHasItem()) {
+            System.out.println("There's an item here");
+            if (playerPos.isHasItem()) {
+                playerPos.getDescription();
+                System.out.println(playerPos.getDescription());
+            } else {
+                System.out.println("You picked all items up");
+            }
+
+        }
+    }
+
+
 
     public void userInputCaseOnLightOff(){
         if (playerPos.isRoomHasSwitch()) {
