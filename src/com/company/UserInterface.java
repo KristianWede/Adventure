@@ -76,33 +76,58 @@ public class UserInterface {
             System.out.println("Not a valid choice!");
         }
 
-        public void playerReactionDark(){
+        public void printPlayerReactionDark(){
             System.out.println("It's very dark in here! I can barely see anything.");
             System.out.println("Better look for a lightswitch or something somewhere.");
         }
 
-        public void doorNorthAvailable(){
+        public void printDoorNorthAvailable(){
             System.out.println("There's a door to the North");
             System.out.println();
         }
 
-        public void doorEastAvailable(){
+        public void printDoorEastAvailable(){
             System.out.println("There's a door to the East.");
             System.out.println();
         }
 
-        public void doorWestAvailable(){
+        public void printDoorWestAvailable(){
             System.out.println("There's a door to the West.");
             System.out.println();
         }
 
-        public void doorSouthAvailable(){
+        public void printDoorSouthAvailable(){
             System.out.println("There's a door to the South.");
             System.out.println();
         }
 
-        public void giveDescription(){
-           // System.out.println(playerPos.getDescription());
+        public void giveDescription(Room playerPos){
+        System.out.println(playerPos.getDescription());
         }
 
+        public void printPlayerReactionTeleNothing(){
+            System.out.println("huh, nothing happened.");
+        }
+        public void printPlayerReactionTeleFirstRoom() {
+            System.out.println("Poof! Seems like I teleported to the first room?");
+        }
+        public void printPlayerTeleported() {
+            System.out.println("Woosh! Seems like I teleported somewhere?");
+        }
+
+        public void printPathBlocked(){
+            System.out.println("Seems like that way is blocked.");
+        }
+
+        public void printMessage(String message){
+            System.out.println(message);
+        }
+        
+        public void printDoorIsLocked() {
+            System.out.println("Seems like that door is locked.");
+        }
+        
+        public void printPlayerGoesNorth(){
+            System.out.println("Going North.");
+        }
 }

@@ -14,6 +14,7 @@ public class Room {
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
 
+
   public Room(String name, String description) {
     this.name = name;
     this.description = description;

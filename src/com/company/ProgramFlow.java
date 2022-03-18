@@ -2,13 +2,11 @@ package com.company;
 
 import java.util.Scanner;
 
-
 public class ProgramFlow {
     //Initializes world map.
     private WorldCreator creator;
     private Music music;
     private UserInterface ui;
-    private ProgramFlow obj;
 
     private Room playerPos;
     private Room requestedRoomPos;
@@ -20,21 +18,20 @@ public class ProgramFlow {
     public void availableDoors() {
         //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
         if (playerPos.isDiscoveredDoorN()) {
-            ui.doorNorthAvailable();
+            ui.printDoorNorthAvailable();
         }
         if (playerPos.isDiscoveredDoorE()) {
-            ui.doorEastAvailable();
+            ui.printDoorEastAvailable();
         }
         if (playerPos.isDiscoveredDoorW()) {
-            ui.doorWestAvailable();
+            ui.printDoorWestAvailable();
         }
         if (playerPos.isDiscoveredDoorS()) {
-            ui.doorSouthAvailable();
+            ui.printDoorSouthAvailable();
         }
     }
 
     public void roomArt() {
-        //For layout for each room, PROBLEM; where to refer to room?
         if (playerPos == creator.getStarterRoom()) {
 
         }
@@ -42,13 +39,12 @@ public class ProgramFlow {
 
     public void lightsAreOff() {
         if (playerPos.isRoomDarkIntro()) {
-            System.out.println(playerPos.getDescription());
+            ui.giveDescription(playerPos);
             playerPos.setRoomDarkIntro(false);
         } else {
-            ui.playerReactionDark();
+            ui.printPlayerReactionDark();
         }
     }
-
 
     public void magicWord() {
         //Xyzzy magic word
@@ -56,16 +52,16 @@ public class ProgramFlow {
         //Then it saves the place from which the player comes from.
         //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
         if (playerPos == entangledRoom) {
-            System.out.println("huh, nothing happened.");
+            ui.printPlayerReactionTeleNothing();
         } else if (entangledRoom == creator.getStarterRoom()) {
             entangledRoom = playerPos;
             playerPos = creator.getStarterRoom();
-            System.out.println("Poof! Seems like I teleported to the first room?");
+            ui.printPlayerReactionTeleFirstRoom();
         } else {
             tempEntangledRoom = entangledRoom;
             entangledRoom = playerPos;
             playerPos = tempEntangledRoom;
-            System.out.println("Woosh! Seems like I teleported somewhere?");
+            ui.printPlayerTeleported();
             System.out.println(playerPos.getName());
         }
     }
@@ -74,23 +70,21 @@ public class ProgramFlow {
     public void userInputCaseNorth(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (playerPos.getN() == null) {
-            System.out.println("Seems like that way is blocked.");
+            ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
             requestedRoomPos = playerPos.getN();
             if (requestedRoomPos.isLockedRoom()) {
-                System.out.println("Seems like that door is locked.");
+                ui.printDoorIsLocked();
             } else {
-                System.out.println("Going North.");
+                ui.printPlayerGoesNorth();
                 //Makes an exception for Room1, so Room1 is already known.
                 if (playerPos == creator.getStarterRoom()) {
                     playerPos.setVisited(true);
                 }
                 //Sets known doors to discovered since the player has entered both doors in a single move. (Lets the entered door and exited door known.)
                 playerPos.setDiscoveredDoorN(true);
-
                 requestedRoomPos.setDiscoveredDoorS(true);
-
                 playerPos = requestedRoomPos;
                 //Checks if the room is dark, if it is, it doesn't display any description or name. <-NO
                 //Room 3 should have 2 states for name and description.
@@ -116,12 +110,12 @@ public class ProgramFlow {
     public void userInputCaseSouth(){
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (playerPos.getS() == null) {
-            System.out.println("Seems like that way is blocked.");
+            ui.printPathBlocked();
         } else {
             //Assigns requestedRoom to the room the player is trying to get to. If it's a locked room, it will display this message.
             requestedRoomPos = playerPos.getS();
             if (requestedRoomPos.isLockedRoom()) {
-                System.out.println("Seems like that door is locked.");
+                ui.printMessage("Seems like that door is locked.");
             } else {
                 System.out.println("Going South.");
                 if (playerPos == creator.getStarterRoom()) {
