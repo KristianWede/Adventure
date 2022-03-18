@@ -37,10 +37,12 @@ public class UserInterface {
         System.out.println();
     }
 
+    public void askPlayerForInput(){
+        System.out.println("What is your next move?");
+        System.out.println("Type 'help' for help.");
+    }
+
     public void introduction() throws InterruptedException {
-        //Adding main menu.
-
-
         gameTextPrinter
                 ("""
                         A tiny ray of light pierces through the heavy cloud-like smog which covers the sky and hits you in the face. 
@@ -77,6 +79,30 @@ public class UserInterface {
         public void playerReactionDark(){
             System.out.println("It's very dark in here! I can barely see anything.");
             System.out.println("Better look for a lightswitch or something somewhere.");
+        }
+
+        public void doorNorthAvailable(){
+            System.out.println("There's a door to the North");
+            System.out.println();
+        }
+
+        public void doorEastAvailable(){
+            System.out.println("There's a door to the East.");
+            System.out.println();
+        }
+
+        public void doorWestAvailable(){
+            System.out.println("There's a door to the West.");
+            System.out.println();
+        }
+
+        public void doorSouthAvailable(){
+            System.out.println("There's a door to the South.");
+            System.out.println();
+        }
+
+        public void giveDescription(){
+           // System.out.println(playerPos.getDescription());
         }
 
 }

@@ -8,6 +8,7 @@ public class ProgramFlow {
     private WorldCreator creator;
     private Music music;
     private UserInterface ui;
+    private ProgramFlow obj;
 
     private Room playerPos;
     private Room requestedRoomPos;
@@ -19,20 +20,16 @@ public class ProgramFlow {
     public void availableDoors() {
         //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
         if (playerPos.isDiscoveredDoorN()) {
-            System.out.println("There's a door to the North");
-            System.out.println();
+            ui.doorNorthAvailable();
         }
         if (playerPos.isDiscoveredDoorE()) {
-            System.out.println("There's a door to the East.");
-            System.out.println();
+            ui.doorEastAvailable();
         }
         if (playerPos.isDiscoveredDoorW()) {
-            System.out.println("There's a door to the West");
-            System.out.println();
+            ui.doorWestAvailable();
         }
         if (playerPos.isDiscoveredDoorS()) {
-            System.out.println("There's a door to the South");
-            System.out.println();
+            ui.doorSouthAvailable();
         }
     }
 
@@ -307,25 +304,24 @@ public class ProgramFlow {
     public String userChoice() {
         Scanner sc = new Scanner(System.in);
         do {
-            System.out.println("What is your next move?");
-            System.out.println("Type 'help' for help.");
+            ui.askPlayerForInput();
             String decision = sc.nextLine().toLowerCase();
             ui.clearScreen();
             switch (decision) {
-                case "go north" -> userInputCaseNorth();
-                case "go south" -> userInputCaseSouth();
-                case "go east" -> userInputCaseEast();
-                case "go west" -> userInputCaseWest();
-                case "look" -> userInputCaseLook();
-                case "help" -> ui.userInputCaseHelp();
-                case "exit" -> {
+                case "go north", "north", "n" -> userInputCaseNorth();
+                case "go south", "south", "s" -> userInputCaseSouth();
+                case "go east", "east", "e" -> userInputCaseEast();
+                case "go west", "west", "w" -> userInputCaseWest();
+                case "look", "see", "look around" -> userInputCaseLook();
+                case "help", "info", "information" -> ui.userInputCaseHelp();
+                case "exit", "get out", "leave", "shutdown","game end" -> {
                     ui.userInputCaseExit();
                     exitGame();
                 }
-                case "unlock" -> userInputCaseOnUnlock();
-                case "turn on light" -> userInputCaseOnLightOn();
-                case "turn off light" -> userInputCaseOnLightOff();
-                case "connor" -> magicWord();
+                case "unlock", "unlock door" -> userInputCaseOnUnlock();
+                case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
+                case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
+                case "connor", "connar", "get to the chopper" -> magicWord();
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);
