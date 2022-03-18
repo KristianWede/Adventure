@@ -7,7 +7,7 @@ public class Item {
 
   public Item(String itemName, String itemDescription){
     this.itemName = itemName;
-    this.itemDescription = "This is an Item Description";
+    this.itemDescription = "This is an Item Description!";
   }
 
   public String getItemName(){
