@@ -13,12 +13,13 @@ public class Room {
   private boolean isRoomDark;
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
-  private boolean hasItem;
+  private Item hasItem;
 
 
   public Room(String name, String description) {
     this.name = name;
     this.description = description;
+    this.hasItem = null;
     this.visited = false;
     this.discoveredDoorN = false;
     this.discoveredDoorE = false;
@@ -49,8 +50,7 @@ public class Room {
   public boolean isLockedRoom() {
     return lockedRoom;
   }
-
-  public boolean isHasItem() {
+  public Item isHasItem() {
     return hasItem;
   }
 
@@ -101,6 +101,9 @@ public class Room {
 
   //Setters
 
+  public void setHasItem(Item hasItem) {
+    this.hasItem = hasItem;
+  }
 
   public void setRoomDarkIntro(boolean roomDarkIntro) {
     this.roomDarkIntro = roomDarkIntro;
@@ -160,5 +163,19 @@ public class Room {
 
   public void setW(Room w) {
     this.w = w;
+  }
+
+  @Override
+  public String toString() {
+    return "Room{" +
+            "name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", visited=" + visited +
+            ", lockedRoom=" + lockedRoom +
+            ", isRoomDark=" + isRoomDark +
+            ", roomHasSwitch=" + roomHasSwitch +
+            ", roomDarkIntro=" + roomDarkIntro +
+            ", hasItem=" + hasItem +
+            '}';
   }
 }

@@ -223,7 +223,9 @@ public class ProgramFlow {
 
     public void userInputCaseLookItem(){
         //Checks if the room has items
-        if (playerPos.isHasItem()) {
+        if (playerPos.isHasItem(true)) {
+
+
         } else {
             ui.printPlayerLooksAround();
             System.out.println(playerPos.getDescription());

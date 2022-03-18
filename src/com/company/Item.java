@@ -6,12 +6,10 @@ public class Item {
   public String itemName;
   public String itemDescription;
   public String itemType;
-  public Room itemPosition;
 
-  public Item(String itemName, String itemDescription, Room itemPosition){
+  public Item(String itemName, String itemDescription){
     this.itemName = itemName;
     this.itemDescription = itemDescription;
-    this.itemPosition = itemPosition;
   }
 
   public String getItemName(){

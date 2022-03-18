@@ -158,8 +158,13 @@ private Room starterRoom;
 
         starterRoom = room1;
 
-        new Item("Old Key", "A very old-looking key. Wonder where it belongs", room3 );
+        //Initializing items.
+        Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs");
+        Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
 
+        //Set rooms to have items.
+        room3.setHasItem(key);
+        room4.setHasItem(bucketOfLava);
     }
     //Getters
 

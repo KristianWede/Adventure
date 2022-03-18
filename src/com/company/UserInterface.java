@@ -110,9 +110,11 @@ public class UserInterface {
         public void printPlayerReactionTeleNothing(){
             System.out.println("huh, nothing happened.");
         }
+
         public void printPlayerReactionTeleFirstRoom() {
             System.out.println("Poof! Seems like I teleported to the first room?");
         }
+
         public void printPlayerTeleported() {
             System.out.println("Woosh! Seems like I teleported somewhere?");
         }
