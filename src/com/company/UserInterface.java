@@ -8,7 +8,7 @@ public class UserInterface {
         soutPrinter("Welcome to Terminator Maze!");
         soutPrinter("You're about to go on an epic journey in a mysterious maze..");
         soutPrinter("In order to navigate the maze, you must type your desired direction." +
-                "Useful commands: \n" +
+                "\nUseful commands: \n" +
                 "                            You can go either north, east, west or south by: 'go (direction)'\n" +
                 "                            'help' to repeat this message.\n" +
                 "                            'look' to look around in current room.\n" +
