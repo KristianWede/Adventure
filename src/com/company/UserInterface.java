@@ -176,4 +176,5 @@ public class UserInterface {
         public void printLightIsOff(){
             System.out.println("The light is already off!");
         }
+
 }
