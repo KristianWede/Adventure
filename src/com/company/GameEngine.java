@@ -236,11 +236,6 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseTakeItem() {
-        //Checks if the room has items.
-    }
-
-
     public boolean doesRoomHaveItem() {
         if (player.getPlayerPosition().isItemPresent()) {
             return true;
@@ -287,17 +282,13 @@ public class GameEngine {
         }
 
         public void userInputTakeItem () {
-            if (player.getPlayerPosition().isItemPresent()) {
-                System.out.println("There's an item here");
-                if (player.getPlayerPosition().isItemPresent()) {
-                    player.getPlayerPosition().getDescription();
+            if (doesRoomHaveItem()) {
+                    //player.addItemToPlayerInventory();
                     System.out.println(player.getPlayerPosition().getDescription());
                 } else {
                     System.out.println("You picked all items up");
                 }
-
             }
-        }
 
 
         public void userInputCaseOnLightOff () {
@@ -360,7 +351,7 @@ public class GameEngine {
                     case "unlock", "unlock door" -> userInputCaseOnUnlock();
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
-                    //case "pick up", "pick up item", "take", "take everything", "take all" ->
+                    case "pick up", "pick up item", "take", "take everything", "take all" -> userInputTakeItem();
                     //case "inventory", , "check inventory", "inv", "look at item", "invent ->
                     //case "drop", "throw away", "drop it" ->
                     case "connor", "connar", "get to the chopper" -> magicWord();
