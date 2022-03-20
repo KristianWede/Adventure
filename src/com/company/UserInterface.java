@@ -191,4 +191,10 @@ public class UserInterface {
             System.out.println("I see a: ");
             System.out.println(room.getRoomInventory());
         }
+
+        public void printReactionPickUp(Room room){
+            System.out.println("You picked up:");
+            System.out.println(room.getRoomInventory());
+        }
+
 }
