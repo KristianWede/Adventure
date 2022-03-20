@@ -16,16 +16,19 @@ public class Player {
 
     //Setter
     public void addItemToPlayerInventory(ArrayList<Item> playerInventory, Room room) {
-        for (int i = 0; i < playerInventory.size(); i++){
-            //playerInventory.add(room.getRoomInventory().indexOf(i));
+        for (int i = 0; i < room.getRoomInventory().size(); i++) {
+            playerInventory.add(room.getRoomInventory().get(i));
+            room.getRoomInventory().remove(i);
         }
-
-        //this.playerInventory = playerInventory.add(room.getRoomInventory());
     }
 
     //Getter
     public ArrayList<Item> itemsAtPlayerPosition(Room room){
         return room.getRoomInventory();
+    }
+
+    public ArrayList<Item> getPlayerInventory(){
+        return playerInventory;
     }
 
 

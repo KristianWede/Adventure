@@ -105,7 +105,6 @@ public class GameEngine {
                 }
             }
         }
-
     }
 
     public void userInputCaseSouth() {
@@ -210,7 +209,6 @@ public class GameEngine {
                 }
             }
         }
-
     }
 
     public void userInputCaseLook() {
@@ -283,10 +281,12 @@ public class GameEngine {
 
         public void userInputTakeItem () {
             if (doesRoomHaveItem()) {
-                    //player.addItemToPlayerInventory();
-                    System.out.println(player.getPlayerPosition().getDescription());
+                    ui.printReactionPickUp(player.getPlayerPosition());
+                    player.addItemToPlayerInventory(player.getPlayerInventory(), player.getPlayerPosition());
+                    //player.getPlayerPosition().setItemPresent(false);
+                    System.out.println(player.getPlayerPosition().getRoomInventory());
                 } else {
-                    System.out.println("You picked all items up");
+                    System.out.println("There are no items to pick up.");
                 }
             }
 
