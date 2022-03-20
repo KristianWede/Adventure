@@ -36,6 +36,12 @@ public class Room {
 
 
   //Getters
+
+
+  public ArrayList<Item> getRoomInventory() {
+    return roomInventory;
+  }
+
   public boolean isItemPresent() {
     return itemPresent;
   }

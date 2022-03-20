@@ -177,12 +177,20 @@ public class UserInterface {
         public void printTurnOffLight(){
             System.out.println("You turn off the lightswitch next to you and it's pitch black.");
         }
+
         public void printLightIsOff(){
             System.out.println("The light is already off!");
         }
+
         public void giveName(Room playerPos){
-        System.out.println(playerPos.getName());
-    }
+            System.out.println(playerPos.getName());
+        }
+
+        public void printReactionToFoundItem(){
+            System.out.println("Wait, I see something!");
+            System.out.println("I see a: ");
+            System.out.println();
+        }
 
     //public void reactionTo
 

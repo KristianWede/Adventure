@@ -2,12 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
-public class ProgramFlow {
+public class GameEngine {
     //Initializes world map.
     private WorldCreator creator;
     private Music music;
     private UserInterface ui;
     private Player player;
+    private Item item;
 
     private Room requestedRoomPos;
     private Room entangledRoom;
@@ -220,6 +221,10 @@ public class ProgramFlow {
             ui.printPlayerLooksAround();
             System.out.println(player.getPlayerPosition().getDescription());
             System.out.println();
+            if (doesRoomHaveItem()) {
+                ui.printReactionToFoundItem();
+                player.itemsAtPlayerPosition(player.getPlayerPosition());
+            }
         }
     }
 

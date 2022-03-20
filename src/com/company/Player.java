@@ -12,6 +12,10 @@ public class Player {
         playerPosition = room;
     }
 
+    //Getter
+    public ArrayList<Item> itemsAtPlayerPosition(Room room){
+        return room.getRoomInventory();
+    }
 
     public Room getPlayerPosition(){
         return playerPosition;
