@@ -168,8 +168,6 @@ private Room starterRoom;
 
         room4.addRoomInventory(bucketOfLava);
         room4.setItemPresent(true);
-
-        System.out.println(room9);
     }
     //Getters
 
