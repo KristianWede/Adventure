@@ -222,8 +222,7 @@ public class GameEngine {
             System.out.println(player.getPlayerPosition().getDescription());
             System.out.println();
             if (doesRoomHaveItem()) {
-                ui.printReactionToFoundItem();
-                player.itemsAtPlayerPosition(player.getPlayerPosition());
+                ui.printReactionToFoundItem(player.getPlayerPosition());
             }
         }
     }

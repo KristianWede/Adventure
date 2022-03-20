@@ -186,13 +186,9 @@ public class UserInterface {
             System.out.println(playerPos.getName());
         }
 
-        public void printReactionToFoundItem(){
+        public void printReactionToFoundItem(Room room){
             System.out.println("Wait, I see something!");
             System.out.println("I see a: ");
-            System.out.println();
+            System.out.println(room.getRoomInventory());
         }
-
-    //public void reactionTo
-
-
 }
