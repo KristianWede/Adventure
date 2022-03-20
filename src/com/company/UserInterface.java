@@ -199,7 +199,11 @@ public class UserInterface {
 
         public void printReactionPickUp(Room room){
             System.out.println("You picked up:");
-            System.out.println(room.getRoomInventory());
+            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
+    public void printInventory(Player player){
+        System.out.println("Your inventory:");
+        System.out.println(Arrays.toString(player.getPlayerInventory().toArray()).replace("[", "").replace("]", ""));
+    }
 
 }

@@ -165,8 +165,6 @@ private Item bucketOfLava = new Item("A bucket of lava(?)", "This probably break
         Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
 
         //Set rooms to have items.
-
-
         room3.addRoomInventory(key);
         room3.setItemPresent(true);//
 
@@ -176,13 +174,6 @@ private Item bucketOfLava = new Item("A bucket of lava(?)", "This probably break
     //Getters
 
 
-    public Item getKey() {
-        return key;
-    }
-
-    public Item getBucketOfLava() {
-        return bucketOfLava;
-    }
 
     public Room getStarterRoom() {
         return starterRoom;

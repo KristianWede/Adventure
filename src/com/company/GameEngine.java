@@ -279,12 +279,14 @@ public class GameEngine {
             }
         }
 
+
+
         public void userInputTakeItem () {
             if (doesRoomHaveItem()) {
                     ui.printReactionPickUp(player.getPlayerPosition());
                     player.addItemToPlayerInventory(player.getPlayerInventory(), player.getPlayerPosition());
-                    //player.getPlayerPosition().setItemPresent(false);
-                    System.out.println(player.getPlayerPosition().getRoomInventory());
+                    player.getPlayerPosition().setItemPresent(false);
+//                    System.out.println(player.getPlayerPosition().getRoomInventory());
                 } else {
                     System.out.println("There are no items to pick up.");
                 }
@@ -352,7 +354,7 @@ public class GameEngine {
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
                     case "pick up", "pick up item", "take", "take everything", "take all" -> userInputTakeItem();
-                    //case "inventory", , "check inventory", "inv", "look at item", "invent ->
+                    case "inventory", "check inventory", "inv", "look at item", "invent" -> userInputCaseLookItem();
                     //case "drop", "throw away", "drop it" ->
                     case "connor", "connar", "get to the chopper" -> magicWord();
                     default -> ui.errorMessageInvalidMove();
