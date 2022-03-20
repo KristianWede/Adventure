@@ -192,7 +192,8 @@ public class UserInterface {
 
         public void printReactionToFoundItem(Room room){
             System.out.println("Wait, I see something!");
-            System.out.print("I see a ");
+            System.out.print("I see a/an:");
+            System.out.println();
             System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
 

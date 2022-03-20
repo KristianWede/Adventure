@@ -283,7 +283,7 @@ public class GameEngine {
 
         public void userInputTakeItem () {
             if (doesRoomHaveItem()) {
-                    player.getPlayerPosition().getDescription();
+                    //player.addItemToPlayerInventory();
                     System.out.println(player.getPlayerPosition().getDescription());
                 } else {
                     System.out.println("You picked all items up");

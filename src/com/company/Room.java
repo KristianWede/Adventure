@@ -16,6 +16,7 @@ public class Room {
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
   private ArrayList<Item> roomInventory = new ArrayList<>();
+  private Item itemPlace;
   private boolean itemPresent;
 
 
