@@ -1,5 +1,8 @@
 package com.company;
 
+import org.w3c.dom.ls.LSOutput;
+
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -15,7 +18,9 @@ public class UserInterface {
                 "                            'unlock' to try and unlock a door.\n" +
                 "                            'turn on light' turns on light.\n" +
                 "                            'turn off light' turns off light.\n" +
-                "                            'exit' to exit game and end program \n");
+                "                            'inventory' to to display your inventory. \n" +
+                "                            'take' to pick up item in current room. \n" +
+                "                            'drop' to drop item. Use drop + name of the item to drop specific item. \n");
 
         System.out.println("You can also during the game type 'help' to display the above commands again. \n");
         System.out.println("Press \"ENTER\" to continue...");
@@ -65,7 +70,10 @@ public class UserInterface {
                             'unlock' to try and unlock a door.
                             'turn on light' turns on light.
                             'turn off light' turns off light.
-                            'exit' to exit game and end program.""");
+                            'exit' to exit game and end program.
+                            'inventory' to to display your inventory.
+                            'take' to pick up item in current room.
+                            'drop' to drop item. Use drop + name of the item to drop specific item. \n""");
         }
         public void userInputCaseExit() {
             System.out.println("Exiting game...");
@@ -173,8 +181,18 @@ public class UserInterface {
         public void printTurnOffLight(){
             System.out.println("You turn off the lightswitch next to you and it's pitch black.");
         }
+
         public void printLightIsOff(){
             System.out.println("The light is already off!");
         }
 
+        public void giveName(Room playerPos){
+            System.out.println(playerPos.getName());
+        }
+
+        public void printReactionToFoundItem(Room room){
+            System.out.println("Wait, I see something!");
+            System.out.print("I see a ");
+            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
+        }
 }

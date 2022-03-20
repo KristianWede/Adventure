@@ -2,12 +2,13 @@ package com.company;
 
 import java.util.Scanner;
 
-public class ProgramFlow {
+public class GameEngine {
     //Initializes world map.
     private WorldCreator creator;
     private Music music;
     private UserInterface ui;
     private Player player;
+    private Item item;
 
     private Room requestedRoomPos;
     private Room entangledRoom;
@@ -67,7 +68,7 @@ public class ProgramFlow {
     }
 
 
-    public void userInputCaseNorth(){
+    public void userInputCaseNorth() {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getN() == null) {
             ui.printPathBlocked();
@@ -107,7 +108,7 @@ public class ProgramFlow {
 
     }
 
-    public void userInputCaseSouth(){
+    public void userInputCaseSouth() {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getS() == null) {
             ui.printPathBlocked();
@@ -141,7 +142,7 @@ public class ProgramFlow {
         }
     }
 
-    public void userInputCaseEast(){
+    public void userInputCaseEast() {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getE() == null) {
             ui.printPathBlocked();
@@ -175,7 +176,7 @@ public class ProgramFlow {
         }
     }
 
-    public void userInputCaseWest(){
+    public void userInputCaseWest() {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getW() == null) {
             ui.printPathBlocked();
@@ -212,7 +213,7 @@ public class ProgramFlow {
 
     }
 
-    public void userInputCaseLook(){
+    public void userInputCaseLook() {
         //Checks if the room is dark, if it is, it doesn't display any description or name.
         if (player.getPlayerPosition().isRoomDark()) {
             lightsAreOff();
@@ -220,136 +221,151 @@ public class ProgramFlow {
             ui.printPlayerLooksAround();
             System.out.println(player.getPlayerPosition().getDescription());
             System.out.println();
+            if (doesRoomHaveItem()) {
+                ui.printReactionToFoundItem(player.getPlayerPosition());
+            }
         }
     }
 
-    /*public void userInputCaseLookItem(){   ///TODO:USING THIS WHEN INVENTORY HAS BEEN MADE
+    public void userInputCaseLookItem() {   ///TODO:USING THIS WHEN INVENTORY HAS BEEN MADE
         //Checks if the room has items
-        if (playerPos) {
-
+        if (doesRoomHaveItem()) {
 
         } else {
-            ui.printPlayerLooksAround();
-            System.out.println(playerPos.getDescription());
-            System.out.println();
+
         }
     }
-     */
 
-    public void exitGame(){
-        System.exit(0);
+    public void userInputCaseTakeItem() {
+        //Checks if the room has items.
     }
 
-    public void userInputCaseOnUnlock(){
-        if (requestedRoomPos != null) {
-            if (requestedRoomPos.isLockedRoom()) {
-                requestedRoomPos.setLockedRoom(false);
-                ui.printDoorUnlocked();
-            } else if (!requestedRoomPos.isLockedRoom()) {
+
+    public boolean doesRoomHaveItem() {
+        if (player.getPlayerPosition().isItemPresent()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+        public void exitGame () {
+            System.exit(0);
+        }
+
+        public void userInputCaseOnUnlock () {
+            if (requestedRoomPos != null) {
+                if (requestedRoomPos.isLockedRoom()) {
+                    requestedRoomPos.setLockedRoom(false);
+                    ui.printDoorUnlocked();
+                } else if (!requestedRoomPos.isLockedRoom()) {
+                    ui.printNothingToUnlock();
+                }
+            } else {
                 ui.printNothingToUnlock();
             }
-        } else {
-            ui.printNothingToUnlock();
         }
-    }
 
-    public void userInputCaseOnLightOn(){
-        if (player.getPlayerPosition().isRoomHasSwitch()) {
-            ui.printFoundLightswitch();
-            if (player.getPlayerPosition().isRoomDark()) {
-                player.getPlayerPosition().setRoomDark(false);
-                //Not very effective.
-                player.getPlayerPosition().setDescription("""
-                                    You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
-                                    It must be at least 200x200 meters with more than 20 meters to the ceiling. 
-                                    You see a lot of shelves, almost all of them are empty as if someone looted the place.
-                                    """);
-                System.out.println(player.getPlayerPosition().getDescription());
-            } else {
-                ui.printLightIsOn();
-            }
-        } else {
-            ui.printNoLightSwitch();
-        }
-    }
-
-    public void userInputTakeItem(){
-        if (player.getPlayerPosition().isItemPresent()) {
-            System.out.println("There's an item here");
-            if (player.getPlayerPosition().isItemPresent()) {
-                player.getPlayerPosition().getDescription();
-                System.out.println(player.getPlayerPosition().getDescription());
-            } else {
-                System.out.println("You picked all items up");
-            }
-
-        }
-    }
-
-
-
-    public void userInputCaseOnLightOff(){
-        if (player.getPlayerPosition().isRoomHasSwitch()) {
-            ui.printFoundLightswitch();
-            if (!player.getPlayerPosition().isRoomDark()) {
-                player.getPlayerPosition().setRoomDark(true);
-                ui.printTurnOffLight();
-            } else {
-                ui.printLightIsOff();
-            }
-        } else {
-            ui.printNoLightSwitch();
-        }
-    }
-
-    public void execute() throws InterruptedException {
-        // Part 1: The room.
-
-        creator = new WorldCreator();
-        music = new Music();
-        ui = new UserInterface();
-        player = new Player();
-
-        creator.createWorldMap();
-        player.setPlayerPosition(creator.getStarterRoom());
-        entangledRoom = creator.getStarterRoom();
-
-
-        music.playMusic();
-
-        ui.mainMenu();
-
-        ui.clearScreen();
-
-        ui.introduction();
-
-        //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
-        userChoice();
-    }
-
-    public String userChoice() {
-        Scanner sc = new Scanner(System.in);
-        do {
-            ui.askPlayerForInput();
-            String decision = sc.nextLine().toLowerCase();
-            ui.clearScreen();
-            switch (decision) {
-                case "go north", "north", "n" -> userInputCaseNorth();
-                case "go south", "south", "s" -> userInputCaseSouth();
-                case "go east", "east", "e" -> userInputCaseEast();
-                case "go west", "west", "w" -> userInputCaseWest();
-                case "look", "see", "look around" -> userInputCaseLook();
-                case "help", "info", "information" -> ui.userInputCaseHelp();
-                case "exit", "get out", "leave", "shutdown","game end" -> {
-                    ui.userInputCaseExit();
-                    exitGame();
+        public void userInputCaseOnLightOn () {
+            if (player.getPlayerPosition().isRoomHasSwitch()) {
+                ui.printFoundLightswitch();
+                if (player.getPlayerPosition().isRoomDark()) {
+                    player.getPlayerPosition().setRoomDark(false);
+                    //Not very effective.
+                    player.getPlayerPosition().setDescription("""
+                        You turn on the lightswitch next to you and as you turn on the lights you realize how big the room really is. 
+                        It must be at least 200x200 meters with more than 20 meters to the ceiling. 
+                        You see a lot of shelves, almost all of them are empty as if someone looted the place.
+                        """);
+                    System.out.println(player.getPlayerPosition().getDescription());
+                } else {
+                    ui.printLightIsOn();
                 }
-                case "unlock", "unlock door" -> userInputCaseOnUnlock();
-                case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
-                case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
-                case "connor", "connar", "get to the chopper" -> magicWord();
-                default -> ui.errorMessageInvalidMove();
+            } else {
+                ui.printNoLightSwitch();
             }
-        } while (true);
+        }
+
+        public void userInputTakeItem () {
+            if (player.getPlayerPosition().isItemPresent()) {
+                System.out.println("There's an item here");
+                if (player.getPlayerPosition().isItemPresent()) {
+                    player.getPlayerPosition().getDescription();
+                    System.out.println(player.getPlayerPosition().getDescription());
+                } else {
+                    System.out.println("You picked all items up");
+                }
+
+            }
+        }
+
+
+        public void userInputCaseOnLightOff () {
+            if (player.getPlayerPosition().isRoomHasSwitch()) {
+                ui.printFoundLightswitch();
+                if (!player.getPlayerPosition().isRoomDark()) {
+                    player.getPlayerPosition().setRoomDark(true);
+                    ui.printTurnOffLight();
+                } else {
+                    ui.printLightIsOff();
+                }
+            } else {
+                ui.printNoLightSwitch();
+            }
+        }
+
+        public void execute () throws InterruptedException {
+            // Part 1: The room.
+
+            creator = new WorldCreator();
+            music = new Music();
+            ui = new UserInterface();
+            player = new Player();
+
+            //Starting program by "loading" the variables of the Rooms and positions of Rooms inside Room class.
+            creator.createWorldMap();
+            player.setPlayerPosition(creator.getStarterRoom());
+            entangledRoom = creator.getStarterRoom();
+
+
+            music.playMusic();
+
+            ui.mainMenu();
+
+            ui.clearScreen();
+
+            ui.introduction();
+
+            //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
+            userChoice();
+        }
+
+        public String userChoice () {
+            Scanner sc = new Scanner(System.in);
+            do {
+                ui.askPlayerForInput();
+                String decision = sc.nextLine().toLowerCase();
+                ui.clearScreen();
+                switch (decision) {
+                    case "go north", "north", "n" -> userInputCaseNorth();
+                    case "go south", "south", "s" -> userInputCaseSouth();
+                    case "go east", "east", "e" -> userInputCaseEast();
+                    case "go west", "west", "w" -> userInputCaseWest();
+                    case "look", "see", "look around" -> userInputCaseLook();
+                    case "help", "info", "information" -> ui.userInputCaseHelp();
+                    case "exit", "get out", "leave", "shutdown", "game end" -> {
+                        ui.userInputCaseExit();
+                        exitGame();
+                    }
+                    case "unlock", "unlock door" -> userInputCaseOnUnlock();
+                    case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
+                    case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
+                    //case "pick up", "pick up item", "take", "take everything", "take all" ->
+                    //case "inventory", , "check inventory", "inv", "look at item", "invent ->
+                    //case "drop", "throw away", "drop it" ->
+                    case "connor", "connar", "get to the chopper" -> magicWord();
+                    default -> ui.errorMessageInvalidMove();
+                }
+            } while (true);
+        }
     }
-}
