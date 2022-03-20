@@ -357,7 +357,8 @@ public class ProgramFlow {
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
                     //case "pick up", "pick up item", "take", "take everything", "take all" ->
-                    //case "look item", "look at item", "check inventory", ""
+                    //case "inventory", , "check inventory", "inv", "look at item", "invent ->
+                    //case "drop", "throw away", "drop it" ->
                     case "connor", "connar", "get to the chopper" -> magicWord();
                     default -> ui.errorMessageInvalidMove();
                 }

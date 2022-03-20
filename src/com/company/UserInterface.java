@@ -17,7 +17,9 @@ public class UserInterface {
                 "                            'unlock' to try and unlock a door.\n" +
                 "                            'turn on light' turns on light.\n" +
                 "                            'turn off light' turns off light.\n" +
-                "                            'exit' to exit game and end program \n");
+                "                            'inventory' to to display your inventory \n" +
+                "                            'take' to pick up item in current room \n" +
+                "                            'drop' to drop item. Use drop + name of the item to drop specific item \n");
 
         System.out.println("You can also during the game type 'help' to display the above commands again. \n");
         System.out.println("Press \"ENTER\" to continue...");
