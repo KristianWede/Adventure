@@ -226,10 +226,18 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseLookItem() {
+    public void userInputCaseLookItem() { //TODO: (Fully functional) Inventory.
         //Checks if the room has items
         if (doesPlayerHaveItems()){
             ui.printInventory(player.getPlayerInventory());
+        } else {
+            ui.printPlayerHasNoItems();
+        }
+    }
+
+    public void userInputDropItem(){  //TODO: method for dropping an item from the player's inventory onto the world current map.
+        if (doesPlayerHaveItems()){
+
         } else {
             ui.printPlayerHasNoItems();
         }
@@ -288,16 +296,28 @@ public class GameEngine {
                 ui.printNoLightSwitch();
             }
         }
-
-        public void userInputTakeItem () {
+/*
+        public void userInputTakeItem () { //TODO: User input for picking up an item.
             if (doesRoomHaveItem()) {
+                ui.printAskPlayerChooseItem();
+                ui.printOutItemInRoom(player.getPlayerPosition());
+                for (int i = 0; i < .getRoomInventory().size();i++){
+
+                    player.addItemToPlayerInventory();
+
+
+
                     ui.printReactionPickUp(player.getPlayerPosition());
                     player.addItemToPlayerInventory(player.getPlayerInventory(), player.getPlayerPosition());
                     player.getPlayerPosition().setItemPresent(false);
+
+
                 } else {
                     ui.printNoItemsOnGround();
                 }
             }
+        }
+        */
 
 
         public void userInputCaseOnLightOff () {
@@ -360,9 +380,9 @@ public class GameEngine {
                     case "unlock", "unlock door" -> userInputCaseOnUnlock();
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
-                    case "pick up", "pick up item", "take", "take everything", "take all" -> userInputTakeItem();
+                    //case "pick up", "pick up item", "take" -> userInputTakeItem(); //TODO: User input for taking an item.
                     case "inventory", "backpack" , "check inventory", "inv", "look at item" -> userInputCaseLookItem();
-                    //case "drop", "throw away", "drop it" ->
+                    case "drop", "throw away", "drop it" -> userInputDropItem();
                     case "connor", "connar", "get to the chopper" -> magicWord();
                     default -> ui.errorMessageInvalidMove();
                 }

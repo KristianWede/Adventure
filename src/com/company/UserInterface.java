@@ -195,11 +195,14 @@ public class UserInterface {
             System.out.println("Wait, I see something!");
             System.out.print("I see a/an:");
             System.out.println();
-            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
+            printOutItemInRoom(room);
         }
 
-        public void printReactionPickUp(Room room){
-            System.out.println("You picked up:");
+        public void printAskPlayerChooseItem(){
+            System.out.println("What item do you want to pick up?");
+        }
+        public void printReactionPickUp(Room room, Item item){
+            System.out.println("You picked up: " + item);
             System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
         public void printInventory(ArrayList<Item> playerInventory) {
@@ -212,5 +215,8 @@ public class UserInterface {
         }
         public void printNoItemsOnGround() {
             System.out.println("There are no items to pick up.");
+        }
+        public void printOutItemInRoom(Room room){
+            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
 }
