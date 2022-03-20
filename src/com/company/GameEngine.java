@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -225,12 +226,21 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseLookItem() {   ///TODO:USING THIS WHEN INVENTORY HAS BEEN MADE
+    public void userInputCaseLookItem() {
         //Checks if the room has items
-        if (doesRoomHaveItem()) {
-
+        if (doesPlayerHaveItems()){
+            ui.printInventory(player.getPlayerInventory());
         } else {
+            ui.printPlayerHasNoItems();
+        }
+    }
 
+
+    public boolean doesPlayerHaveItems(){
+        if (player.getPlayerInventory() != null){
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -279,16 +289,13 @@ public class GameEngine {
             }
         }
 
-
-
         public void userInputTakeItem () {
             if (doesRoomHaveItem()) {
                     ui.printReactionPickUp(player.getPlayerPosition());
                     player.addItemToPlayerInventory(player.getPlayerInventory(), player.getPlayerPosition());
                     player.getPlayerPosition().setItemPresent(false);
-//                    System.out.println(player.getPlayerPosition().getRoomInventory());
                 } else {
-                    System.out.println("There are no items to pick up.");
+                    ui.printNoItemsOnGround();
                 }
             }
 
@@ -354,7 +361,7 @@ public class GameEngine {
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
                     case "pick up", "pick up item", "take", "take everything", "take all" -> userInputTakeItem();
-                    case "inventory", "check inventory", "inv", "look at item", "invent" -> userInputCaseLookItem();
+                    case "inventory", "backpack" , "check inventory", "inv", "look at item" -> userInputCaseLookItem();
                     //case "drop", "throw away", "drop it" ->
                     case "connor", "connar", "get to the chopper" -> magicWord();
                     default -> ui.errorMessageInvalidMove();

@@ -10,6 +10,9 @@ public class Player {
 
     private ArrayList<Item> playerInventory = new ArrayList<>();
 
+
+
+
     public void setPlayerPosition(Room room){
         playerPosition = room;
     }
@@ -18,7 +21,8 @@ public class Player {
     public void addItemToPlayerInventory(ArrayList<Item> playerInventory, Room room) {
         for (int i = 0; i < room.getRoomInventory().size(); i++) {
             playerInventory.add(room.getRoomInventory().get(i));
-            room.getRoomInventory().remove(i);
+            room.setRoomInventory(playerPosition.getRoomInventory());
+            this.playerInventory = playerInventory;
         }
     }
 

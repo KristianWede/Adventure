@@ -2,6 +2,7 @@ package com.company;
 
 import org.w3c.dom.ls.LSOutput;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -201,9 +202,15 @@ public class UserInterface {
             System.out.println("You picked up:");
             System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
-    public void printInventory(Player player){
-        System.out.println("Your inventory:");
-        System.out.println(Arrays.toString(player.getPlayerInventory().toArray()).replace("[", "").replace("]", ""));
-    }
+        public void printInventory(ArrayList<Item> playerInventory) {
+            System.out.println("Your inventory:");
+            System.out.println(Arrays.toString(playerInventory.toArray()).replace("[", "").replace("]", ""));
+        }
 
+        public void printPlayerHasNoItems(){
+            System.out.println("I don't have anything on me! I swear!");
+        }
+        public void printNoItemsOnGround() {
+            System.out.println("There are no items to pick up.");
+        }
 }
