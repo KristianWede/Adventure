@@ -111,6 +111,11 @@ public class Room {
 
   //Setters
 
+
+  public void setRoomInventory(ArrayList<Item> roomInventory) {
+    this.roomInventory = roomInventory;
+  }
+
   public void setItemPresent(boolean itemPresent) {
     this.itemPresent = itemPresent;
   }

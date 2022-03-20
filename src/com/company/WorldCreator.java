@@ -4,8 +4,6 @@ public class WorldCreator {
 
 
 private Room starterRoom;
-private Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs");
-private Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
 
     public void createWorldMap() {
 
