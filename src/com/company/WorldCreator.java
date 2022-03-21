@@ -289,6 +289,9 @@ public class WorldCreator {
     //Initializing items.
     Item key = new Item("old key", "A very old-looking key. Wonder where it belongs");
     Item bucketOfLava = new Item("bucket of lava", "This probably breaks a few laws of physics...");
+    Item paint = new Item("paint", "N/A");
+    Item paper = new Item("paper", "N/A");
+    Item golfClub = new Item("golf club", "N/A");
 
     //Set rooms to have items.
     room3.addRoomInventory(key);
@@ -296,6 +299,15 @@ public class WorldCreator {
 
     room4.addRoomInventory(bucketOfLava);
     room4.setItemPresent(true);
+
+    room3.addRoomInventory(paint);
+    room3.setItemPresent(true);
+
+    room3.addRoomInventory(paper);
+    room3.setItemPresent(true);
+
+    room3.addRoomInventory(golfClub);
+    room3.setItemPresent(true);
   }
 
 

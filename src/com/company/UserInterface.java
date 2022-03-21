@@ -197,23 +197,32 @@ public class UserInterface {
   }
 
 
-  public void grammarCheck(Room room) { //TODO Check more than one item.
+  public void grammarCheck(Room room) {
     char ch;
     String inventory = room.getRoomInventory().toString();
     ch = inventory.charAt(1);
-    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+    if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
       System.out.print("an ");
-
-    else
+    } else
       System.out.print("a ");
   }
+
+  public void checkForAnd (Room room){ //TODO And to last item.
+    int last = room.getRoomInventory().size()-1;
+    if (last > 1){
+      System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "").replace(","," &") + TEXT_RESET);
+    }
+    else printOutItemInRoom(room);
+  }
+
 
   public void printReactionToFoundItem(Room room) {
     System.out.println("Wait, I see something!");
     System.out.print("I see ");
     grammarCheck(room);
 
-    printOutItemInRoom(room);
+    checkForAnd(room);
+//    printOutItemInRoom(room);
   }
 
   public void printAskPlayerChooseItem() {
