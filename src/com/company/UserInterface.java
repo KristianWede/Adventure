@@ -8,6 +8,9 @@ import java.util.Scanner;
 
 public class UserInterface {
 
+    public static final String TEXT_YELLOW = "\u001B[33m";
+    public static final String TEXT_RESET = "\u001B[0m";
+
     public void mainMenu() throws InterruptedException {
         gameTextPrinter("Welcome to Terminator Maze!");
         gameTextPrinter("You're about to go on an epic journey in a mysterious maze..");
@@ -216,11 +219,11 @@ public class UserInterface {
 
         public void printReactionPickUp(Room room, Item item){
             System.out.print("You picked up the ");
-            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
+            System.out.println(TEXT_YELLOW+Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "")+TEXT_RESET);
         }
         public void printInventory(ArrayList<Item> playerInventory) {
             System.out.println("Your inventory:");
-            System.out.println(Arrays.toString(playerInventory.toArray()).replace("[", "").replace("]", ""));
+            System.out.println(TEXT_YELLOW+Arrays.toString(playerInventory.toArray()).replace("[", "").replace("]", "") + TEXT_RESET);
         }
 
         public void printPlayerHasNoItems(){
@@ -230,10 +233,7 @@ public class UserInterface {
             System.out.println("There are no items to pick up.");
         }
         public void printOutItemInRoom(Room room){
-            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
-        }
-        public void printAddedItemInventory(Item item){
-            System.out.println("You picked up " + item + " to and put it in your backpack.");
+            System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + TEXT_RESET);
         }
         public void printErrorCannotFindItem(){
             System.out.println("Couldn't find any items with that name! Try again!");
