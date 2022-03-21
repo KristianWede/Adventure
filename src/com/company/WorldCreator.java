@@ -289,7 +289,7 @@ private Room starterRoom;
 
         //Initializing items.
         Item key = new Item("old key", "A very old-looking key. Wonder where it belongs");
-        Item bucketOfLava = new Item("bucket of lava(?)", "This probably breaks a few laws of physics...");
+        Item bucketOfLava = new Item("bucket of lava", "This probably breaks a few laws of physics...");
 
         //Set rooms to have items.
         room3.addRoomInventory(key);

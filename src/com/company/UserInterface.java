@@ -233,13 +233,13 @@ public class UserInterface {
             System.out.println("There are no items to pick up.");
         }
         public void printOutItemInRoom(Room room){
-            System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + TEXT_RESET);
+            System.out.println("\u001B[33m" + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + "\u001B[0m");
         }
         public void printErrorCannotFindItem(){
             System.out.println("Couldn't find any items with that name! Try again!");
         }
         public void printAddedItemRoom(Item item) {
-            System.out.println("You took " + item + " out of your bag and put it on the ground.");
+            System.out.println("You took " +"\u001B[33m" + item + "\u001B[0m" + " out of your bag and put it on the ground.");
         }
 
         public void printAskPlayerChooseItemDrop(){
