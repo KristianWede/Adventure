@@ -191,10 +191,21 @@ public class UserInterface {
             System.out.println(playerPos.getName());
         }
 
+    public void grammarCheck (Room room){ //TODO Check more than one item.
+        char ch;
+        String inventory = room.getRoomInventory().toString();
+        ch = inventory.charAt(0);
+        if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' )
+            System.out.print("an: ");
+
+        else
+            System.out.print("a: ");
+    }
         public void printReactionToFoundItem(Room room){
             System.out.println("Wait, I see something!");
-            System.out.print("I see a/an:");
-            System.out.println();
+            System.out.print("I see ");
+            grammarCheck(room);
+
             printOutItemInRoom(room);
         }
 
