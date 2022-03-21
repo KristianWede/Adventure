@@ -253,10 +253,10 @@ public class GameEngine {
     }
 
     public boolean doesRoomHaveItem() {
-        if (player.getPlayerPosition().isItemPresent()) {
-            return true;
-        } else {
+        if (player.getPlayerPosition().getRoomInventory().size() == 0) {
             return false;
+        } else {
+            return true;
         }
     }
 
@@ -296,28 +296,18 @@ public class GameEngine {
                 ui.printNoLightSwitch();
             }
         }
-/*
+
         public void userInputTakeItem () { //TODO: User input for picking up an item.
             if (doesRoomHaveItem()) {
                 ui.printAskPlayerChooseItem();
-                ui.printOutItemInRoom(player.getPlayerPosition());
-                for (int i = 0; i < .getRoomInventory().size();i++){
-
-                    player.addItemToPlayerInventory();
-
-
-
-                    ui.printReactionPickUp(player.getPlayerPosition());
-                    player.addItemToPlayerInventory(player.getPlayerInventory(), player.getPlayerPosition());
-                    player.getPlayerPosition().setItemPresent(false);
-
-
+                Scanner sc = new Scanner(System.in);
+                String searchWord = sc.nextLine();
+                player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
                 } else {
                     ui.printNoItemsOnGround();
                 }
             }
-        }
-        */
+
 
 
         public void userInputCaseOnLightOff () {
@@ -380,7 +370,7 @@ public class GameEngine {
                     case "unlock", "unlock door" -> userInputCaseOnUnlock();
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
-                    //case "pick up", "pick up item", "take" -> userInputTakeItem(); //TODO: User input for taking an item.
+                    case "pick up", "pick up item", "take" -> userInputTakeItem(); //TODO: User input for taking an item.
                     case "inventory", "backpack" , "check inventory", "inv", "look at item" -> userInputCaseLookItem();
                     case "drop", "throw away", "drop it" -> userInputDropItem();
                     case "connor", "connar", "get to the chopper" -> magicWord();

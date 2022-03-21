@@ -19,28 +19,21 @@ public class Player {
     }
 
     //Setter
-    /* //TODO: User input for Adding an item to the player's inventory.
-    public void addItemToPlayerInventory(ArrayList<Item> playerInventory, Room room, WorldCreator creator) {
-        for (int i = 0; i < room.getRoomInventory().size(); i++) {
-
-
-
-        }
-
-
-
-
-
-        if (itemName == creator.key.itemName) {
+    // TODO: User input for Adding an item to the player's inventory.
+    public void addItemToPlayerInventory(String searchWord,Room room) {
             for (int i = 0; i < room.getRoomInventory().size(); i++) {
-                playerInventory.add(room.getRoomInventory().get(i));
-                room.setRoomInventory(playerPosition.getRoomInventory());
-                this.playerInventory = playerInventory;
+                Item tmp = room.getRoomInventory().get(i);
+                if (tmp.getItemName().contains(searchWord)) {
+                    playerInventory.add(tmp);
+                    System.out.println("Added " + tmp + " to player inventory");
+                    room.getRoomInventory().remove(tmp);
+                    System.out.println("Removed " + tmp + "from room inventory.");
+                } else if (i == room.getRoomInventory().size()-1){
+                    System.out.println("Couldn't find any items with that name! Try again!");
+                }
             }
-        }
     }
 
-     */
 
     /* //TODO: User input for removing an item from the player's inventory.
     public void removeItemFromPlayerInventory(ArrayList<Item> playerInventory, Room room, String search) {

@@ -4,17 +4,17 @@ public class WorldCreator {
 
 
 private Room starterRoom;
+
     Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs");
     Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
 
     public void createWorldMap() {
 
         Room room1 = new Room("Arrival", """
-            A square room with writings on the wall. 
-            This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
-            Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
-            """);
-
+                A square room with writings on the wall. 
+                This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
+                Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
+                """);
         Room room2 = new Room("Corridor", """
                 You are standing in a long corridor. You can’t see the other end of the corridor. 
                 Along the walls you notice big piles of what seems to be trash. 
@@ -171,12 +171,14 @@ private Room starterRoom;
         room3.addRoomInventory(bucketOfLava);
         room3.setItemPresent(true);
     }
+
+
+
+
     //Getters
-
-
-
     public Room getStarterRoom() {
         return starterRoom;
     }
+
 
 }

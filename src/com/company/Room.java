@@ -15,7 +15,7 @@ public class Room {
   private boolean isRoomDark;
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
-  private ArrayList<Item> roomInventory = new ArrayList<>();
+  private ArrayList<Item> roomInventory;
   private Item itemPlace;
   private boolean itemPresent;
 
@@ -23,6 +23,7 @@ public class Room {
   public Room(String name, String description) {
     this.name = name;
     this.description = description;
+    this.roomInventory = new ArrayList<>();
     this.visited = false;
     this.discoveredDoorN = false;
     this.discoveredDoorE = false;
@@ -121,7 +122,7 @@ public class Room {
   }
 
   public void addRoomInventory(Item item) {
-    roomInventory.add(item);
+    this.roomInventory.add(item);
   }
 
   public void setRoomDarkIntro(boolean roomDarkIntro) {
