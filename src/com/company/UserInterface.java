@@ -216,8 +216,7 @@ public class UserInterface {
 
         public void printReactionPickUp(Room room, Item item){
             System.out.print("You picked up the ");
-            System.out.print(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
-            System.out.println(" and put it in your backpack");
+            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
         public void printInventory(ArrayList<Item> playerInventory) {
             System.out.println("Your inventory:");
@@ -233,14 +232,14 @@ public class UserInterface {
         public void printOutItemInRoom(Room room){
             System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
-/*        public void printAddedItemInventory(Item item){
+        public void printAddedItemInventory(Item item){
             System.out.println("You picked up " + item + " to and put it in your backpack.");
-        }*/
+        }
         public void printErrorCannotFindItem(){
             System.out.println("Couldn't find any items with that name! Try again!");
         }
         public void printAddedItemRoom(Item item) {
-            System.out.println("You took the " + item + " out of your bag and put it on the ground.");
+            System.out.println("You took " + item + " out of your bag and put it on the ground.");
         }
 
         public void printAskPlayerChooseItemDrop(){
