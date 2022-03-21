@@ -346,6 +346,8 @@ public class GameEngine {
 
             music.playMusic();
 
+            ui.clearScreen();
+
             ui.mainMenu();
 
             ui.clearScreen();
