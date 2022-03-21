@@ -208,8 +208,10 @@ public class UserInterface {
   }
 
   public void checkForAnd (Room room){ //TODO And to last item.
-    int last = room.getRoomInventory().size()-1;
+    int last = room.getRoomInventory().size();
+
     if (last > 1){
+      last = room.getRoomInventory().size();
       System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "").replace(","," &") + TEXT_RESET);
     }
     else printOutItemInRoom(room);
