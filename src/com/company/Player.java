@@ -29,7 +29,8 @@ public class Player {
                 Item tmp = room.getRoomInventory().get(i);
                 if (tmp.getItemName().contains(searchWord)) {
                     playerInventory.add(tmp);
-                    ui.printAddedItemInventory(tmp);
+                    ui.printReactionPickUp(room,tmp);
+//                    ui.printAddedItemInventory(tmp);
                     room.getRoomInventory().remove(tmp);
                 } else if (i == room.getRoomInventory().size()-1){
                     ui.printErrorCannotFindItem();
