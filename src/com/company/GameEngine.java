@@ -226,7 +226,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseLookItem() { //TODO: (Fully functional) Inventory.
+    public void userInputCaseLookItem() {
         //Checks if the room has items
         if (doesPlayerHaveItems()){
             ui.printInventory(player.getPlayerInventory());
@@ -235,9 +235,12 @@ public class GameEngine {
         }
     }
 
-    public void userInputDropItem(){  //TODO: method for dropping an item from the player's inventory onto the world current map.
-        if (doesPlayerHaveItems()){
-
+    public void userInputDropItem(){
+        if (doesPlayerHaveItems()) {
+            ui.printAskPlayerChooseItemDrop();
+            Scanner sc = new Scanner(System.in);
+            String searchWord = sc.nextLine();
+            player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
         } else {
             ui.printPlayerHasNoItems();
         }
@@ -245,7 +248,7 @@ public class GameEngine {
 
 
     public boolean doesPlayerHaveItems(){
-        if (player.getPlayerInventory() != null){
+        if (player.getPlayerInventory().size() != 0){
             return true;
         } else {
             return false;
@@ -297,7 +300,7 @@ public class GameEngine {
             }
         }
 
-        public void userInputTakeItem () { //TODO: User input for picking up an item.
+        public void userInputTakeItem () {
             if (doesRoomHaveItem()) {
                 ui.printAskPlayerChooseItem();
                 Scanner sc = new Scanner(System.in);
@@ -336,6 +339,7 @@ public class GameEngine {
             creator.createWorldMap();
             player.setPlayerPosition(creator.getStarterRoom());
             entangledRoom = creator.getStarterRoom();
+            player.loadUserInterface();
 
 
             music.playMusic();
@@ -353,6 +357,7 @@ public class GameEngine {
         public String userChoice () {
             Scanner sc = new Scanner(System.in);
             do {
+
                 ui.askPlayerForInput();
                 String decision = sc.nextLine().toLowerCase();
                 ui.clearScreen();
@@ -370,7 +375,7 @@ public class GameEngine {
                     case "unlock", "unlock door" -> userInputCaseOnUnlock();
                     case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
                     case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
-                    case "pick up", "pick up item", "take" -> userInputTakeItem(); //TODO: User input for taking an item.
+                    case "pick up", "pick up item", "take" -> userInputTakeItem();
                     case "inventory", "backpack" , "check inventory", "inv", "look at item" -> userInputCaseLookItem();
                     case "drop", "throw away", "drop it" -> userInputDropItem();
                     case "connor", "connar", "get to the chopper" -> magicWord();

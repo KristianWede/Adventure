@@ -166,7 +166,7 @@ private Room starterRoom;
 
         //Set rooms to have items.
         room3.addRoomInventory(key);
-        room3.setItemPresent(true);//
+        room3.setItemPresent(true);
 
         room3.addRoomInventory(bucketOfLava);
         room3.setItemPresent(true);
