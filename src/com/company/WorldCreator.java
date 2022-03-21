@@ -94,13 +94,56 @@ private Room starterRoom;
                  ‘Clonk, clonk, clonk’. You look back towards the door you entered through. It is closed. 
                  What now?!              
                 """);
+        Room room10 = new Room("This is room 10 ", """
+            Short description here 10""");
+
+        Room room11 = new Room("This is room 11 ", """
+            Short description here 11""");
+
+        Room room12 = new Room("This is room 12", """
+            Short description here 12""");
+
+        Room room13 = new Room("This is room 13", """
+            Short description here 13""");
+
+        Room room14 = new Room("This is room 14", """
+            Short description here 14""");
+
+        Room room15 = new Room("This is room 15 ", """
+            Short description here 15""");
+
+        Room room16 = new Room("This is room 16 ", """
+            Short description here 16""");
+
+        Room room17 = new Room("This is room 17", """
+            Short description here 17""");
+
+        Room room18 = new Room("This is room 18", """
+            Short description here 18""");
+
+        Room room19 = new Room("This is room 19", """
+            Short description here 19""");
+
+        Room room20 = new Room("This is room 20", """
+            Short description here 20""");
+
+        Room room21 = new Room("This is room 21", """
+            Short description here 21""");
+
+        Room room22 = new Room("This is room 22", """
+            Short description here 22""");
+
+        Room room23 = new Room("This is room 23", """
+            Short description here 23""");
+
+
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
         room1.setN(null);
         room1.setE(room2);
         room1.setS(room4);
-        room1.setW(null);
+        room1.setW(room10);
 
         //Room 2
         room2.setN(null);
@@ -157,6 +200,90 @@ private Room starterRoom;
         room9.setE(null);
         room9.setS(null);
         room9.setW(room8);
+
+        //Room 10
+        room10.setN(null);
+        room10.setE(room1);
+        room10.setS(room11);
+        room10.setW(null);
+
+        //Room 11
+        room11.setN(room10);
+        room11.setE(null);
+        room11.setS(room12);
+        room11.setW(room13);
+
+        //Room 12
+        room12.setN(room11);
+        room12.setE(null);
+        room12.setS(null);
+        room12.setW(room15);
+
+        //Room 13
+        room13.setN(null);
+        room13.setE(room11);
+        room13.setS(null);
+        room13.setW(room14);
+
+        //Room 14
+        room14.setN(null);
+        room14.setE(room13);
+        room14.setS(null);
+        room14.setW(room15);
+
+        //Room 15
+        room15.setN(room16);
+        room15.setE(room14);
+        room15.setS(room12);
+        room15.setW(null);
+
+        //Room 16
+        room16.setN(null);
+        room16.setE(room17);
+        room16.setS(room15);
+        room16.setW(null);
+
+        //Room 17
+        room17.setN(null);
+        room17.setE(room18);
+        room17.setS(null);
+        room17.setW(room16);
+
+        //Room 18
+        room18.setN(null);
+        room18.setE(null);
+        room18.setS(null);
+        room18.setW(room17);
+
+        //Room 19
+        room19.setN(room20);
+        room19.setE(null);
+        room19.setS(null);
+        room19.setW(room9);
+
+        //Room 20
+        room20.setN(null);
+        room20.setE(room21);
+        room20.setS(room19);
+        room20.setW(null);
+
+        //Room 21
+        room21.setN(null);
+        room21.setE(room22);
+        room21.setS(null);
+        room21.setW(room20);
+
+        //Room 22
+        room9.setN(room23);
+        room9.setE(null);
+        room9.setS(null);
+        room9.setW(room21);
+
+        //Room 23
+        room9.setN(null);
+        room9.setE(null);
+        room9.setS(room22);
+        room9.setW(null);
 
         starterRoom = room1;
 
