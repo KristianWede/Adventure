@@ -188,14 +188,14 @@ public class Room {
   @Override
   public String toString() {
     return "Room{" +
-            "name='" + name + '\'' +
-            ", description='" + description + '\'' +
-            ", visited=" + visited +
-            ", lockedRoom=" + lockedRoom +
-            ", isRoomDark=" + isRoomDark +
-            ", roomHasSwitch=" + roomHasSwitch +
-            ", roomDarkIntro=" + roomDarkIntro +
-            ", hasItem=" +  itemPresent +
-             "roomInventory" + roomInventory + '}';
+        "name='" + name + '\'' +
+        ", description='" + description + '\'' +
+        ", visited=" + visited +
+        ", lockedRoom=" + lockedRoom +
+        ", isRoomDark=" + isRoomDark +
+        ", roomHasSwitch=" + roomHasSwitch +
+        ", roomDarkIntro=" + roomDarkIntro +
+        ", hasItem=" + itemPresent +
+        "roomInventory" + roomInventory + '}';
   }
 }

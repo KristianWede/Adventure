@@ -10,22 +10,24 @@ public class Item {
   public String itemDescription;
   public String itemType;
 
-  public Item(String itemName, String itemDescription){
+  public Item(String itemName, String itemDescription) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
   }
 
-  public String getItemName(){
+  public String getItemName() {
     return itemName;
   }
-  public String getItemDescription(){
+
+  public String getItemDescription() {
     return itemDescription;
   }
-  public String getItemType(){
+
+  public String getItemType() {
     return itemType;
   }
 
-  public String toString(){
+  public String toString() {
     return itemName;
   }
 
