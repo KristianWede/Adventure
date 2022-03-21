@@ -194,13 +194,14 @@ public class UserInterface {
     public void grammarCheck (Room room){ //TODO Check more than one item.
         char ch;
         String inventory = room.getRoomInventory().toString();
-        ch = inventory.charAt(0);
+        ch = inventory.charAt(1);
         if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' )
-            System.out.print("an: ");
+            System.out.print("an ");
 
         else
-            System.out.print("a: ");
+            System.out.print("a ");
     }
+
         public void printReactionToFoundItem(Room room){
             System.out.println("Wait, I see something!");
             System.out.print("I see ");
@@ -212,9 +213,11 @@ public class UserInterface {
         public void printAskPlayerChooseItem(){
             System.out.println("What item do you want to pick up?");
         }
+
         public void printReactionPickUp(Room room, Item item){
-            System.out.println("You picked up: " + item);
-            System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
+            System.out.print("You picked up the ");
+            System.out.print(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
+            System.out.println(" and put it in your backpack");
         }
         public void printInventory(ArrayList<Item> playerInventory) {
             System.out.println("Your inventory:");
@@ -230,14 +233,14 @@ public class UserInterface {
         public void printOutItemInRoom(Room room){
             System.out.println(Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", ""));
         }
-        public void printAddedItemInventory(Item item){
+/*        public void printAddedItemInventory(Item item){
             System.out.println("You picked up " + item + " to and put it in your backpack.");
-        }
+        }*/
         public void printErrorCannotFindItem(){
             System.out.println("Couldn't find any items with that name! Try again!");
         }
         public void printAddedItemRoom(Item item) {
-            System.out.println("You took " + item + " out of your bag and put it on the ground.");
+            System.out.println("You took the " + item + " out of your bag and put it on the ground.");
         }
 
         public void printAskPlayerChooseItemDrop(){
