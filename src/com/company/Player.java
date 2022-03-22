@@ -1,13 +1,12 @@
 package com.company;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Player {
 
   private Room playerPosition;
   private UserInterface ui;
-  protected int health = 80;
+  protected int health = 100;
 
   public void loadUserInterface() {
     ui = new UserInterface();
@@ -16,10 +15,13 @@ public class Player {
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
   public int tryEatFood (Item item){
-    if (health == 100){
-      return health;
+    health = setHealth(getHealth() + item.getHealth());
+    if (health >= 100){
+      playerInventory.remove(item);
+      ui.eatToMaxHP();
+      return health = 100;
     }
-    else setHealth(getHealth() + item.getHealth());
+    else
     playerInventory.remove(item);
     return health;
   }
@@ -53,7 +55,6 @@ public class Player {
   }
 
   public void whichFood (String foodItem){
-    System.out.println("Which food would you like to eat?");
     for (int i = 0; i < playerInventory.size(); i++) {
       Item food = playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
@@ -72,8 +73,11 @@ public class Player {
       ui.poisoned(food);
       tryEatFood(food);
     }
-    else if (tem > 0 && getHealth() == 100){
+    else if (tem > 0 && getHealth() > 100){
      ui.full(food);
+   }
+    else if (getHealth() == 100){
+      ui.full(food);
    }
     else ui.edible(food);
     tryEatFood(food);
@@ -100,7 +104,8 @@ public class Player {
   public void setPlayerPosition(Room room) {
     playerPosition = room;
   }
-  public void setHealth(int health) {
+  public int setHealth(int health) {
     this.health = health;
+    return health;
   }
 }

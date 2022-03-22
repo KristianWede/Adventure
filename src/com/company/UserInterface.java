@@ -193,7 +193,7 @@ public class UserInterface {
   }
 
   public void printHealth(int health){
-    System.out.println("\u001B[32m" + "You are dead!" + "\u001B[0m");
+    System.out.println("\u001B[31m" + "You are dead!" + "\u001B[0m");
     System.exit(health);
   }
 
@@ -284,5 +284,9 @@ public class UserInterface {
 
   public void full(Item item) {
     System.out.println("I'm already full. Saving " + item + " for another time." );
+  }
+
+  public void eatToMaxHP() {
+    System.out.println("You now have max health!");
   }
 }
