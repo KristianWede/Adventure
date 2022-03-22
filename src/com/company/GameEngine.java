@@ -15,7 +15,6 @@ public class GameEngine {
   private Room entangledRoom;
   private Room tempEntangledRoom;
 
-  //Put room1 since it's used elsewhere to compare to a starting point and exceptions.
 
   public void availableDoors() {
     //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
@@ -37,7 +36,7 @@ public class GameEngine {
     if (player.getPlayerPosition() == creator.getStarterRoom()) {
 
     }
-  } //Unused for the time being. //TODO: Add graphics for each scene.
+  } //Unused for the time being. //TODO: Add graphics for each scene. SCRAPPED
 
   public void lightsAreOff() {
     if (player.getPlayerPosition().isRoomDarkIntro()) {
@@ -230,7 +229,7 @@ public class GameEngine {
 
   public void userInputCaseLook() {
     //Checks if the room is dark, if it is, it doesn't display any description or name.
-    if (player.getPlayerPosition().isRoomDark()) {
+    if (isRoomDark()) {
       lightsAreOff();
     } else {
       ui.printPlayerLooksAround();
@@ -254,14 +253,12 @@ public class GameEngine {
   public void userInputDropItem() {
     if (doesPlayerHaveItems()) {
       ui.printAskPlayerChooseItemDrop();
-      Scanner sc = new Scanner(System.in);
-      String searchWord = sc.nextLine().toLowerCase();
+      String searchWord = scannerReturnToLowerCase();
       player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
     } else {
       ui.printPlayerHasNoItems();
     }
   }
-
 
   public boolean doesPlayerHaveItems() {
     if (player.getPlayerInventory().size() != 0) {
@@ -272,12 +269,26 @@ public class GameEngine {
   }
 
   public boolean doesRoomHaveItem() {
-    if (player.getPlayerPosition().getRoomInventory().size() == 0) {
-      return false;
-    } else {
+    if (player.getPlayerPosition().getRoomInventory().size() != 0) {
       return true;
+    } else {
+      return false;
     }
   }
+
+  public String scannerReturnToLowerCase(){
+    Scanner sc = new Scanner(System.in);
+    String searchWord = sc.nextLine().toLowerCase();
+    return searchWord;
+  }
+
+  public boolean isRoomDark(){
+    if (player.getPlayerPosition().isRoomDark()){
+    return true;
+  } else {
+    return false;
+  }
+}
 
   public void exitGame() {
     System.exit(0);
@@ -317,13 +328,16 @@ public class GameEngine {
   }
 
   public void userInputTakeItem() {
-    if (doesRoomHaveItem()) {
-      ui.printAskPlayerChooseItem();
-      Scanner sc = new Scanner(System.in);
-      String searchWord = sc.nextLine().toLowerCase();
-      player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
+    if (!isRoomDark()) {
+      if (doesRoomHaveItem()) {
+        ui.printAskPlayerChooseItem();
+        String searchWord = scannerReturnToLowerCase();
+        player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
+      } else {
+        ui.printNoItemsOnGround();
+      }
     } else {
-      ui.printNoItemsOnGround();
+      ui.printPlayerReactionDark();
     }
   }
 
@@ -342,6 +356,14 @@ public class GameEngine {
     }
   }
 
+  public void userInputCaseInspectItem(){
+    if (doesPlayerHaveItems()) {
+      player.inspectItemFromInventory();
+    } else {
+      ui.printPlayerHasNoItems();
+    }
+  }
+
 
 
   public void execute() throws InterruptedException {
@@ -356,8 +378,8 @@ public class GameEngine {
     creator.createWorldMap();
     player.setPlayerPosition(creator.getStarterRoom());
     entangledRoom = creator.getStarterRoom();
-    player.loadUserInterface();
-
+    player.loadUserInterfaceInPlayer();
+    player.loadGameEngineInPlayer();
 
     music.playMusic();
 
@@ -396,8 +418,9 @@ public class GameEngine {
         case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
         case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
         case "pick up", "pick up item", "take" -> userInputTakeItem();
-        case "inventory", "backpack", "check inventory", "inv", "look at item" -> userInputCaseLookItem();
+        case "inventory", "backpack", "check inventory", "inv", "look at items" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
+        case "inspect", "inspect item", "look item", "look at item", "check item", "search item" -> userInputCaseInspectItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp" -> userCheckHealth();
         case "eat","eat food","snack time", "chips" -> player.whichFood(decision);

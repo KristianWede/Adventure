@@ -36,7 +36,6 @@ public class UserInterface {
 
   //This printer can be used for all "souts" so that the text fits the aestetic.
   public void gameTextPrinter(String text) throws InterruptedException {
-
     for (int i = 0; i <= text.length() - 1; i++) {
       System.out.print(text.charAt(i));
       Thread.sleep(0);
@@ -288,5 +287,17 @@ public class UserInterface {
 
   public void eatToMaxHP() {
     System.out.println("You have max health!");
+  }
+
+  public void printPlayerInventorySingularNumbered(Item item, int number){
+    System.out.println("\t" + number + ". " + item);
+  }
+
+  public void printChooseItemToInspect(){
+    System.out.println("What item do you want to inspect?");
+  }
+
+  public void printNameAndDescriptionOfItem(Item item){
+    System.out.println(item.getItemName() + "  -  " + item.getItemDescription());
   }
 }

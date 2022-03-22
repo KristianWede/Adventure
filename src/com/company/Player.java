@@ -1,15 +1,21 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Player {
 
   private Room playerPosition;
   private UserInterface ui;
+  private GameEngine game;
   protected int health = 100;
 
-  public void loadUserInterface() {
+  public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
+  }
+
+  public void loadGameEngineInPlayer() {
+    game = new GameEngine();
   }
 
   private ArrayList<Item> playerInventory = new ArrayList<>();
@@ -27,30 +33,48 @@ public class Player {
     return health;
   }
 
+  public void inspectItemFromInventory(){
+    for (int i = 0; i < playerInventory.size(); i++){
+      Item tmp = playerInventory.get(i);
+      ui.printPlayerInventorySingularNumbered(tmp, i);
+    }
+    ui.printChooseItemToInspect();
+    Scanner sc = new Scanner(System.in);
+    int choice = sc.nextInt();
+    Item tmp = getPlayerInventory().get(choice);
+    ui.printNameAndDescriptionOfItem(tmp);
+  }
+
   //Setter
   public void addItemToPlayerInventory(String searchWord, Room room) {
+    boolean itemFound = false;
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
       Item tmp = room.getRoomInventory().get(i);
       if (tmp.getItemName().toLowerCase().contains(searchWord)) {
         playerInventory.add(tmp);
         ui.printReactionPickUp(tmp);
         room.getRoomInventory().remove(tmp);
-      } else if (i == room.getRoomInventory().size()) { // Add minus 1 after size??
-        ui.printErrorCannotFindItem();
+        itemFound = true;
       }
+    }
+    if (!itemFound) {
+      ui.printErrorCannotFindItem();
     }
   }
 
   public void removeItemFromPlayerInventory(String searchWord, Room room) {
+    boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
       if (tmp.getItemName().toLowerCase().contains(searchWord)) {
         room.getRoomInventory().add(tmp);
         ui.printAddedItemRoom(tmp);
         playerInventory.remove(tmp);
-      } else if (i == room.getRoomInventory().size() - 1) {
-        ui.printErrorCannotFindItem();
+        itemFound = true;
       }
+    }
+    if (!itemFound) {
+      ui.printErrorCannotFindItem();
     }
   }
 
