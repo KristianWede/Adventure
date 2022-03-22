@@ -34,15 +34,25 @@ public class Player {
   }
 
   public void inspectItemFromInventory(){
+    boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++){
       Item tmp = playerInventory.get(i);
       ui.printPlayerInventorySingularNumbered(tmp, i);
     }
     ui.printChooseItemToInspect();
     Scanner sc = new Scanner(System.in);
-    int choice = sc.nextInt();
-    Item tmp = getPlayerInventory().get(choice);
-    ui.printNameAndDescriptionOfItem(tmp);
+    String choice = sc.nextLine();
+
+    for (int i = 0; i < playerInventory.size(); i++) {
+      Item tmp = playerInventory.get(i);
+      if (tmp.getItemName().toLowerCase().contains(choice)) {
+        ui.printNameAndDescriptionOfItem(tmp);
+        itemFound = true;
+      }
+    }
+    if (!itemFound) {
+      ui.printErrorCannotFindItem();
+    }
   }
 
   //Setter

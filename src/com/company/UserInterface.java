@@ -290,7 +290,7 @@ public class UserInterface {
   }
 
   public void printPlayerInventorySingularNumbered(Item item, int number){
-    System.out.println("\t" + number + ". " + item);
+    System.out.println("\t" + (number+1) + ". " + item); //Added plus 1 so that the arraylist never shows 0.
   }
 
   public void printChooseItemToInspect(){
@@ -299,5 +299,6 @@ public class UserInterface {
 
   public void printNameAndDescriptionOfItem(Item item){
     System.out.println(item.getItemName() + "  -  " + item.getItemDescription());
+    System.out.println();
   }
 }
