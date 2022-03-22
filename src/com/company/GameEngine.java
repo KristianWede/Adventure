@@ -377,8 +377,8 @@ public class GameEngine {
           exitGame();
         }
         case "unlock", "unlock door" -> userInputCaseOnUnlock();
-        case "turn on light", "turn on", "on" -> userInputCaseOnLightOn();
-        case "turn off light", "turn off", "off" -> userInputCaseOnLightOff();
+        case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
+        case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
         case "pick up", "pick up item", "take" -> userInputTakeItem();
         case "inventory", "backpack", "check inventory", "inv", "look at item" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
