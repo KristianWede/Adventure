@@ -1,6 +1,7 @@
 package com.company;
 
 import java.util.Arrays;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -239,7 +240,7 @@ public class GameEngine {
     if (doesPlayerHaveItems()) {
       ui.printAskPlayerChooseItemDrop();
       Scanner sc = new Scanner(System.in);
-      String searchWord = sc.nextLine();
+      String searchWord = sc.nextLine().toLowerCase();
       player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
     } else {
       ui.printPlayerHasNoItems();
@@ -304,7 +305,7 @@ public class GameEngine {
     if (doesRoomHaveItem()) {
       ui.printAskPlayerChooseItem();
       Scanner sc = new Scanner(System.in);
-      String searchWord = sc.nextLine();
+      String searchWord = sc.nextLine().toLowerCase();
       player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
     } else {
       ui.printNoItemsOnGround();

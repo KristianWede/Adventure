@@ -23,7 +23,7 @@ public class Player {
   public void addItemToPlayerInventory(String searchWord, Room room) {
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
       Item tmp = room.getRoomInventory().get(i);
-      if (tmp.getItemName().contains(searchWord)) {
+      if (tmp.getItemName().toLowerCase().contains(searchWord)) {
         playerInventory.add(tmp);
         ui.printReactionPickUp(tmp);
         room.getRoomInventory().remove(tmp);
@@ -36,7 +36,7 @@ public class Player {
   public void removeItemFromPlayerInventory(String searchWord, Room room) {
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
-      if (tmp.getItemName().contains(searchWord)) {
+      if (tmp.getItemName().toLowerCase().contains(searchWord)) {
         room.getRoomInventory().add(tmp);
         ui.printAddedItemRoom(tmp);
         playerInventory.remove(tmp);
