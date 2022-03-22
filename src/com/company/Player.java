@@ -16,12 +16,14 @@ public class Player {
 
   public int tryEatFood(Item item) {
     health = setHealth(getHealth() + item.getHealth());
-    if (health >= 100) {
-      playerInventory.remove(item);
+    if (health > 100) {
       ui.eatToMaxHP();
       return health = 100;
-    } else
-      playerInventory.remove(item);
+    } else if (health == 100){
+        return health;
+    }
+      else
+        playerInventory.remove(item);
     return health;
   }
 

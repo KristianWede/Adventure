@@ -287,6 +287,6 @@ public class UserInterface {
   }
 
   public void eatToMaxHP() {
-    System.out.println("You now have max health!");
+    System.out.println("You have max health!");
   }
 }
