@@ -11,11 +11,10 @@ public class Item {
   public Room roomPlacement;
   public boolean setItemPresent;
 
-  public Item(String itemName, String itemDescription, int health, Room roomPlacement) {
+  public Item(String itemName, String itemDescription, int health) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
     this.health = health;
-    this.roomPlacement = roomPlacement;
 
   }
 

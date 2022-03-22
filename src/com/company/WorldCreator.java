@@ -284,29 +284,13 @@ public class WorldCreator {
       starterRoom = room1;
 
     //Initializing items.
-    Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs", 0, room3);
-    Item bucketOfLava = new Item("Bucket of Lava", "This probably breaks a few laws of physics...", 0, room4);
-    Item paint = new Item("Paint", "N/A", 0, room5);
-    Item paper = new Item("Paper", "N/A", 0, room3);
-    Item golfClub = new Item("Golf Club", "N/A", 0, room3);
+    room3.addRoomInventory( new Item("Old Key", "A very old-looking key. Wonder where it belongs", 0));
+    room4.addRoomInventory( new Item("Bucket of Lava", "This probably breaks a few laws of physics...", 0));
+    room3.addRoomInventory( new Item("Paint", "N/A", 0));
+    room3.addRoomInventory( new Item("Paper", "N/A", 0));
+    room3.addRoomInventory( new Item("Golf Club", "N/A", 0));
 
 
-    //Set rooms to have items.
-
-    room3.addRoomInventory(key);
-    room3.setItemPresent(true);
-
-    room4.addRoomInventory(bucketOfLava);
-    room4.setItemPresent(true);
-
-    room3.addRoomInventory(paint);
-    room3.setItemPresent(true);
-
-    room3.addRoomInventory(paper);
-    room3.setItemPresent(true);
-
-    room3.addRoomInventory(golfClub);
-    room3.setItemPresent(true);
 
   }
 
