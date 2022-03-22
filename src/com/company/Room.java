@@ -18,10 +18,10 @@ public class Room {
   private ArrayList<Item> roomInventory;
   private Item itemPlace;
   private boolean itemPresent;
-  private int roomNumber;
+  private Room roomPlacement;
 
 
-  public Room(String name, String description, int roomNumber) {
+  public Room(String name, String description) {
     this.name = name;
     this.description = description;
     this.roomInventory = new ArrayList<>();
@@ -35,15 +35,19 @@ public class Room {
     this.roomHasSwitch = false;
     this.roomDarkIntro = false;
     this.itemPresent = false;
-    this.roomNumber = roomNumber;
+    this.roomPlacement = roomPlacement;
   }
 
 
   //Getters
 
 
-  public int getRoomNumber() {
-    return roomNumber;
+  public Room getRoomPlacement() {
+    return roomPlacement;
+  }
+
+  public Room setRoomPlacement() {
+    return roomPlacement;
   }
 
   public ArrayList<Item> getRoomInventory() {

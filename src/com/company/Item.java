@@ -8,21 +8,24 @@ public class Item {
   public String itemDescription;
   public String itemType;
   public int health;
-  public int roomPlacement;
+  public Room roomPlacement;
   public boolean setItemPresent;
 
-  public Item(String itemName, String itemDescription, int health, int roomPlacement, boolean setItemPresent) {
+  public Item(String itemName, String itemDescription, int health, Room roomPlacement) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
     this.health = health;
     this.roomPlacement = roomPlacement;
-    this.setItemPresent = setItemPresent;
 
   }
 
-  public int getRoomPlacement(int roomPlacement) {
-    this.roomPlacement = roomPlacement;
+
+  public Room getRoomPlacement(Room roomPlacement) {
     return roomPlacement;
+  }
+
+  public void setRoomPlacement(Room roomPlacement) {
+    this.roomPlacement = roomPlacement;
   }
 
   public boolean isSetItemPresent() {
