@@ -68,7 +68,16 @@ public class GameEngine {
       System.out.println(player.getPlayerPosition().getName());
     }
   }
-
+  public void health(){
+    int tmp = player.getHealth();
+    if (tmp > 20 && tmp < 50){
+      System.out.println("\u001B[33m" + "You have " + player.getHealth() + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
+    }
+    else if (tmp < 20){
+      System.out.println( "\u001B[31m" + "Health is critical! You only have " + player.getHealth() + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
+    }
+    else ui.printHealth(player.getHealth());
+  }
 
   public void userInputCaseNorth() {
     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
@@ -383,6 +392,7 @@ public class GameEngine {
         case "inventory", "backpack", "check inventory", "inv", "look at item" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
+        case "health", "hp" -> health();
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);

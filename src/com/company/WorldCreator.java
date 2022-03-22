@@ -289,8 +289,8 @@ public class WorldCreator {
     room3.addRoomInventory( new Item("Paint", "N/A", 0));
     room3.addRoomInventory( new Item("Paper", "N/A", 0));
     room3.addRoomInventory( new Item("Golf Club", "N/A", 0));
-
-
+    room2.addRoomInventory(new Item("Banana", "Has plenty of dark spots but should be ok to eat", 5));
+    room21.addRoomInventory(new Item("Medkit", "This medkit will health you up to max!", 100));
 
   }
 

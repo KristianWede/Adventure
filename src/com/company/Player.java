@@ -6,15 +6,18 @@ public class Player {
 
   private Room playerPosition;
   private UserInterface ui;
+  protected int health = 100;
 
   public void loadUserInterface() {
     ui = new UserInterface();
   }
 
-
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
 
+  public void displayHealth(){
+    System.out.print(health);
+  }
   public void setPlayerPosition(Room room) {
     playerPosition = room;
   }
@@ -56,9 +59,16 @@ public class Player {
     return playerInventory;
   }
 
-
+  public int getHealth() {
+    return health;
+  }
   public Room getPlayerPosition() {
     return playerPosition;
   }
 
+  //Setter
+
+  public void setHealth(int health) {
+    this.health = health;
+  }
 }

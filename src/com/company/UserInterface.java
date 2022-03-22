@@ -192,6 +192,10 @@ public class UserInterface {
     System.out.println("The light is already off!");
   }
 
+  public void printHealth(int health){
+    System.out.println("\u001B[32m" + "You have: " + health + " hp left" + "\u001B[0m");
+  }
+
   public void giveName(Room playerPos) {
     System.out.println(playerPos.getName());
   }
