@@ -207,7 +207,7 @@ public class UserInterface {
       System.out.print("a ");
   }
 
-  public void checkForAnd (Room room){ //TODO And to last item.
+/*  public void checkForAnd (Room room){ //TODO And to last item.
     int last = room.getRoomInventory().size();
 
     if (last > 1){
@@ -215,7 +215,7 @@ public class UserInterface {
       System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "").replace(","," &") + TEXT_RESET);
     }
     else printOutItemInRoom(room);
-  }
+  }*/
 
 
   public void printReactionToFoundItem(Room room) {
@@ -223,17 +223,17 @@ public class UserInterface {
     System.out.print("I see ");
     grammarCheck(room);
 
-    checkForAnd(room);
-//    printOutItemInRoom(room);
+//    checkForAnd(room);
+    printOutItemInRoom(room);
   }
 
   public void printAskPlayerChooseItem() {
     System.out.println("What item do you want to pick up?");
   }
 
-  public void printReactionPickUp(Room room, Item item) {
+  public void printReactionPickUp(Item item) {
     System.out.print("You picked up the ");
-    System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + TEXT_RESET);
+    System.out.println(TEXT_YELLOW + item + TEXT_RESET);
   }
 
   public void printInventory(ArrayList<Item> playerInventory) {
