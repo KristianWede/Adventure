@@ -18,9 +18,10 @@ public class Room {
   private ArrayList<Item> roomInventory;
   private Item itemPlace;
   private boolean itemPresent;
+  private int roomNumber;
 
 
-  public Room(String name, String description) {
+  public Room(String name, String description, int roomNumber) {
     this.name = name;
     this.description = description;
     this.roomInventory = new ArrayList<>();
@@ -34,11 +35,16 @@ public class Room {
     this.roomHasSwitch = false;
     this.roomDarkIntro = false;
     this.itemPresent = false;
+    this.roomNumber = roomNumber;
   }
 
 
   //Getters
 
+
+  public int getRoomNumber() {
+    return roomNumber;
+  }
 
   public ArrayList<Item> getRoomInventory() {
     return roomInventory;
@@ -123,6 +129,7 @@ public class Room {
 
   public void addRoomInventory(Item item) {
     this.roomInventory.add(item);
+
   }
 
   public void setRoomDarkIntro(boolean roomDarkIntro) {

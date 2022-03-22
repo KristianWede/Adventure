@@ -1,8 +1,6 @@
 package com.company;
 
 
-import java.util.ArrayList;
-
 public class Item {
 
 
@@ -10,11 +8,25 @@ public class Item {
   public String itemDescription;
   public String itemType;
   public int health;
+  public int roomPlacement;
+  public boolean setItemPresent;
 
-  public Item(String itemName, String itemDescription, int health) {
+  public Item(String itemName, String itemDescription, int health, int roomPlacement, boolean setItemPresent) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
     this.health = health;
+    this.roomPlacement = roomPlacement;
+    this.setItemPresent = setItemPresent;
+
+  }
+
+  public int getRoomPlacement(int roomPlacement) {
+    this.roomPlacement = roomPlacement;
+    return roomPlacement;
+  }
+
+  public boolean isSetItemPresent() {
+    return setItemPresent;
   }
 
   public int getHealth() {
@@ -28,6 +40,7 @@ public class Item {
   public String getItemDescription() {
     return itemDescription;
   }
+
 
   public String getItemType() {
     return itemType;

@@ -9,7 +9,6 @@ import java.io.File;
 public class Music {
   //First background music (?)
   void playMusic() {
-/*
     try {
       String musicLocation = "musik.wav";
       File musicPath = new File(musicLocation);
@@ -33,7 +32,6 @@ public class Music {
       ex.printStackTrace();
 
     }
-*/
 
   }
 }
