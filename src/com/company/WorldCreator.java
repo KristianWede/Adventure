@@ -273,16 +273,16 @@ public class WorldCreator {
     room21.setW(room20);
 
     //Room 22
-    room9.setN(room23);
-    room9.setE(null);
-    room9.setS(null);
-    room9.setW(room21);
+    room22.setN(room23);
+    room22.setE(null);
+    room22.setS(null);
+    room22.setW(room21);
 
     //Room 23
-    room9.setN(null);
-    room9.setE(null);
-    room9.setS(room22);
-    room9.setW(null);
+    room23.setN(null);
+    room23.setE(null);
+    room23.setS(room22);
+    room23.setW(null);
 
     starterRoom = room1;
 
