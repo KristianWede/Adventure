@@ -13,7 +13,7 @@ public class UserInterface {
     gameTextPrinter("Welcome to Terminator Maze!");
     gameTextPrinter("You're about to go on an epic journey in a mysterious maze..");
     gameTextPrinter("In order to navigate the maze, you must type your desired direction." +
-        "\nUseful commands: \n" +
+        "\n Useful commands: \n" +
         "                            You can go either north, east, west or south by: 'go (direction)'\n" +
         "                            'help' to repeat this message.\n" +
         "                            'look' to look around in current room.\n" +
@@ -191,10 +191,26 @@ public class UserInterface {
     System.out.println("The light is already off!");
   }
 
-  public void printHealth(int health) {
+  public void printPlayerHasDied() {
     System.out.println("\u001B[31m" + "You are dead!" + "\u001B[0m");
-    System.exit(health);
   }
+
+  public void printPlayerIsHealthy() {
+    System.out.println("\u001B[32m" + "You're perfectly healthy. Nothing wrong... Yet." + "\u001B[0m");
+  }
+
+  public void printPlayerSlightDamaged(int health){
+    System.out.println("\u001B[32m" + "You are in great shape! You have " + health + " hp left!" + "\u001B[0m");
+  }
+
+  public void printPlayerModeratelyDamaged(int health){
+    System.out.println("\u001B[33m" + "You have " + health + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
+  }
+
+  public void printPlayerCriticallyDamaged(int health){
+    System.out.println("\u001B[31m" + "Health is critical! You only have " + health + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
+  }
+
 
   public void giveName(Room playerPos) {
     System.out.println(playerPos.getName());
@@ -270,7 +286,7 @@ public class UserInterface {
   }
 
   public void notEdible(Item item) {
-    System.out.println("This " + item + "is not edible");
+    System.out.println("This " + item + " is not edible");
   }
 
   public void poisoned(Item item) {
@@ -301,4 +317,13 @@ public class UserInterface {
     System.out.println(item.getItemName() + "  -  " + item.getItemDescription());
     System.out.println();
   }
+
+  public void printPlayerActionOpenInventory(){
+    System.out.println("Your inventory:");
+  }
+
+  public void printAskPlayerForFood(){
+    System.out.println("What food do you want to eat?");
+  }
+
 }

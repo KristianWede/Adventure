@@ -21,16 +21,16 @@ public class Player {
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
   public int tryEatFood(Item item) {
+    playerInventory.remove(item);
     health = setHealth(getHealth() + item.getHealth());
     if (health > 100) {
       ui.eatToMaxHP();
       return health = 100;
     } else if (health == 100){
         return health;
+    } else {
+        return health;
     }
-      else
-        playerInventory.remove(item);
-    return health;
   }
 
   public void inspectItemFromInventory(){
@@ -88,16 +88,21 @@ public class Player {
     }
   }
 
-  public void whichFood(String foodItem) {
+  public void whichFood() {
+    boolean itemFound = false;
+    ui.printAskPlayerForFood();
+    String foodItem = game.scannerReturnToLowerCase();
     for (int i = 0; i < playerInventory.size(); i++) {
       Item food = playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
+        itemFound = true;
         userEatsFood(food);
       }
-
-
+    } if (!itemFound) {
+      ui.printErrorCannotFindItem();
     }
   }
+
 
   public void userEatsFood(Item food) {
     int tem = food.getHealth();

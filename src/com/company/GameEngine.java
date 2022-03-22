@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.Arrays;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -16,7 +14,7 @@ public class GameEngine {
   private Room tempEntangledRoom;
 
 
-  public void availableDoors() {
+  public void printAvailableDoors() {
     //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
     if (player.getPlayerPosition().isDiscoveredDoorN()) {
       ui.printDoorNorthAvailable();
@@ -48,7 +46,7 @@ public class GameEngine {
   }
 
   public void magicWord() {
-    //Xyzzy magic word
+    //Xyzzy "sussy" magic word
     //First teleports the player from anywhere on the map to room1.
     //Then it saves the place from which the player comes from.
     //The magic word can now be used to set a new teleport point anywhere on the map and swap back and forth.
@@ -68,20 +66,22 @@ public class GameEngine {
   }
 
   public void userCheckHealth(){
-    int tmp = player.getHealth();
-    if (tmp >= 25 && tmp <= 50){
-      System.out.println("\u001B[33m" + "You have " + player.getHealth() + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
+    int health = player.getHealth();
+    if (health >= 25 && health <= 50){
+      ui.printPlayerModeratelyDamaged(health);
+          }
+    else if (health >= 1 && health < 25){
+      ui.printPlayerCriticallyDamaged(health);
+          }
+    else if (health > 50 && health <100){
+      ui.printPlayerSlightDamaged(health);
     }
-    else if (tmp >= 1 && tmp < 25){
-      System.out.println("\u001B[31m" + "Health is critical! You only have " + player.getHealth() + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
+    else if (health == 100){
+      ui.printPlayerIsHealthy();
+    } else {
+      ui.printPlayerHasDied();
+      exitGame();
     }
-    else if (tmp > 50 && tmp <100){
-      System.out.println("\u001B[32m" + "You are in great shape! You have " + tmp + " hp left!" + "\u001B[0m");
-    }
-    else if (tmp == 100){
-      System.out.print("");
-    }
-    else ui.printHealth(tmp);
   }
 
   public void userInputCaseNorth() {
@@ -113,10 +113,10 @@ public class GameEngine {
         } else if (!player.getPlayerPosition().isVisited()) {
           player.getPlayerPosition().setVisited(true);
           System.out.println(player.getPlayerPosition().getDescription());
-          availableDoors();
+          printAvailableDoors();
         } else {
           System.out.println(player.getPlayerPosition().getName());
-          availableDoors();
+          printAvailableDoors();
           roomArt();
         }
       }
@@ -148,10 +148,10 @@ public class GameEngine {
         } else if (!player.getPlayerPosition().isVisited()) {
           player.getPlayerPosition().setVisited(true);
           System.out.println(player.getPlayerPosition().getDescription());
-          availableDoors();
+          printAvailableDoors();
         } else {
           System.out.println(player.getPlayerPosition().getName());
-          availableDoors();
+          printAvailableDoors();
         }
       }
     }
@@ -182,10 +182,10 @@ public class GameEngine {
         } else if (!player.getPlayerPosition().isVisited()) {
           player.getPlayerPosition().setVisited(true);
           System.out.println(player.getPlayerPosition().getDescription());
-          availableDoors();
+          printAvailableDoors();
         } else {
           System.out.println(player.getPlayerPosition().getName());
-          availableDoors();
+          printAvailableDoors();
         }
       }
     }
@@ -218,10 +218,10 @@ public class GameEngine {
         } else if (!player.getPlayerPosition().isVisited()) {
           player.getPlayerPosition().setVisited(true);
           System.out.println(player.getPlayerPosition().getDescription());
-          availableDoors();
+          printAvailableDoors();
         } else {
           System.out.println(player.getPlayerPosition().getName());
-          availableDoors();
+          printAvailableDoors();
         }
       }
     }
@@ -358,6 +358,7 @@ public class GameEngine {
 
   public void userInputCaseInspectItem(){
     if (doesPlayerHaveItems()) {
+      ui.printPlayerActionOpenInventory();
       player.inspectItemFromInventory();
     } else {
       ui.printPlayerHasNoItems();
@@ -422,12 +423,11 @@ public class GameEngine {
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "inspect", "inspect item", "look item", "look at item", "check item", "search item" -> userInputCaseInspectItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
-        case "health", "hp" -> userCheckHealth();
-        case "eat","eat food","snack time", "chips" -> player.whichFood(decision);
+        case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
+        case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
 
         default -> ui.errorMessageInvalidMove();
       }
-      userCheckHealth();
     } while (true);
 
   }
