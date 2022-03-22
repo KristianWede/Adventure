@@ -68,16 +68,36 @@ public class GameEngine {
       System.out.println(player.getPlayerPosition().getName());
     }
   }
-  public void health(){
+  public void userCheckHealth(){
     int tmp = player.getHealth();
-    if (tmp > 20 && tmp < 50){
+    if (tmp >= 25 && tmp <= 50){
       System.out.println("\u001B[33m" + "You have " + player.getHealth() + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
     }
-    else if (tmp < 20){
+    else if (tmp >= 1 && tmp < 25){
       System.out.println( "\u001B[31m" + "Health is critical! You only have " + player.getHealth() + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
     }
-    else ui.printHealth(player.getHealth());
+    else if (tmp > 50 && tmp <100){
+      System.out.println("\u001B[32m" + "You are in great shape! You have " + tmp + " hp left!" + "\u001B[0m");
+    }
+    else if (tmp == 100){
+      System.out.print("");
+    }
+    else ui.printHealth(tmp);
   }
+
+  public void userEatsFood(){
+    int tem = this.item.getHealth();
+  if (tem == 0){
+    ui.notEdible(item);
+  }
+    else if (tem < 0){
+      ui.poisioned(item);
+    player.eatFood(item);
+    }
+    else ui.edible(item);
+    player.eatFood(item);
+  }
+
 
   public void userInputCaseNorth() {
     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
@@ -374,6 +394,7 @@ public class GameEngine {
       ui.askPlayerForInput();
       String decision = sc.nextLine().toLowerCase();
       ui.clearScreen();
+
       switch (decision) {
         case "go north", "north", "n" -> userInputCaseNorth();
         case "go south", "south", "s" -> userInputCaseSouth();
@@ -392,9 +413,14 @@ public class GameEngine {
         case "inventory", "backpack", "check inventory", "inv", "look at item" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
-        case "health", "hp" -> health();
+        case "health", "hp" -> userCheckHealth();
+        case "eat","eat food","snack time" -> userEatsFood();
+
         default -> ui.errorMessageInvalidMove();
       }
+      userCheckHealth();
     } while (true);
+
   }
+
 }

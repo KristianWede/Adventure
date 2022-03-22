@@ -77,7 +77,9 @@ public class UserInterface {
         'exit' to exit game and end program.
         'inventory' to to display your inventory.
         'take' to pick up item in current room.
-        'drop' to drop item. Use drop + name of the item to drop specific item. \n""");
+        'drop' to drop item. Use drop + name of the item to drop specific item. 
+        'health' or 'hp' To display health left.
+        \n""");
   }
 
   public void userInputCaseExit() {
@@ -193,7 +195,8 @@ public class UserInterface {
   }
 
   public void printHealth(int health){
-    System.out.println("\u001B[32m" + "You have: " + health + " hp left" + "\u001B[0m");
+    System.out.println("\u001B[32m" + "You are dead!" + "\u001B[0m");
+    System.exit(health);
   }
 
   public void giveName(Room playerPos) {
@@ -269,4 +272,15 @@ public class UserInterface {
     System.out.println("What item do you want to drop?");
   }
 
+  public void notEdible(Item item) {
+    System.out.println("This " + item + "is not edible");
+  }
+
+  public void poisioned(Item item) {
+    System.out.println("Ew something is wrong with this " + item);
+  }
+
+  public void edible(Item item) {
+    System.out.println("Yummy in my tummy, this " + item + " was delicious");
+  }
 }

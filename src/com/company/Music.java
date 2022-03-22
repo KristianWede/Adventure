@@ -9,7 +9,7 @@ import java.io.File;
 public class Music {
   //First background music (?)
   void playMusic() {
-    try {
+/*    try {
       String musicLocation = "musik.wav";
       File musicPath = new File(musicLocation);
       if (musicPath.exists()) {
@@ -31,7 +31,7 @@ public class Music {
     } catch (Exception ex) {
       ex.printStackTrace();
 
-    }
+    }*/
 
   }
 }

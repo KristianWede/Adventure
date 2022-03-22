@@ -14,10 +14,12 @@ public class Player {
 
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
-
-  public void displayHealth(){
-    System.out.print(health);
+  public int eatFood (Item item){
+    setHealth(getHealth() + item.getHealth());
+    playerInventory.remove(item);
+    return health;
   }
+
   public void setPlayerPosition(Room room) {
     playerPosition = room;
   }
