@@ -27,7 +27,7 @@ public class Player {
         playerInventory.add(tmp);
         ui.printReactionPickUp(tmp);
         room.getRoomInventory().remove(tmp);
-      } else if (i == room.getRoomInventory().size() - 1) {
+      } else if (i == room.getRoomInventory().size()) { // Add minus 1 after size??
         ui.printErrorCannotFindItem();
       }
     }
