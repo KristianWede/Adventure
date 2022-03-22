@@ -14,15 +14,14 @@ public class Player {
 
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
-  public int tryEatFood (Item item){
+  public int tryEatFood(Item item) {
     health = setHealth(getHealth() + item.getHealth());
-    if (health >= 100){
+    if (health >= 100) {
       playerInventory.remove(item);
       ui.eatToMaxHP();
       return health = 100;
-    }
-    else
-    playerInventory.remove(item);
+    } else
+      playerInventory.remove(item);
     return health;
   }
 
@@ -54,7 +53,7 @@ public class Player {
     }
   }
 
-  public void whichFood (String foodItem){
+  public void whichFood(String foodItem) {
     for (int i = 0; i < playerInventory.size(); i++) {
       Item food = playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
@@ -62,24 +61,21 @@ public class Player {
       }
 
 
-  }}
-
-  public void userEatsFood(Item food){
-    int tem = food.getHealth();
-   if (tem == 0){
-      ui.notEdible(food);
     }
-    else if (tem < 0){
+  }
+
+  public void userEatsFood(Item food) {
+    int tem = food.getHealth();
+    if (tem == 0) {
+      ui.notEdible(food);
+    } else if (tem < 0) {
       ui.poisoned(food);
       tryEatFood(food);
-    }
-    else if (tem > 0 && getHealth() > 100){
-     ui.full(food);
-   }
-    else if (getHealth() == 100){
+    } else if (tem > 0 && getHealth() > 100) {
       ui.full(food);
-   }
-    else ui.edible(food);
+    } else if (getHealth() == 100) {
+      ui.full(food);
+    } else ui.edible(food);
     tryEatFood(food);
   }
 
@@ -95,6 +91,7 @@ public class Player {
   public int getHealth() {
     return health;
   }
+
   public Room getPlayerPosition() {
     return playerPosition;
   }
@@ -104,6 +101,7 @@ public class Player {
   public void setPlayerPosition(Room room) {
     playerPosition = room;
   }
+
   public int setHealth(int health) {
     this.health = health;
     return health;

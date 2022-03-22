@@ -74,7 +74,7 @@ public class GameEngine {
       System.out.println("\u001B[33m" + "You have " + player.getHealth() + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
     }
     else if (tmp >= 1 && tmp < 25){
-      System.out.println( "\u001B[31m" + "Health is critical! You only have " + player.getHealth() + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
+      System.out.println("\u001B[31m" + "Health is critical! You only have " + player.getHealth() + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
     }
     else if (tmp > 50 && tmp <100){
       System.out.println("\u001B[32m" + "You are in great shape! You have " + tmp + " hp left!" + "\u001B[0m");

@@ -192,7 +192,7 @@ public class UserInterface {
     System.out.println("The light is already off!");
   }
 
-  public void printHealth(int health){
+  public void printHealth(int health) {
     System.out.println("\u001B[31m" + "You are dead!" + "\u001B[0m");
     System.exit(health);
   }
@@ -283,7 +283,7 @@ public class UserInterface {
   }
 
   public void full(Item item) {
-    System.out.println("I'm already full. Saving " + item + " for another time." );
+    System.out.println("I'm already full. Saving " + item + " for another time.");
   }
 
   public void eatToMaxHP() {
