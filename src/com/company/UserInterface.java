@@ -1,7 +1,5 @@
 package com.company;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -276,11 +274,15 @@ public class UserInterface {
     System.out.println("This " + item + "is not edible");
   }
 
-  public void poisioned(Item item) {
+  public void poisoned(Item item) {
     System.out.println("Ew something is wrong with this " + item);
   }
 
   public void edible(Item item) {
-    System.out.println("Yummy in my tummy, this " + item + " was delicious");
+    System.out.println("Yummy in my tummy, this " + item + " was delicious!");
+  }
+
+  public void full(Item item) {
+    System.out.println("I'm already full. Saving " + item + " for another time." );
   }
 }

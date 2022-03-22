@@ -10,7 +10,6 @@ public class GameEngine {
   private Music music;
   private UserInterface ui;
   private Player player;
-  private Item item;
 
   private Room requestedRoomPos;
   private Room entangledRoom;
@@ -68,6 +67,7 @@ public class GameEngine {
       System.out.println(player.getPlayerPosition().getName());
     }
   }
+
   public void userCheckHealth(){
     int tmp = player.getHealth();
     if (tmp >= 25 && tmp <= 50){
@@ -84,20 +84,6 @@ public class GameEngine {
     }
     else ui.printHealth(tmp);
   }
-
-  public void userEatsFood(){
-    int tem = this.item.getHealth();
-  if (tem == 0){
-    ui.notEdible(item);
-  }
-    else if (tem < 0){
-      ui.poisioned(item);
-    player.eatFood(item);
-    }
-    else ui.edible(item);
-    player.eatFood(item);
-  }
-
 
   public void userInputCaseNorth() {
     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
@@ -414,7 +400,7 @@ public class GameEngine {
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp" -> userCheckHealth();
-        case "eat","eat food","snack time" -> userEatsFood();
+        case "eat","eat food","snack time", "chips" -> player.whichFood(decision);
 
         default -> ui.errorMessageInvalidMove();
       }
