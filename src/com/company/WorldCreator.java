@@ -5,8 +5,10 @@ public class WorldCreator {
 
   private Room starterRoom;
 
+/*
   Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs");
   Item bucketOfLava = new Item("A bucket of lava(?)", "This probably breaks a few laws of physics...");
+*/
 
   public void createWorldMap() {
 
@@ -287,11 +289,11 @@ public class WorldCreator {
     starterRoom = room1;
 
     //Initializing items.
-    Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs");
-    Item bucketOfLava = new Item("Bucket of Lava", "This probably breaks a few laws of physics...");
-    Item paint = new Item("Paint", "N/A");
-    Item paper = new Item("Paper", "N/A");
-    Item golfClub = new Item("Golf Club", "N/A");
+    Item key = new Item("Old Key", "A very old-looking key. Wonder where it belongs", 0);
+    Item bucketOfLava = new Item("Bucket of Lava", "This probably breaks a few laws of physics...", 0);
+    Item paint = new Item("Paint", "N/A",0);
+    Item paper = new Item("Paper", "N/A", 0);
+    Item golfClub = new Item("Golf Club", "N/A", 0);
 
     //Set rooms to have items.
     room3.addRoomInventory(key);
