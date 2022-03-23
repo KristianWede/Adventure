@@ -289,7 +289,7 @@ public class WorldCreator {
     room3.addRoomInventory(new Item("Paint", "Pink paint"));
     room3.addRoomInventory(new Item("Papers", "Just blank paper, seems to be rather useless"));
     room3.addRoomInventory(new Item("Golf Club", "Could have been used by a pro but who knows"));
-    room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -5));
+    room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
     room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));

@@ -8,7 +8,7 @@ public class Player {
   private Room playerPosition;
   private UserInterface ui;
   private GameEngine game;
-  protected int health = 100;
+  protected int health = 40;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
@@ -112,7 +112,6 @@ public class Player {
       ui.notEdible(food);
     } else if (tem < 0) {
       ui.poisoned(food);
-      tryEatFood(food);
     } else if (tem > 0 && getHealth() > 100) {
       ui.full(food);
     } else if (getHealth() == 100) {
