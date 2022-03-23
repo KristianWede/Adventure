@@ -8,7 +8,7 @@ public class Player {
   private Room playerPosition;
   private UserInterface ui;
   private GameEngine game;
-  protected int health = 40;
+  protected int health = 100;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
@@ -27,7 +27,7 @@ public class Player {
     health = setHealth(getHealth() + item.getHealth());
     playerInventory.remove(item);
     if (health > 100) {
-      ui.eatToMaxHP();
+      ui.MaxHP();
       return health = 100;
     } else {
       return health;

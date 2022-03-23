@@ -77,7 +77,7 @@ public class GameEngine {
       ui.printPlayerSlightDamaged(health);
     }
     else if (health == 100){
-      System.out.print("");
+      ui.MaxHP();
     } else {
       ui.printPlayerHasDied();
       exitGame();

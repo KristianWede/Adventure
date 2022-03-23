@@ -303,7 +303,7 @@ public class UserInterface {
     System.out.println("I'm already full. Saving " + item + " for another time.");
   }
 
-  public void eatToMaxHP() {
+  public void MaxHP() {
     System.out.println("You have max health!");
   }
 
