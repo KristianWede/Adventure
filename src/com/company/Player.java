@@ -21,13 +21,14 @@ public class Player {
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
   public int tryEatFood(Item item) {
-    playerInventory.remove(item);
+    if (getHealth() == 100) {
+    return health;
+    }
     health = setHealth(getHealth() + item.getHealth());
+    playerInventory.remove(item);
     if (health > 100) {
       ui.eatToMaxHP();
       return health = 100;
-    } else if (health == 100) {
-      return health;
     } else {
       return health;
     }
