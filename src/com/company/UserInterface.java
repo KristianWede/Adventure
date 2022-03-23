@@ -290,7 +290,7 @@ public class UserInterface {
   }
 
   public void notEdible(Item item) {
-    System.out.println("This " + item + " is not edible");
+    System.out.println(item + " is not edible");
   }
 
   public void poisoned(Item item) {
