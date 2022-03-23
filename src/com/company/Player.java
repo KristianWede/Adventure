@@ -8,7 +8,7 @@ public class Player {
   private Room playerPosition;
   private UserInterface ui;
   private GameEngine game;
-  protected int health = 3;
+  protected int health = 100;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();

@@ -84,6 +84,12 @@ public class GameEngine {
     }
   }
 
+  public void warnWhenLowHp(){
+    if (player.getHealth() < 50){
+      userCheckHealth();
+    }
+  }
+
   public void userInputCaseNorth() {
     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
     if (player.getPlayerPosition().getN() == null) {
@@ -403,9 +409,9 @@ public class GameEngine {
     Scanner sc = new Scanner(System.in);
     do {
 
-      userCheckHealth();
+      warnWhenLowHp();
       ui.askPlayerForInput();
-      String decision = sc.nextLine().toLowerCase();
+      String decision = scannerReturnToLowerCase();
       ui.clearScreen();
 
       switch (decision) {
@@ -434,7 +440,5 @@ public class GameEngine {
 
       }
     } while (true);
-
   }
-
 }
