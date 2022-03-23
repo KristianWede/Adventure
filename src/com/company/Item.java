@@ -1,28 +1,32 @@
 package com.company;
 
+
 public class Item {
 
 
   public String itemName;
   public String itemDescription;
-  public String itemType;
+  public int health;
 
-  public Item(String itemName, String itemDescription){
+  public Item(String itemName, String itemDescription) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
   }
 
-  public String getItemName(){
-    return itemName;
-  }
-  public String getItemDescription(){
-    return itemDescription;
-  }
-  public String getItemType(){
-    return itemType;
+  public int getHealth() {
+    return health;
   }
 
-  public String toString(){
+  public String getItemName() {
+    return itemName;
+  }
+
+  public String getItemDescription() {
+    return itemDescription;
+  }
+
+
+  public String toString() {
     return itemName;
   }
 
