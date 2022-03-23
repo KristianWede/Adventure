@@ -286,14 +286,13 @@ public class WorldCreator {
     //Initializing items & food.
     room3.addRoomInventory(new Item("Old Key", "A very old-looking key. I wonder where it belongs..."));
     room4.addRoomInventory(new Item("Bucket of Lava", "This probably breaks a few laws of physics..."));
-    room3.addRoomInventory(new Item("Paint", "N/A"));
-    room3.addRoomInventory(new Item("Paper", "N/A"));
-    room3.addRoomInventory(new Item("Golf Club", "N/A"));
+    room3.addRoomInventory(new Item("Paint", "Pink paint"));
+    room3.addRoomInventory(new Item("Papers", "Just blank paper, seems to be rather useless"));
+    room3.addRoomInventory(new Item("Golf Club", "Could have been used by a pro but who knows"));
     room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -5));
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
     room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
-
   }
 
   //Getters

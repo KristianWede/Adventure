@@ -26,16 +26,16 @@ public class Player {
     if (health > 100) {
       ui.eatToMaxHP();
       return health = 100;
-    } else if (health == 100){
-        return health;
+    } else if (health == 100) {
+      return health;
     } else {
-        return health;
+      return health;
     }
   }
 
-  public void inspectItemFromInventory(){
+  public void inspectItemFromInventory() {
     boolean itemFound = false;
-    for (int i = 0; i < playerInventory.size(); i++){
+    for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
       ui.printPlayerInventorySingularNumbered(tmp, i);
     }
@@ -98,7 +98,8 @@ public class Player {
         itemFound = true;
         userEatsFood(food);
       }
-    } if (!itemFound) {
+    }
+    if (!itemFound) {
       ui.printErrorCannotFindItem();
     }
   }
