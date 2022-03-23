@@ -392,14 +392,18 @@ public class GameEngine {
 
     ui.introduction();
 
+
+
     //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
     userChoice();
+
   }
 
   public String userChoice() {
     Scanner sc = new Scanner(System.in);
     do {
 
+      userCheckHealth();
       ui.askPlayerForInput();
       String decision = sc.nextLine().toLowerCase();
       ui.clearScreen();
@@ -427,6 +431,7 @@ public class GameEngine {
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
 
         default -> ui.errorMessageInvalidMove();
+
       }
     } while (true);
 
