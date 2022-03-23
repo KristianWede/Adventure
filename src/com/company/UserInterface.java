@@ -23,7 +23,8 @@ public class UserInterface {
         "                            'inventory' to to display your inventory. \n" +
         "                            'take' to pick up item in current room. \n" +
         "                            'drop' to drop item. Use drop + name of the item to drop specific item. \n" +
-        "                            'inspect' will inspect item in your inventory.\n");
+        "                            'inspect' will inspect item in your inventory.\n" +
+            "                        'eat' to consume food in your inventory \n");
 
     System.out.println("You can also during the game type 'help' to display the above commands again. \n");
     System.out.println("Press \"ENTER\" to continue...");
@@ -78,6 +79,7 @@ public class UserInterface {
         'drop' to drop item. Use drop + name of the item to drop specific item. 
         'health' or 'hp' To display health left.
         'inspect' will inspect item in your inventory.
+        'eat' to consume food in your inventory.
         \n""");
   }
 
