@@ -8,8 +8,9 @@ import java.io.File;
 public class Music {
   //First background music (?)
   void playBackground() {
+/*
     try {
-      String musicLocation = "battle.wav";
+      String musicLocation = "background.wav";
       File musicPath = new File(musicLocation);
       if (musicPath.exists()) {
         AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
@@ -35,7 +36,7 @@ public class Music {
 
     void playBattle() {
       try {
-        String musicLocation = "background.wav";
+        String musicLocation = "battle.wav";
         File musicPath = new File(musicLocation);
         if (musicPath.exists()) {
           AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
@@ -57,6 +58,7 @@ public class Music {
         ex.printStackTrace();
 
       }
+*/
 
     }
 

@@ -12,7 +12,7 @@ public class GameEngine {
   private Room requestedRoomPos;
   private Room entangledRoom;
   private Room tempEntangledRoom;
-
+  Scanner sc = new Scanner(System.in);
 
   public void printAvailableDoors() {
     //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
@@ -347,7 +347,6 @@ public class GameEngine {
     }
   }
 
-
   public void userInputCaseOnLightOff() {
     if (player.getPlayerPosition().isRoomHasSwitch()) {
       ui.printFoundLightswitch();
@@ -404,7 +403,7 @@ public class GameEngine {
   }
 
   public String userChoice() {
-    Scanner sc = new Scanner(System.in);
+
     do {
 
       warnWhenLowHp();
