@@ -9,6 +9,8 @@ public class Player {
   private UserInterface ui;
   private GameEngine game;
   protected int health = 100;
+  protected boolean equipWeapon = false;
+  private Item weaponEquipped;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
@@ -105,14 +107,35 @@ public class Player {
     }
   }
 
+  public void whichWeapon() {
+    boolean itemFound = false;
+    ui.printAskPlayerForWeapon();
+    String weaponChoice = game.scannerReturnToLowerCase();
+    for (int i = 0; i < playerInventory.size(); i++) {
+      Item weapon = playerInventory.get(i);
+      if (weapon.getItemName().toLowerCase().contains(weaponChoice)) {
+        itemFound = true;
+        userEquipsWeapon(weapon);
+      }
+    }
+    if (!itemFound) {
+      ui.printErrorCannotFindItem();
+    }
+  }
+
+  private void userEquipsWeapon(Item weapon) {
+    equipWeapon = true;
+    weaponEquipped = weapon;
+    ui.weaponEquipped(weapon);
+  }
 
   public void userEatsFood(Item food) {
-    int tem = food.getHealth();
-    if (tem == 0) {
+    int tmp = food.getHealth();
+    if (tmp == 0) {
       ui.notEdible(food);
-    } else if (tem < 0) {
+    } else if (tmp < 0) {
       ui.poisoned(food);
-    } else if (tem > 0 && getHealth() > 100) {
+    } else if (tmp > 0 && getHealth() > 100) {
       ui.full(food);
     } else if (getHealth() == 100) {
       ui.full(food);

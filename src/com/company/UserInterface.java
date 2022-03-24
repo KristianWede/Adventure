@@ -33,7 +33,7 @@ public class UserInterface {
   }
 
   public void clearScreen() {
-    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
   }
 
   //This printer can be used for all "souts" so that the text fits the aestetic.
@@ -330,4 +330,11 @@ public class UserInterface {
     System.out.println("What food do you want to eat?");
   }
 
+  public void printAskPlayerForWeapon() {
+    System.out.println("Which weapon do you want to equip?");
+  }
+
+  public void weaponEquipped(Item weapon) {
+    System.out.println(weapon + " has now been equipped!");
+  }
 }

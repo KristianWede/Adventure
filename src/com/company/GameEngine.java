@@ -432,6 +432,7 @@ public class GameEngine {
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
+        case "equip", "this is sparta" -> player.whichWeapon();
 
         default -> ui.errorMessageInvalidMove();
 
