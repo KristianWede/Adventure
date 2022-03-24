@@ -293,7 +293,7 @@ public class WorldCreator {
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
     room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
-    room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5));
+    room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5,10));
     room6.addRoomInventory(new MeleeWeapon("Pipe","Old rusty pipe",15));
   }
 

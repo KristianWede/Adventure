@@ -274,6 +274,7 @@ public class GameEngine {
     }
   }
 
+
   public boolean doesRoomHaveItem() {
     if (player.getPlayerPosition().getRoomInventory().size() != 0) {
       return true;
@@ -370,6 +371,15 @@ public class GameEngine {
     }
   }
 
+  public void equipCheckForWeapon(){
+    if (doesPlayerHaveItems()){
+      player.whichWeapon();
+    }
+    else {
+      ui.printPlayerHasNoWeapon();
+    }
+  }
+
   public void execute() throws InterruptedException {
     // Part 1: The room.
 
@@ -410,7 +420,6 @@ public class GameEngine {
       ui.askPlayerForInput();
       String decision = scannerReturnToLowerCase();
       ui.clearScreen();
-
       switch (decision) {
         case "go north", "north", "n" -> userInputCaseNorth();
         case "go south", "south", "s" -> userInputCaseSouth();
@@ -432,7 +441,7 @@ public class GameEngine {
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
-        case "equip", "this is sparta" -> player.whichWeapon();
+        case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon();
 
         default -> ui.errorMessageInvalidMove();
 

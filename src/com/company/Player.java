@@ -10,7 +10,6 @@ public class Player {
   private GameEngine game;
   protected int health = 100;
   protected boolean equipWeapon = false;
-  private Item weaponEquipped;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
@@ -124,10 +123,14 @@ public class Player {
   }
 
   private void userEquipsWeapon(Item weapon) {
+    int tmp = weapon.getDamage();
+    if (tmp == 0){
+      ui.notWeapon();
+    }
+    else if (tmp > 0){
     equipWeapon = true;
-    weaponEquipped = weapon;
     ui.weaponEquipped(weapon);
-  }
+  }}
 
   public void userEatsFood(Item food) {
     int tmp = food.getHealth();

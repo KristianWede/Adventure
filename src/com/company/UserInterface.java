@@ -268,6 +268,9 @@ public class UserInterface {
   public void printPlayerHasNoItems() {
     System.out.println("I don't have anything on me! I swear!");
   }
+  public void printPlayerHasNoWeapon() {
+    System.out.println("I don't have any weapon to equip");
+  }
 
   public void printNoItemsOnGround() {
     System.out.println("There are no items to pick up.");
@@ -336,5 +339,9 @@ public class UserInterface {
 
   public void weaponEquipped(Item weapon) {
     System.out.println(weapon + " has now been equipped!");
+  }
+
+  public void notWeapon() {
+    System.out.println("You cannot equip this item as a weapon.");
   }
 }

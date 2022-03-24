@@ -4,9 +4,10 @@ package com.company;
 public class Item {
 
 
-  public String itemName;
-  public String itemDescription;
-  public int health;
+  protected String itemName;
+  protected String itemDescription;
+  protected int health;
+  protected int damage;
 
   public Item(String itemName, String itemDescription) {
     this.itemName = itemName;
@@ -15,6 +16,10 @@ public class Item {
 
   public int getHealth() {
     return health;
+  }
+
+  public int getDamage() {
+    return damage;
   }
 
   public String getItemName() {
