@@ -347,6 +347,14 @@ public class GameEngine {
       ui.printPlayerReactionDark();
     }
   }
+  public void launchAttach() {
+    if (player.equipWeapon){
+      player.attack();
+    }
+    else {
+      ui.noWeaponEquipped();
+    }
+  }
 
   public void userInputCaseOnLightOff() {
     if (player.getPlayerPosition().isRoomHasSwitch()) {
@@ -442,10 +450,12 @@ public class GameEngine {
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon();
-
+        case "attack", "kill", "fire", "launch" -> launchAttach();
         default -> ui.errorMessageInvalidMove();
 
       }
     } while (true);
   }
+
+
 }

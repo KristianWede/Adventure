@@ -24,7 +24,9 @@ public class UserInterface {
         "                            'take' to pick up item in current room. \n" +
         "                            'drop' to drop item. Use drop + name of the item to drop specific item. \n" +
         "                            'inspect' will inspect item in your inventory.\n" +
-            "                        'eat' to consume food in your inventory \n");
+        "                            'eat' to consume food in your inventory  \n" +
+        "                            'equip' to equip weapon.\n" +
+        "                            'attack' to attack enemy.\n");
 
     System.out.println("You can also during the game type 'help' to display the above commands again. \n");
     System.out.println("Press \"ENTER\" to continue...");
@@ -80,6 +82,8 @@ public class UserInterface {
         'health' or 'hp' To display health left.
         'inspect' will inspect item in your inventory.
         'eat' to consume food in your inventory.
+        'equip' to equip weapon.
+        'attack' to attack enemy.
         \n""");
   }
 
@@ -220,6 +224,9 @@ public class UserInterface {
     System.out.println(playerPos.getName());
   }
 
+  public void noWeaponEquipped(){
+    System.out.println("You have no weapon equipped.");
+  }
 
   public void grammarCheck(Room room) {
     char ch;
@@ -341,7 +348,7 @@ public class UserInterface {
     System.out.println(weapon + " has now been equipped!");
   }
 
-  public void notWeapon() {
-    System.out.println("You cannot equip this item as a weapon.");
+  public void notWeapon(Item weapon) {
+    System.out.println("You cannot equip " + weapon + " as a weapon.");
   }
 }

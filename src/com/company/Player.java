@@ -125,7 +125,7 @@ public class Player {
   private void userEquipsWeapon(Item weapon) {
     int tmp = weapon.getDamage();
     if (tmp == 0){
-      ui.notWeapon();
+      ui.notWeapon(weapon);
     }
     else if (tmp > 0){
     equipWeapon = true;
@@ -172,5 +172,9 @@ public class Player {
   public int setHealth(int health) {
     this.health = health;
     return health;
+  }
+
+  public void attack() {
+
   }
 }
