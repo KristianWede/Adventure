@@ -371,6 +371,10 @@ public class GameEngine {
     }
   }
 
+  public void playMusic(Room room){
+    if (player.getPlayerPosition()== )
+  }
+
 
 
   public void execute() throws InterruptedException {
@@ -388,7 +392,7 @@ public class GameEngine {
     player.loadUserInterfaceInPlayer();
     player.loadGameEngineInPlayer();
 
-    music.playMusic();
+    music.playBackground();
 
     ui.clearScreen();
 
