@@ -371,12 +371,6 @@ public class GameEngine {
     }
   }
 
-  public void playMusic(Room room){
-    if (player.getPlayerPosition()== )
-  }
-
-
-
   public void execute() throws InterruptedException {
     // Part 1: The room.
 
