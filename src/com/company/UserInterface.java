@@ -273,10 +273,10 @@ public class UserInterface {
   }
 
   public void printPlayerHasNoItems() {
-    System.out.println("I don't have anything on me! I swear!");
+    System.out.println("You don't have any items.");
   }
   public void printPlayerHasNoWeapon() {
-    System.out.println("I don't have any weapon to equip");
+    System.out.println("You don't have any weapon to equip.");
   }
 
   public void printNoItemsOnGround() {
@@ -312,7 +312,7 @@ public class UserInterface {
   }
 
   public void full(Item item) {
-    System.out.println("I'm already full. Saving " + item + " for another time.");
+    System.out.println("You're already full. Saving " + item + " for another time.");
   }
 
   public void MaxHP() {

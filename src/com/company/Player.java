@@ -146,7 +146,12 @@ public class Player {
     tryEatFood(food);
   }
 
+  public void attack() {
+
+  }
+
   //Getter
+
   public ArrayList<Item> itemsAtPlayerPosition(Room room) {
     return room.getRoomInventory();
   }
@@ -172,9 +177,5 @@ public class Player {
   public int setHealth(int health) {
     this.health = health;
     return health;
-  }
-
-  public void attack() {
-
   }
 }
