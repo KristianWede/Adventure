@@ -299,20 +299,20 @@ public class UserInterface {
     System.out.println("What item do you want to drop?");
   }
 
-  public void notEdible(Item item) {
-    System.out.println(item + " is not edible");
+  public void notEdible(Food food) {
+    System.out.println(food + " is not edible");
   }
 
-  public void poisoned(Item item) {
-    System.out.println("Ew something is wrong with this " + item);
+  public void poisoned(Food food) {
+    System.out.println("Ew something is wrong with this " + food);
   }
 
-  public void edible(Item item) {
-    System.out.println("Yummy in my tummy, this " + item + " was delicious!");
+  public void edible(Food food) {
+    System.out.println("Yummy in my tummy, this " + food + " was delicious!");
   }
 
-  public void full(Item item) {
-    System.out.println("You're already full. Saving " + item + " for another time.");
+  public void full(Food food) {
+    System.out.println("You're already full. Saving " + food + " for another time.");
   }
 
   public void MaxHP() {
