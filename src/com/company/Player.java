@@ -152,9 +152,6 @@ public class Player {
 
   //Getter
 
-  public ArrayList<Item> itemsAtPlayerPosition(Room room) {
-    return room.getRoomInventory();
-  }
 
   public ArrayList<Item> getPlayerInventory() {
     return playerInventory;

@@ -16,10 +16,7 @@ public class Room {
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
   private ArrayList<Item> roomInventory;
-  private Item itemPlace;
   private boolean itemPresent;
-  private Room roomPlacement;
-
 
   public Room(String name, String description) {
     this.name = name;
@@ -35,27 +32,13 @@ public class Room {
     this.roomHasSwitch = false;
     this.roomDarkIntro = false;
     this.itemPresent = false;
-    this.roomPlacement = roomPlacement;
   }
 
 
   //Getters
 
-
-  public Room getRoomPlacement() {
-    return roomPlacement;
-  }
-
-  public Room setRoomPlacement() {
-    return roomPlacement;
-  }
-
   public ArrayList<Item> getRoomInventory() {
     return roomInventory;
-  }
-
-  public boolean isItemPresent() {
-    return itemPresent;
   }
 
   public boolean isRoomDarkIntro() {
@@ -123,14 +106,6 @@ public class Room {
   //Setters
 
 
-  public void setRoomInventory(ArrayList<Item> roomInventory) {
-    this.roomInventory = roomInventory;
-  }
-
-  public void setItemPresent(boolean itemPresent) {
-    this.itemPresent = itemPresent;
-  }
-
   public void addRoomInventory(Item item) {
     this.roomInventory.add(item);
 
@@ -170,10 +145,6 @@ public class Room {
 
   public void setVisited(boolean visited) {
     this.visited = visited;
-  }
-
-  public void setName(String name) {
-    this.name = name;
   }
 
   public void setDescription(String description) {

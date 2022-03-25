@@ -141,10 +141,6 @@ public class UserInterface {
     System.out.println("Seems like that way is blocked.");
   }
 
-  public void printMessage(String message) {
-    System.out.println(message);
-  }
-
   public void printDoorIsLocked() {
     System.out.println("Seems like that door is locked.");
   }
