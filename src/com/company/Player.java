@@ -21,12 +21,12 @@ public class Player {
 
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
-  public int tryEatFood(Item item) {
+  public int tryEatFood(Food food) {
     if (getHealth() == 100) {
     return health;
     }
-    health = setHealth(getHealth() + item.getHealth());
-    playerInventory.remove(item);
+    health = setHealth(getHealth() + food.getHealth());
+    playerInventory.remove(food);
     if (health > 100) {
       ui.MaxHP();
       return health = 100;
@@ -95,7 +95,7 @@ public class Player {
     ui.printAskPlayerForFood();
     String foodItem = game.scannerReturnToLowerCase();
     for (int i = 0; i < playerInventory.size(); i++) {
-      Item food = playerInventory.get(i);
+      Food food = (Food) playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
         itemFound = true;
         userEatsFood(food);
@@ -114,7 +114,7 @@ public class Player {
       Item weapon = playerInventory.get(i);
       if (weapon.getItemName().toLowerCase().contains(weaponChoice)) {
         itemFound = true;
-        userEquipsWeapon(weapon);
+        userEquipsWeapon((Weapon) weapon);
       }
     }
     if (!itemFound) {
@@ -122,7 +122,7 @@ public class Player {
     }
   }
 
-  private void userEquipsWeapon(Item weapon) {
+  private void userEquipsWeapon(Weapon weapon) {
     int tmp = weapon.getDamage();
     if (tmp == 0){
       ui.notWeapon(weapon);
@@ -132,7 +132,7 @@ public class Player {
     ui.weaponEquipped(weapon);
   }}
 
-  public void userEatsFood(Item food) {
+  public void userEatsFood(Food food) {
     int tmp = food.getHealth();
     if (tmp == 0) {
       ui.notEdible(food);
