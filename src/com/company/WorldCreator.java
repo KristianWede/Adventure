@@ -9,7 +9,7 @@ public class WorldCreator {
 
     Room room1 = new Room("Arrival", """
         A square room with writings on the wall. 
-        This big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
+        The big ceiling windows reveals the sky, which is covered in the brown/black clouds. 
         Behind the clouds you can see small glimmers of light. The light is most definitely not the sun.
         """);
     Room room2 = new Room("Corridor", """
@@ -91,14 +91,20 @@ public class WorldCreator {
          ‘Clonk, clonk, clonk’. You look back towards the door you entered through. It is closed. 
          What now?!              
         """);
-    Room room10 = new Room("This is room 10 ", """
-        Short description here 10""");
+    Room room10 = new Room("Anarchy", """
+        Similar to the arrival room, this room has highly 'decorated' walls. 
+        Most of the writing is unreadable or incomprehensible, but one thing quickly catches your eyes:
+        In the ceiling a big 'A' for 'ANARCHY' has been painted with thick, red paint. 
+        """);
 
-    Room room11 = new Room("This is room 11 ", """
-        Short description here 11""");
+    Room room11 = new Room("Doorway", """
+        Small, narrow room. You could probably reach from one wall to the other
+        if you extended your arms to the sides.""");
 
-    Room room12 = new Room("This is room 12", """
-        Short description here 12""");
+    Room room12 = new Room("Staircase", """
+        As you enter, you find your self standing at the end of a staircase.
+        You notice that the staircase bends a little towards west.
+         You can easily see the other end of the staircase.""");
 
     Room room13 = new Room("This is room 13", """
         Short description here 13""");
@@ -193,7 +199,7 @@ public class WorldCreator {
 
     //Room 9
     room9.setN(room6);
-    room9.setE(null);
+    room9.setE(room19);
     room9.setS(null);
     room9.setW(room8);
 
