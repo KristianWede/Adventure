@@ -4,17 +4,13 @@ package com.company;
 public class Item {
 
 
-  public String itemName;
-  public String itemDescription;
-  public int health;
+  protected String itemName;
+  protected String itemDescription;
+
 
   public Item(String itemName, String itemDescription) {
     this.itemName = itemName;
     this.itemDescription = itemDescription;
-  }
-
-  public int getHealth() {
-    return health;
   }
 
   public String getItemName() {

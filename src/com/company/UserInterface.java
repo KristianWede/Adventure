@@ -24,7 +24,9 @@ public class UserInterface {
         "                            'take' to pick up item in current room. \n" +
         "                            'drop' to drop item. Use drop + name of the item to drop specific item. \n" +
         "                            'inspect' will inspect item in your inventory.\n" +
-            "                        'eat' to consume food in your inventory \n");
+        "                            'eat' to consume food in your inventory  \n" +
+        "                            'equip' to equip weapon.\n" +
+        "                            'attack' to attack enemy.\n");
 
     System.out.println("You can also during the game type 'help' to display the above commands again. \n");
     System.out.println("Press \"ENTER\" to continue...");
@@ -33,7 +35,7 @@ public class UserInterface {
   }
 
   public void clearScreen() {
-    System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+    System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
   }
 
   //This printer can be used for all "souts" so that the text fits the aestetic.
@@ -80,6 +82,8 @@ public class UserInterface {
         'health' or 'hp' To display health left.
         'inspect' will inspect item in your inventory.
         'eat' to consume food in your inventory.
+        'equip' to equip weapon.
+        'attack' to attack enemy.
         \n""");
   }
 
@@ -135,10 +139,6 @@ public class UserInterface {
 
   public void printPathBlocked() {
     System.out.println("Seems like that way is blocked.");
-  }
-
-  public void printMessage(String message) {
-    System.out.println(message);
   }
 
   public void printDoorIsLocked() {
@@ -220,6 +220,9 @@ public class UserInterface {
     System.out.println(playerPos.getName());
   }
 
+  public void noWeaponEquipped(){
+    System.out.println("You have no weapon equipped.");
+  }
 
   public void grammarCheck(Room room) {
     char ch;
@@ -266,7 +269,10 @@ public class UserInterface {
   }
 
   public void printPlayerHasNoItems() {
-    System.out.println("I don't have anything on me! I swear!");
+    System.out.println("You don't have any items.");
+  }
+  public void printPlayerHasNoWeapon() {
+    System.out.println("You don't have any weapon to equip.");
   }
 
   public void printNoItemsOnGround() {
@@ -289,20 +295,20 @@ public class UserInterface {
     System.out.println("What item do you want to drop?");
   }
 
-  public void notEdible(Item item) {
-    System.out.println(item + " is not edible");
+  public void notEdible(Food food) {
+    System.out.println(food + " is not edible");
   }
 
-  public void poisoned(Item item) {
-    System.out.println("Ew something is wrong with this " + item);
+  public void poisoned(Food food) {
+    System.out.println("Ew something is wrong with this " + food);
   }
 
-  public void edible(Item item) {
-    System.out.println("Yummy in my tummy, this " + item + " was delicious!");
+  public void edible(Food food) {
+    System.out.println("Yummy in my tummy, this " + food + " was delicious!");
   }
 
-  public void full(Item item) {
-    System.out.println("I'm already full. Saving " + item + " for another time.");
+  public void full(Food food) {
+    System.out.println("You're already full. Saving " + food + " for another time.");
   }
 
   public void MaxHP() {
@@ -330,4 +336,15 @@ public class UserInterface {
     System.out.println("What food do you want to eat?");
   }
 
+  public void printAskPlayerForWeapon() {
+    System.out.println("Which weapon do you want to equip?");
+  }
+
+  public void weaponEquipped(Item weapon) {
+    System.out.println(weapon + " has now been equipped!");
+  }
+
+  public void notWeapon(Item weapon) {
+    System.out.println("You cannot equip " + weapon + " as a weapon.");
+  }
 }

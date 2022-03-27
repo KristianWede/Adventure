@@ -288,12 +288,22 @@ public class WorldCreator {
     room4.addRoomInventory(new Item("Bucket of Lava", "This probably breaks a few laws of physics..."));
     room3.addRoomInventory(new Item("Paint", "Pink paint"));
     room3.addRoomInventory(new Item("Papers", "Just blank paper, seems to be rather useless"));
-    room3.addRoomInventory(new Item("Golf Club", "Could have been used by a pro but who knows"));
+    room3.addRoomInventory(new MeleeWeapon("Golf Club", "Could have been used by a pro but who knows",10));
     room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
     room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
+    room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5,10));
+    room6.addRoomInventory(new MeleeWeapon("Pipe","Old rusty pipe",15));
+    room5.addRoomInventory(new Item("Sunglasses", "They look hella fresh."));
+    room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?",20, 30));
+    room4.addRoomInventory(new MeleeWeapon("The Repellent Stick", "The Repellent stick is neither powerful, nor visually stunning appealing.", 1));
+    room18.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
+    room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
+    room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
+    room19.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop","Getting hit by this will only hurt your pride",3));
   }
+
 
   //Getters
   public Room getStarterRoom() {

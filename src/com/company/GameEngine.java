@@ -12,7 +12,7 @@ public class GameEngine {
   private Room requestedRoomPos;
   private Room entangledRoom;
   private Room tempEntangledRoom;
-
+  Scanner sc = new Scanner(System.in);
 
   public void printAvailableDoors() {
     //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
@@ -274,6 +274,7 @@ public class GameEngine {
     }
   }
 
+
   public boolean doesRoomHaveItem() {
     if (player.getPlayerPosition().getRoomInventory().size() != 0) {
       return true;
@@ -346,7 +347,14 @@ public class GameEngine {
       ui.printPlayerReactionDark();
     }
   }
-
+  public void launchAttach() {
+    if (player.equipWeapon){
+      player.attack();
+    }
+    else {
+      ui.noWeaponEquipped();
+    }
+  }
 
   public void userInputCaseOnLightOff() {
     if (player.getPlayerPosition().isRoomHasSwitch()) {
@@ -371,7 +379,14 @@ public class GameEngine {
     }
   }
 
-
+  public void equipCheckForWeapon(){
+    if (doesPlayerHaveItems()){
+      player.whichWeapon();
+    }
+    else {
+      ui.printPlayerHasNoWeapon();
+    }
+  }
 
   public void execute() throws InterruptedException {
     // Part 1: The room.
@@ -388,7 +403,7 @@ public class GameEngine {
     player.loadUserInterfaceInPlayer();
     player.loadGameEngineInPlayer();
 
-    music.playMusic();
+    music.playBackground();
 
     ui.clearScreen();
 
@@ -406,14 +421,13 @@ public class GameEngine {
   }
 
   public String userChoice() {
-    Scanner sc = new Scanner(System.in);
+
     do {
 
       warnWhenLowHp();
       ui.askPlayerForInput();
       String decision = scannerReturnToLowerCase();
       ui.clearScreen();
-
       switch (decision) {
         case "go north", "north", "n" -> userInputCaseNorth();
         case "go south", "south", "s" -> userInputCaseSouth();
@@ -435,10 +449,13 @@ public class GameEngine {
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
-
+        case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon();
+        case "attack", "kill", "fire", "launch" -> launchAttach();
         default -> ui.errorMessageInvalidMove();
 
       }
     } while (true);
   }
+
+
 }
