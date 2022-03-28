@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -90,6 +91,16 @@ public class GameEngine {
     }
   }
 
+  public void userInputCaseDirection(String direction){
+    if (direction.contains("north") || direction.contains("n")){
+
+      //System.out.println("North");
+
+    }
+
+  }
+
+
   public void userInputCaseNorth() {
     //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
     if (player.getPlayerPosition().getN() == null) {
@@ -123,7 +134,6 @@ public class GameEngine {
         } else {
           System.out.println(player.getPlayerPosition().getName());
           printAvailableDoors();
-          roomArt();
         }
       }
     }
@@ -413,41 +423,38 @@ public class GameEngine {
 
     ui.introduction();
 
-
-
     //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
     userChoice();
 
   }
 
   public String findCommand (String decision) {
-    return decision.substring(0,decision.indexOf(" "));
+    return decision.substring(0,decision.indexOf(" ")).toLowerCase();
   }
+
   public String findSomething (String decision) {
-    return decision.substring(decision.indexOf(" ") + 1);
+    return decision.substring(decision.indexOf(" ") + 1).toLowerCase();
   }
 
   public String userChoice() {
-
     do {
-
       warnWhenLowHp();
       ui.askPlayerForInput();
       String decision = scannerReturnToLowerCase();
       ui.clearScreen();
-      switch (decision) {
-        case "go north", "north", "n" -> userInputCaseNorth();
-        case "go south", "south", "s" -> userInputCaseSouth();
-        case "go east", "east", "e" -> userInputCaseEast();
-        case "go west", "west", "w" -> userInputCaseWest();
-        case "look", "see", "look around" -> userInputCaseLook();
+
+      String command = findCommand(decision);
+      String findSomething = findSomething(decision);
+      switch (command) {
+        case "go" -> userInputCaseDirection(findSomething);
+        case "look", "see" -> userInputCaseLook();
         case "help", "info", "information" -> ui.userInputCaseHelp();
-        case "exit", "get out", "leave", "shutdown", "game end" -> {
+        case "exit", "leave", "shutdown", "end" -> {
           ui.userInputCaseExit();
           exitGame();
         }
         case "unlock", "unlock door" -> userInputCaseOnUnlock();
-        case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find— lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
+        case "turn on", "on", "lightswitch" -> userInputCaseOnLightOn();
         case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
         case "pick up", "pick up item", "take" -> userInputTakeItem();
         case "inventory", "backpack", "check inventory", "inv", "look at items" -> userInputCaseLookItem();
@@ -459,10 +466,7 @@ public class GameEngine {
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon();
         case "attack", "kill", "fire", "launch" -> launchAttach();
         default -> ui.errorMessageInvalidMove();
-
       }
     } while (true);
   }
-
-
 }
