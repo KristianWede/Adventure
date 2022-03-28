@@ -112,9 +112,13 @@ public class Player {
     String weaponChoice = game.scannerReturnToLowerCase();
     for (int i = 0; i < playerInventory.size(); i++) {
       Item weapon = playerInventory.get(i);
-      if (weapon.getItemName().toLowerCase().contains(weaponChoice)) {
-        itemFound = true;
-        userEquipsWeapon((Weapon) weapon);
+
+      if (weapon instanceof Weapon){
+        if (weapon.getItemName().toLowerCase().contains(weaponChoice)) {
+          itemFound = true;
+          userEquipsWeapon((Weapon) weapon);
+      }
+
       }
     }
     if (!itemFound) {
