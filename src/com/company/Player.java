@@ -62,7 +62,7 @@ public class Player {
     boolean itemFound = false;
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
       Item tmp = room.getRoomInventory().get(i);
-      if (tmp.getItemName().toLowerCase().equals(searchWord)) {
+      if (tmp.getItemName().toLowerCase().contains(searchWord)) {
         playerInventory.add(tmp);
         ui.printReactionPickUp(tmp);
         room.getRoomInventory().remove(tmp);
@@ -90,10 +90,8 @@ public class Player {
     }
   }
 
-  public void whichFood() {
+  public void whichFood(String foodItem) {
     boolean itemFound = false;
-    ui.printAskPlayerForFood();
-    String foodItem = game.scannerReturnToLowerCase();
     for (int i = 0; i < playerInventory.size(); i++) {
       Food food = (Food) playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
@@ -106,10 +104,8 @@ public class Player {
     }
   }
 
-  public void whichWeapon() {
+  public void whichWeapon(String weaponChoice) {
     boolean itemFound = false;
-    ui.printAskPlayerForWeapon();
-    String weaponChoice = game.scannerReturnToLowerCase();
     for (int i = 0; i < playerInventory.size(); i++) {
       Item weapon = playerInventory.get(i);
 
@@ -128,11 +124,11 @@ public class Player {
   private void userEquipsWeapon(Weapon weapon) {
     int tmp = weapon.getDamage();
     if (tmp == 0){
-      ui.notWeapon(weapon);
+      ui.printNotWeapon(weapon);
     }
     else if (tmp > 0){
     equipWeapon = true;
-    ui.weaponEquipped(weapon);
+    ui.printWeaponEquipped(weapon);
   }}
 
   public void userEatsFood(Food food) {

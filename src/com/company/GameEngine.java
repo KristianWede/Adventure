@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -91,13 +90,16 @@ public class GameEngine {
     }
   }
 
-  public void userInputCaseDirection(String direction){
-    if (direction.contains("north") || direction.contains("n")){
+  public void userInputCaseDirection(String direction) {
 
-      //System.out.println("North");
+    switch (direction){
+      case "north", "n" -> userInputCaseNorth();
+      case "south", "s" -> userInputCaseSouth();
+      case "east", "e" -> userInputCaseEast();
+      case "west", "w" -> userInputCaseWest();
 
+      default -> ui.printUserNotDeclaringDirection();
     }
-
   }
 
 
@@ -266,14 +268,17 @@ public class GameEngine {
     }
   }
 
-  public void userInputDropItem() {
-    if (doesPlayerHaveItems()) {
-      ui.printAskPlayerChooseItemDrop();
-      String searchWord = scannerReturnToLowerCase();
-      player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
+  public void userInputDropItem(String searchWord) {
+    if (searchWord != null) {
+      if (doesPlayerHaveItems()) {
+        player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
+      } else {
+        ui.printPlayerHasNoItems();
+      }
     } else {
-      ui.printPlayerHasNoItems();
+      ui.printUserNothingToDrop();
     }
+
   }
 
   public boolean doesPlayerHaveItems() {
@@ -344,20 +349,23 @@ public class GameEngine {
     }
   }
 
-  public void userInputTakeItem() {
-    if (!isRoomDark()) {
-      if (doesRoomHaveItem()) {
-        ui.printAskPlayerChooseItem();
-        String searchWord = scannerReturnToLowerCase();
-        player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
+  public void userInputTakeItem(String searchWord) {
+    if (searchWord != null) {
+      if (!isRoomDark()) {
+        if (doesRoomHaveItem()) {
+          player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
+        } else {
+          ui.printNoItemsOnGround();
+        }
       } else {
-        ui.printNoItemsOnGround();
+        ui.printPlayerReactionDark();
       }
     } else {
-      ui.printPlayerReactionDark();
+      ui.printUserNothingToTake();
     }
   }
-  public void launchAttach() {
+
+  public void launchAttack() {
     if (player.equipWeapon){
       player.attack();
     }
@@ -389,9 +397,9 @@ public class GameEngine {
     }
   }
 
-  public void equipCheckForWeapon(){
+  public void equipCheckForWeapon(String searchWord){
     if (doesPlayerHaveItems()){
-      player.whichWeapon();
+      player.whichWeapon(searchWord);
     }
     else {
       ui.printPlayerHasNoWeapon();
@@ -429,11 +437,19 @@ public class GameEngine {
   }
 
   public String findCommand (String decision) {
-    return decision.substring(0,decision.indexOf(" ")).toLowerCase();
+    if (decision.contains(" ")) {
+      return decision.substring(0, decision.indexOf(" ")).toLowerCase();
+    } else {
+      return decision;
+    }
   }
 
   public String findSomething (String decision) {
-    return decision.substring(decision.indexOf(" ") + 1).toLowerCase();
+    if (decision.contains(" ")) {
+      return decision.substring(decision.indexOf(" ") + 1).toLowerCase();
+    } else {
+      return null;
+    }
   }
 
   public String userChoice() {
@@ -453,18 +469,18 @@ public class GameEngine {
           ui.userInputCaseExit();
           exitGame();
         }
-        case "unlock", "unlock door" -> userInputCaseOnUnlock();
-        case "turn on", "on", "lightswitch" -> userInputCaseOnLightOn();
+        case "unlock" -> userInputCaseOnUnlock();
+        case "on", "lightswitch", "turn on light", "lights on", "flip switch" -> userInputCaseOnLightOn();
         case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
-        case "pick up", "pick up item", "take" -> userInputTakeItem();
+        case "take" -> userInputTakeItem(findSomething);
         case "inventory", "backpack", "check inventory", "inv", "look at items" -> userInputCaseLookItem();
-        case "drop", "throw away", "drop it" -> userInputDropItem();
-        case "inspect", "inspect item", "look item", "look at item", "check item", "search item" -> userInputCaseInspectItem();
+        case "drop" -> userInputDropItem(findSomething);
+        case "inspect", "check" -> userInputCaseInspectItem();
         case "connor", "connar", "get to the chopper" -> magicWord();
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
-        case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood();
-        case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon();
-        case "attack", "kill", "fire", "launch" -> launchAttach();
+        case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
+        case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
+        case "attack", "kill", "fire", "launch" -> launchAttack();
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);

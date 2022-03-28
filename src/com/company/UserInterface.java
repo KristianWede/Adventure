@@ -340,11 +340,24 @@ public class UserInterface {
     System.out.println("Which weapon do you want to equip?");
   }
 
-  public void weaponEquipped(Item weapon) {
+  public void printWeaponEquipped(Item weapon) {
     System.out.println(weapon + " has now been equipped!");
   }
 
-  public void notWeapon(Item weapon) {
+  public void printNotWeapon(Item weapon) {
     System.out.println("You cannot equip " + weapon + " as a weapon.");
   }
+
+  public void printUserNotDeclaringDirection(){
+    System.out.println("Go exactly where?");
+  }
+
+  public void printUserNothingToTake(){
+    System.out.println("Take what?");
+  }
+
+  public void printUserNothingToDrop(){
+    System.out.println("Drop what?");
+  }
+
 }
