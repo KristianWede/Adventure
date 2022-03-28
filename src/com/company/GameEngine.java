@@ -334,14 +334,12 @@ public class GameEngine {
     }
   }
 
-  public void userInputTakeItem(String decision) {
+  public void userInputTakeItem() {
     if (!isRoomDark()) {
       if (doesRoomHaveItem()) {
-//        ui.printAskPlayerChooseItem();
-        findCommand(decision);
-        findSomething(decision);
-//        String searchWord = scannerReturnToLowerCase();
-        player.addItemToPlayerInventory(decision, player.getPlayerPosition());
+        ui.printAskPlayerChooseItem();
+        String searchWord = scannerReturnToLowerCase();
+        player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
       } else {
         ui.printNoItemsOnGround();
       }
@@ -451,7 +449,7 @@ public class GameEngine {
         case "unlock", "unlock door" -> userInputCaseOnUnlock();
         case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find— lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
         case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
-        case "pick up", "pick up item", "take" -> userInputTakeItem(decision);
+        case "pick up", "pick up item", "take" -> userInputTakeItem();
         case "inventory", "backpack", "check inventory", "inv", "look at items" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "inspect", "inspect item", "look item", "look at item", "check item", "search item" -> userInputCaseInspectItem();

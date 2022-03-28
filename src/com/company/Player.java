@@ -118,7 +118,6 @@ public class Player {
           itemFound = true;
           userEquipsWeapon((Weapon) weapon);
       }
-
       }
     }
     if (!itemFound) {
