@@ -62,7 +62,7 @@ public class Player {
     boolean itemFound = false;
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
       Item tmp = room.getRoomInventory().get(i);
-      if (tmp.getItemName().toLowerCase().contains(searchWord)) {
+      if (tmp.getItemName().toLowerCase().equals(searchWord)) {
         playerInventory.add(tmp);
         ui.printReactionPickUp(tmp);
         room.getRoomInventory().remove(tmp);

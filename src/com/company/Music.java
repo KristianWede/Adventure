@@ -7,8 +7,7 @@ import java.io.File;
 
 public class Music {
   //First background music (?)
-  void playBackground() {
-/*
+/*  void playBackground() {
     try {
       String musicLocation = "background.wav";
       File musicPath = new File(musicLocation);
@@ -58,9 +57,8 @@ public class Music {
         ex.printStackTrace();
 
       }
-*/
 
-    }
+    }*/
 
   }
 

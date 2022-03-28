@@ -334,12 +334,14 @@ public class GameEngine {
     }
   }
 
-  public void userInputTakeItem() {
+  public void userInputTakeItem(String decision) {
     if (!isRoomDark()) {
       if (doesRoomHaveItem()) {
-        ui.printAskPlayerChooseItem();
-        String searchWord = scannerReturnToLowerCase();
-        player.addItemToPlayerInventory(searchWord, player.getPlayerPosition());
+//        ui.printAskPlayerChooseItem();
+        findCommand(decision);
+        findSomething(decision);
+//        String searchWord = scannerReturnToLowerCase();
+        player.addItemToPlayerInventory(decision, player.getPlayerPosition());
       } else {
         ui.printNoItemsOnGround();
       }
@@ -403,7 +405,7 @@ public class GameEngine {
     player.loadUserInterfaceInPlayer();
     player.loadGameEngineInPlayer();
 
-    music.playBackground();
+//    music.playBackground();
 
     ui.clearScreen();
 
@@ -418,6 +420,13 @@ public class GameEngine {
     //UserInput processes input from user and translates into action. (Example; 'go south' will change currentRoom to the one field below it.)
     userChoice();
 
+  }
+
+  public String findCommand (String decision) {
+    return decision.substring(0,decision.indexOf(" "));
+  }
+  public String findSomething (String decision) {
+    return decision.substring(decision.indexOf(" ") + 1);
   }
 
   public String userChoice() {
@@ -440,9 +449,9 @@ public class GameEngine {
           exitGame();
         }
         case "unlock", "unlock door" -> userInputCaseOnUnlock();
-        case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
+        case "turn on light", "turn on", "on", "look lightswitch", "lightswitch", "find— lightswitch", "turn on lightswitch" -> userInputCaseOnLightOn();
         case "turn off light", "turn off", "off", "turn off lightswitch", "off lightswitch" -> userInputCaseOnLightOff();
-        case "pick up", "pick up item", "take" -> userInputTakeItem();
+        case "pick up", "pick up item", "take" -> userInputTakeItem(decision);
         case "inventory", "backpack", "check inventory", "inv", "look at items" -> userInputCaseLookItem();
         case "drop", "throw away", "drop it" -> userInputDropItem();
         case "inspect", "inspect item", "look item", "look at item", "check item", "search item" -> userInputCaseInspectItem();
