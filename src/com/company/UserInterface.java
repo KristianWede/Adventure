@@ -255,10 +255,6 @@ public class UserInterface {
     printOutItemInRoom(room);
   }
 
-  public void printAskPlayerChooseItem() {
-    System.out.println("What item do you want to pick up?");
-  }
-
   public void printReactionPickUp(Item item) {
     System.out.print("You picked up the ");
     System.out.println(TEXT_YELLOW + item + TEXT_RESET);
@@ -272,8 +268,9 @@ public class UserInterface {
   public void printPlayerHasNoItems() {
     System.out.println("You don't have any items.");
   }
+
   public void printPlayerHasNoWeapon() {
-    System.out.println("You don't have any weapon to equip.");
+    System.out.println("This item cannot be equipped as a weapon.");
   }
 
   public void printNoItemsOnGround() {
@@ -290,10 +287,6 @@ public class UserInterface {
 
   public void printAddedItemRoom(Item item) {
     System.out.println("You took " + "\u001B[33m" + item + "\u001B[0m" + " out of your bag and put it on the ground.");
-  }
-
-  public void printAskPlayerChooseItemDrop() {
-    System.out.println("What item do you want to drop?");
   }
 
   public void notEdible(Food food) {
@@ -333,20 +326,8 @@ public class UserInterface {
     System.out.println("Your inventory:");
   }
 
-  public void printAskPlayerForFood(){
-    System.out.println("What food do you want to eat?");
-  }
-
-  public void printAskPlayerForWeapon() {
-    System.out.println("Which weapon do you want to equip?");
-  }
-
   public void printWeaponEquipped(Weapon weapon) {
     System.out.println(weapon + " has now been equipped!");
-  }
-
-  public void printNotWeapon(Weapon weapon) {
-    System.out.println("You cannot equip " + weapon + " as a weapon.");
   }
 
   public void printUserNotDeclaringDirection(){
