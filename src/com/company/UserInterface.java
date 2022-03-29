@@ -340,11 +340,11 @@ public class UserInterface {
     System.out.println("Which weapon do you want to equip?");
   }
 
-  public void printWeaponEquipped(Item weapon) {
+  public void printWeaponEquipped(Weapon weapon) {
     System.out.println(weapon + " has now been equipped!");
   }
 
-  public void printNotWeapon(Item weapon) {
+  public void printNotWeapon(Weapon weapon) {
     System.out.println("You cannot equip " + weapon + " as a weapon.");
   }
 
@@ -360,4 +360,11 @@ public class UserInterface {
     System.out.println("Drop what?");
   }
 
+  public void printWeaponAlreadyEquipped() {
+    System.out.println("You already have a weapon equipped.");
+  }
+
+  public void printUnEquip(String weapon) {
+    System.out.println(weapon + " has been unequipped.");
+  }
 }

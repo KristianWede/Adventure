@@ -122,11 +122,10 @@ public class Player {
   }
 
   private void userEquipsWeapon(Weapon weapon) {
-    int tmp = weapon.getDamage();
-    if (tmp == 0){
-      ui.printNotWeapon(weapon);
+    if (equipWeapon == true){
+      ui.printWeaponAlreadyEquipped();
     }
-    else if (tmp > 0){
+    else {
     equipWeapon = true;
     ui.printWeaponEquipped(weapon);
   }}

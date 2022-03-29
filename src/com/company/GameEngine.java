@@ -406,6 +406,13 @@ public class GameEngine {
     }
   }
 
+  private void unequipCheckForWeapon(String weapon) {
+    if (player.equipWeapon){
+      player.equipWeapon = false;
+      ui.printUnEquip(weapon);
+    }
+  }
+
   public void execute() throws InterruptedException {
     // Part 1: The room.
 
@@ -480,9 +487,12 @@ public class GameEngine {
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
+        case "unequip" -> unequipCheckForWeapon(findSomething);
         case "attack", "kill", "fire", "launch" -> launchAttack();
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);
   }
+
+
 }
