@@ -104,7 +104,7 @@ public class WorldCreator {
     Room room12 = new Room("Staircase", """
         As you enter, you find your self standing at the end of a staircase.
         You notice that the staircase bends a little towards west.
-         You can easily see the other end of the staircase.""");
+        You can easily see the other end of the staircase.""");
 
     Room room13 = new Room("The repos", """
         What a weird room. It feels out of balance, in a way.
