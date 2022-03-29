@@ -364,7 +364,7 @@ public class UserInterface {
     System.out.println("You already have a weapon equipped.");
   }
 
-  public void printUnEquip(String weapon) {
+  public void printUnEquip(Weapon weapon) {
     System.out.println(weapon + " has been unequipped.");
   }
 }

@@ -409,9 +409,14 @@ public class GameEngine {
   private void unequipCheckForWeapon(String weapon) {
     if (player.equipWeapon){
       player.equipWeapon = false;
-      ui.printUnEquip(weapon);
+      for (int i = 0; i < player.getPlayerInventory().size(); i++) {
+        Weapon weaponChoice = (Weapon) player.getPlayerInventory().get(i);
+
+          weaponChoice.getItemName().toLowerCase().contains(weapon);
+        ui.printUnEquip(weaponChoice);
+        }
+      }
     }
-  }
 
   public void execute() throws InterruptedException {
     // Part 1: The room.
