@@ -1,18 +1,21 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class Enemy {
     private Room enemyPosition;
     private UserInterface ui;
     private GameEngine game;
     protected int health = 100;
     protected Weapon weaponEquipped;
+    protected String enemyName;
 
-    public Enemy(Room enemyPosition, int health, Weapon weaponEquipped) {
+    public Enemy(String enemyName, Room enemyPosition, int health, Weapon weaponEquipped) {
         this.enemyPosition = enemyPosition;
         this.health = health;
         this.weaponEquipped = weaponEquipped;
+        this.enemyName = enemyName;
     }
-
 
     public Room getEnemyPosition() {
         return enemyPosition;
@@ -39,5 +42,12 @@ public class Enemy {
         this.weaponEquipped = weaponEquipped;
     }
 
+    public String getEnemyName(){
+        return enemyName;
+    }
 
+    @Override
+    public String toString() {
+        return enemyName + " " + weaponEquipped;
+    }
 }

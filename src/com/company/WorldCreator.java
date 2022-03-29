@@ -1,9 +1,14 @@
 package com.company;
 
+import java.util.ArrayList;
+
 public class WorldCreator {
 
 
   private Room starterRoom;
+
+  protected ArrayList <Enemy> listOfEnemies = new ArrayList<>();
+
 
   public void createWorldMap() {
 
@@ -128,8 +133,9 @@ public class WorldCreator {
         alongside the walls. The kitchen appears extremely clean. You detect
         a faint sweet smell. Perhaps something is rotten?""");
 
-
-
+    listOfEnemies.add(new Enemy("Timmy" ,room1, 100, new Weapon("Laser Blaster", "Pretty damn high tech", 40)));
+    listOfEnemies.add(new Enemy("Hubert" ,room4, 100, new Weapon("Laser Canon", "Pretty damn high tech", 40)));
+    listOfEnemies.add(new Enemy("Maxi",room6, 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
 
     //Maps out what "fields" are available to each other, use the map for reference.
     //Room 1
@@ -261,5 +267,12 @@ public class WorldCreator {
     return starterRoom;
   }
 
+  public ArrayList <Enemy> getListOfEnemies(){
+    return listOfEnemies;
+  }
+
+  public String toString() {
+    return " " + getListOfEnemies() + " ";
+  }
 
 }

@@ -367,15 +367,18 @@ public class GameEngine {
     }
   }
 
-  public void launchAttack(Enemy enemy1) {
+  /*
+  public void launchAttack() {
     if (player.weaponEquipped != null){
-      player.attack(enemy1);
+
+
+      player.attack(enemy.getEnemyPosition(), creator.listOfEnemies());
     }
     else {
       ui.noWeaponEquipped();
     }
   }
-
+   */
   public void userInputCaseOnLightOff() {
     if (player.getPlayerPosition().isRoomHasSwitch()) {
       ui.printFoundLightswitch();
@@ -470,7 +473,7 @@ public class GameEngine {
     }
   }
 
-  public String userChoice() {
+  public void userChoice() {
     do {
       warnWhenLowHp();
       ui.askPlayerForInput();
@@ -499,7 +502,7 @@ public class GameEngine {
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
         case "unequip" -> unEquipCheckForWeapon(findSomething);
-        case "attack", "kill", "fire", "launch" -> launchAttack(enemy);
+        case "attack", "kill", "fire", "launch" -> player.attack(creator.getListOfEnemies());
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);
