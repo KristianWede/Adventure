@@ -106,14 +106,27 @@ public class WorldCreator {
         You notice that the staircase bends a little towards west.
          You can easily see the other end of the staircase.""");
 
-    Room room13 = new Room("This is room 13", """
-        Short description here 13""");
+    Room room13 = new Room("The repos", """
+        What a weird room. It feels out of balance, in a way.
+        Towards the east there is a repos overlooking the rest
+        of the room. In the center of the repos there is a 
+        narrow staircase leading directly into a door.
+        The ceiling is moist and sometimes you feel a drop of
+        water falling on your head. There is a subtle smell
+        of mold and rot.""");
 
-    Room room14 = new Room("This is room 14", """
-        Short description here 14""");
+    Room room14 = new Room("Ball Room", """
+        You enter a magnificent room, decorated with beautiful paintings.
+        The walls are painted red, chandeliers are hanging from the ceiling.
+         In the middle of the room there is a long table, set with
+         cutlery and plates, as if it was prepared for a dinner party.
+         Everything looks like it was carefully placed.""");
 
-    Room room15 = new Room("This is room 15 ", """
-        Short description here 15""");
+    Room room15 = new Room("Kitchen", """
+        A traditional kitchen, like the ones you would expect at a restaurant.
+        White tiles are covering the walls and several stoves are standing
+        alongside the walls. The kitchen appears extremely clean. You detect
+        a faint sweet smell. Perhaps something is rotten?""");
 
 
 
