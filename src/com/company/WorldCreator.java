@@ -115,29 +115,7 @@ public class WorldCreator {
     Room room15 = new Room("This is room 15 ", """
         Short description here 15""");
 
-    Room room16 = new Room("This is room 16 ", """
-        Short description here 16""");
 
-    Room room17 = new Room("This is room 17", """
-        Short description here 17""");
-
-    Room room18 = new Room("This is room 18", """
-        Short description here 18""");
-
-    Room room19 = new Room("This is room 19", """
-        Short description here 19""");
-
-    Room room20 = new Room("This is room 20", """
-        Short description here 20""");
-
-    Room room21 = new Room("This is room 21", """
-        Short description here 21""");
-
-    Room room22 = new Room("This is room 22", """
-        Short description here 22""");
-
-    Room room23 = new Room("This is room 23", """
-        Short description here 23""");
 
 
     //Maps out what "fields" are available to each other, use the map for reference.
@@ -199,7 +177,7 @@ public class WorldCreator {
 
     //Room 9
     room9.setN(room6);
-    room9.setE(room19);
+    room9.setE(null);
     room9.setS(null);
     room9.setW(room8);
 
@@ -234,58 +212,12 @@ public class WorldCreator {
     room14.setW(room15);
 
     //Room 15
-    room15.setN(room16);
+    room15.setN(null);
     room15.setE(room14);
     room15.setS(room12);
     room15.setW(null);
 
-    //Room 16
-    room16.setN(null);
-    room16.setE(room17);
-    room16.setS(room15);
-    room16.setW(null);
 
-    //Room 17
-    room17.setN(null);
-    room17.setE(room18);
-    room17.setS(null);
-    room17.setW(room16);
-
-    //Room 18
-    room18.setN(null);
-    room18.setE(null);
-    room18.setS(null);
-    room18.setW(room17);
-
-    //Room 19
-    room19.setN(room20);
-    room19.setE(null);
-    room19.setS(null);
-    room19.setW(room9);
-
-    //Room 20
-    room20.setN(null);
-    room20.setE(room21);
-    room20.setS(room19);
-    room20.setW(null);
-
-    //Room 21
-    room21.setN(null);
-    room21.setE(room22);
-    room21.setS(null);
-    room21.setW(room20);
-
-    //Room 22
-    room22.setN(room23);
-    room22.setE(null);
-    room22.setS(null);
-    room22.setW(room21);
-
-    //Room 23
-    room23.setN(null);
-    room23.setE(null);
-    room23.setS(room22);
-    room23.setW(null);
 
     starterRoom = room1;
 
@@ -298,16 +230,16 @@ public class WorldCreator {
     room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
-    room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
+    //room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
     room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5,10));
     room6.addRoomInventory(new MeleeWeapon("Pipe","Old rusty pipe",15));
     room5.addRoomInventory(new Item("Sunglasses", "They look hella fresh."));
     room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?",20, 30));
     room4.addRoomInventory(new MeleeWeapon("The Repellent Stick", "The Repellent stick is neither powerful, nor visually stunning appealing.", 1));
-    room18.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
+    //room18.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
     room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
     room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
-    room19.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop","Getting hit by this will only hurt your pride",3));
+    //room19.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop","Getting hit by this will only hurt your pride",3));
   }
 
 
