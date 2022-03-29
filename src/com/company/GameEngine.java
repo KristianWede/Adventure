@@ -398,7 +398,10 @@ public class GameEngine {
   }
 
   public void equipCheckForWeapon(String searchWord){
-    if (doesPlayerHaveItems()){
+    if (searchWord == null){
+      ui.errorMessageInvalidMove();
+    }
+    else if (doesPlayerHaveItems()){
       player.whichWeapon(searchWord);
     }
     else {
