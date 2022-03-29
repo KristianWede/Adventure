@@ -83,6 +83,7 @@ public class UserInterface {
         'inspect' will inspect item in your inventory.
         'eat' to consume food in your inventory.
         'equip' to equip weapon.
+        'unequip' to unequip weapon.
         'attack' to attack enemy.
         \n""");
   }
@@ -366,5 +367,9 @@ public class UserInterface {
 
   public void printUnEquip(Weapon weapon) {
     System.out.println(weapon + " has been unequipped.");
+  }
+
+  public void printUserNothingToEquip() {
+    System.out.println("Nothing to be unequipped");
   }
 }

@@ -117,7 +117,7 @@ public class Player {
       }
     }
     if (!itemFound) {
-      ui.printErrorCannotFindItem();
+      ui.printPlayerHasNoWeapon();
     }
   }
 

@@ -398,28 +398,29 @@ public class GameEngine {
   }
 
   public void equipCheckForWeapon(String searchWord){
-    if (searchWord == null){
-      ui.errorMessageInvalidMove();
+    if (searchWord != null) {
+
+    if (doesPlayerHaveItems()) {
+        player.whichWeapon(searchWord);
+      }
     }
-    else if (doesPlayerHaveItems()){
-      player.whichWeapon(searchWord);
-    }
-    else {
-      ui.printPlayerHasNoWeapon();
-    }
+    else ui.errorMessageInvalidMove();
   }
 
-  private void unequipCheckForWeapon(String weapon) {
-    if (player.equipWeapon){
-      player.equipWeapon = false;
-      for (int i = 0; i < player.getPlayerInventory().size(); i++) {
-        Weapon weaponChoice = (Weapon) player.getPlayerInventory().get(i);
+  private void unEquipCheckForWeapon(String weapon) {
+    if (weapon != null) {
+      if (player.equipWeapon) {
+        player.equipWeapon = false;
+        for (int i = 0; i < player.getPlayerInventory().size(); i++) {
+          Weapon weaponChoice = (Weapon) player.getPlayerInventory().get(i);
 
           weaponChoice.getItemName().toLowerCase().contains(weapon);
-        ui.printUnEquip(weaponChoice);
+          ui.printUnEquip(weaponChoice);
         }
       }
     }
+    else ui.printUserNothingToEquip();
+  }
 
   public void execute() throws InterruptedException {
     // Part 1: The room.
@@ -495,12 +496,10 @@ public class GameEngine {
         case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
-        case "unequip" -> unequipCheckForWeapon(findSomething);
+        case "unequip" -> unEquipCheckForWeapon(findSomething);
         case "attack", "kill", "fire", "launch" -> launchAttack();
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);
   }
-
-
 }
