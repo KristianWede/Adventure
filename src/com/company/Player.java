@@ -9,7 +9,7 @@ public class Player {
   private UserInterface ui;
   private GameEngine game;
   protected int health = 100;
-  protected boolean equipWeapon = false;
+  protected Weapon weaponEquipped;
 
   public void loadUserInterfaceInPlayer() {
     ui = new UserInterface();
@@ -20,6 +20,7 @@ public class Player {
   }
 
   private ArrayList<Item> playerInventory = new ArrayList<>();
+
 
   public int tryEatFood(Food food) {
     if (getHealth() == 100) {
@@ -58,6 +59,7 @@ public class Player {
   }
 
   //Setter
+
   public void addItemToPlayerInventory(String searchWord, Room room) {
     boolean itemFound = false;
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
@@ -122,11 +124,11 @@ public class Player {
   }
 
   private void userEquipsWeapon(Weapon weapon) {
-    if (equipWeapon == true){
+    if (weaponEquipped != null){
       ui.printWeaponAlreadyEquipped();
     }
     else {
-    equipWeapon = true;
+    weaponEquipped = weapon;
     ui.printWeaponEquipped(weapon);
   }}
 
@@ -144,8 +146,9 @@ public class Player {
     tryEatFood(food);
   }
 
-  public void attack() {
-
+  public void attack(Enemy enemy) {
+    enemy.setHealth(enemy.getHealth() - weaponEquipped.getDamage());
+    System.out.println(enemy.getHealth());
   }
 
   //Getter

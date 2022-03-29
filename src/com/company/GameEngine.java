@@ -8,6 +8,7 @@ public class GameEngine {
   private Music music;
   private UserInterface ui;
   private Player player;
+  private Enemy enemy;
 
   private Room requestedRoomPos;
   private Room entangledRoom;
@@ -298,6 +299,7 @@ public class GameEngine {
     }
   }
 
+
   public String scannerReturnToLowerCase(){
     Scanner sc = new Scanner(System.in);
     String searchWord = sc.nextLine().toLowerCase();
@@ -365,9 +367,9 @@ public class GameEngine {
     }
   }
 
-  public void launchAttack() {
-    if (player.equipWeapon){
-      player.attack();
+  public void launchAttack(Enemy enemy1) {
+    if (player.weaponEquipped != null){
+      player.attack(enemy1);
     }
     else {
       ui.noWeaponEquipped();
@@ -409,8 +411,8 @@ public class GameEngine {
 
   private void unEquipCheckForWeapon(String weapon) {
     if (weapon != null) {
-      if (player.equipWeapon) {
-        player.equipWeapon = false;
+      if (player.weaponEquipped != null) {
+        player.weaponEquipped = null;
         for (int i = 0; i < player.getPlayerInventory().size(); i++) {
           Weapon weaponChoice = (Weapon) player.getPlayerInventory().get(i);
 
@@ -497,7 +499,7 @@ public class GameEngine {
         case "eat","eat food","snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
         case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
         case "unequip" -> unEquipCheckForWeapon(findSomething);
-        case "attack", "kill", "fire", "launch" -> launchAttack();
+        case "attack", "kill", "fire", "launch" -> launchAttack(enemy);
         default -> ui.errorMessageInvalidMove();
       }
     } while (true);

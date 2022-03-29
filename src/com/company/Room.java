@@ -16,6 +16,7 @@ public class Room {
   private boolean roomHasSwitch;
   private boolean roomDarkIntro;
   private ArrayList<Item> roomInventory;
+
   private boolean itemPresent;
 
   public Room(String name, String description) {
@@ -40,6 +41,7 @@ public class Room {
   public ArrayList<Item> getRoomInventory() {
     return roomInventory;
   }
+
 
   public boolean isRoomDarkIntro() {
     return roomDarkIntro;
@@ -108,7 +110,6 @@ public class Room {
 
   public void addRoomInventory(Item item) {
     this.roomInventory.add(item);
-
   }
 
   public void setRoomDarkIntro(boolean roomDarkIntro) {
