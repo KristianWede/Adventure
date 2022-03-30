@@ -8,8 +8,6 @@ public class WorldCreator {
     private Room starterRoom;
 
 
-
-
     public void createWorldMap() {
 
         Room room1 = new Room("Arrival", """

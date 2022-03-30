@@ -149,9 +149,10 @@ public class Player {
     public void lookForEnemy() {
         checkForEnemy();
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
-                enemy.enemyAttacks();
-                setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
-        }}
+            enemy.enemyAttacks();
+            setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
+        }
+    }
 
     public void checkForEnemy() {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
@@ -161,12 +162,13 @@ public class Player {
                         " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n");
 
             }
-    }}
+        }
+    }
 
     public void attack(String enemyName) {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
             if (enemy != null && weaponEquipped != null) {
-                if (enemyName == null){
+                if (enemyName == null) {
                     ui.attackWho();
                 }
                 if (enemy.getEnemyName().equals(enemyName)) {

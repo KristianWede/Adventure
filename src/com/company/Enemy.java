@@ -14,27 +14,26 @@ public class Enemy {
         this.enemyName = enemyName;
     }
 
-    public void attackedByPlayer(Weapon weapon){
-                setHealth(getHealth() - weapon.getDamage());
-                if (getHealth() <= 0) {
-                    System.out.println("You have killed the enemy!" + "\n");
-                }
+    public void attackedByPlayer(Weapon weapon) {
+        setHealth(getHealth() - weapon.getDamage());
+        if (getHealth() <= 0) {
+            System.out.println("You have killed the enemy!" + "\n");
+        }
         System.out.println("You attacked " + enemyName + ". He took " + weapon.getDamage() + " hp worth of damage.");
     }
 
-    public void enemyAttacks(){
+    public void enemyAttacks() {
         System.out.println("\u001B[33m" + getEnemyName() + " attacked you with his " + getWeaponEquipped().getItemName() + " and you took " + getWeaponEquipped().getDamage() + " damage." + "\u001B[0m");
     }
 
 
-    public boolean getEnemyEncountered(){
+    public boolean getEnemyEncountered() {
         return enemyEncountered;
     }
 
-    public void setEnemyEncountered(boolean enemyEncountered){
+    public void setEnemyEncountered(boolean enemyEncountered) {
         this.enemyEncountered = enemyEncountered;
     }
-
 
 
     public int getHealth() {
