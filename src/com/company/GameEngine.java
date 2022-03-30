@@ -9,8 +9,6 @@ public class GameEngine {
     private Music music;
     private UserInterface ui;
     private Player player;
-    boolean enemyFound;
-    boolean initialEncounter;
 
     private Room requestedRoomPos;
     private Room entangledRoom;
@@ -412,18 +410,6 @@ public class GameEngine {
         } else ui.printUserNothingToEquip();
     }
 
-    /*public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition) {
-        for (Enemy enemy: listOfEnemies) {
-            Room tmp = enemy.getEnemyPosition();
-            if (tmp == playerposition && !(enemy.getEnemyEncountered())){
-                enemyFound = true;
-                enemy.setEnemyEncountered(true);
-                System.out.println("\u001B[31m" + "There's an enemy in the room!" );
-                System.out.println(enemy.getEnemyName() + " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n");
-            }
-        }
-        }*/
-
     public void execute() throws InterruptedException {
         // Part 1: The room.
 
@@ -473,6 +459,7 @@ public class GameEngine {
 
     public void userChoice() {
         do {
+            ui.printString(player.checkForEnemy());
             player.checkForEnemy();
             warnWhenLowHp();
             ui.askPlayerForInput();
@@ -501,7 +488,7 @@ public class GameEngine {
                 case "eat", "eat food", "snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
-                case "attack", "kill", "fire", "launch" -> player.attack(findSomething);
+                case "attack", "kill", "fire", "launch" -> ui.printString(player.attack(findSomething));
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);

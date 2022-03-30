@@ -221,8 +221,9 @@ public class UserInterface {
         System.out.println(playerPos.getName());
     }
 
-    public void noWeaponEquipped() {
-        System.out.println("You have no weapon equipped.");
+    public String noWeaponEquipped() {
+        return "You have no weapon equipped.";
+//        System.out.println("You have no weapon equipped.");
     }
 
     public void grammarCheck(Room room) {
@@ -354,8 +355,9 @@ public class UserInterface {
         System.out.println("Nothing to be unequipped.");
     }
 
-    public void printErrorAttack() {
-        System.out.println("There is no enemy in this room.");
+    public String printErrorAttack() {
+        return "There is no enemy in this room.";
+//        System.out.println("There is no enemy in this room.");
     }
 
     public void printString(String text) {

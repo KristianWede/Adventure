@@ -131,8 +131,8 @@ public class WorldCreator {
                 alongside the walls. The kitchen appears extremely clean. You detect
                 a faint sweet smell. Perhaps something is rotten?""");
 
-        room2.addEnemy(new Enemy("timmy", 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
-        room8.addEnemy(new Enemy("randi", 100, new Weapon("Mini Blaster", "Pretty damn high tech", 3)));
+        room2.addEnemy(new Enemy("Timmy", 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
+        room8.addEnemy(new Enemy("Randi", 100, new Weapon("Mini Blaster", "Pretty damn high tech", 3)));
         room2.addEnemy(new Enemy("Hubert", 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
         room6.addEnemy(new Enemy("Maxi", 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
 
