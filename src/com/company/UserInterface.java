@@ -357,5 +357,11 @@ public class UserInterface {
     public void printErrorAttack() {
         System.out.println("There is no enemy in this room.");
     }
+    public void printString(String text){
+        System.out.println(text);
+    }
 
+    public void attackWho() {
+        System.out.println("Attack who?");
+    }
 }

@@ -3,20 +3,29 @@ package com.company;
 import java.util.ArrayList;
 
 public class Enemy {
-    private Room enemyPosition;
-    private UserInterface ui;
-    private GameEngine game;
     private int health = 100;
     private Weapon weaponEquipped;
     private String enemyName;
     private boolean enemyEncountered = false;
 
-    public Enemy(String enemyName, Room enemyPosition, int health, Weapon weaponEquipped) {
-        this.enemyPosition = enemyPosition;
+    public Enemy(String enemyName, int health, Weapon weaponEquipped) {
         this.health = health;
         this.weaponEquipped = weaponEquipped;
         this.enemyName = enemyName;
     }
+
+    public void attackedByPlayer(Weapon weapon){
+                setHealth(getHealth() - weapon.getDamage());
+                if (getHealth() <= 0) {
+                    System.out.println("You have killed the enemy!" + "\n");
+                }
+        System.out.println("You attacked " + enemyName + ". He took " + weapon.getDamage() + " hp worth of damage.");
+    }
+
+    public void enemyAttacks(){
+        System.out.println("\u001B[33m" + getEnemyName() + " attacked you with his " + getWeaponEquipped().getItemName() + " and you took " + getWeaponEquipped().getDamage() + " damage." + "\u001B[0m");
+    }
+
 
     public boolean getEnemyEncountered(){
         return enemyEncountered;
@@ -26,14 +35,7 @@ public class Enemy {
         this.enemyEncountered = enemyEncountered;
     }
 
-    public Room getEnemyPosition() {
-        return enemyPosition;
-    }
 
-
-    public void setEnemyPosition(Room enemyPosition) {
-        this.enemyPosition = enemyPosition;
-    }
 
     public int getHealth() {
         return health;

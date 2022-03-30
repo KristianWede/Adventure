@@ -412,22 +412,17 @@ public class GameEngine {
         } else ui.printUserNothingToEquip();
     }
 
-    public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition) {
-                for (int i = 0; i < listOfEnemies.size(); i++) {
-                    Room tmp = listOfEnemies.get(i).getEnemyPosition();
-                    if (tmp == playerposition && !(listOfEnemies.get(i).getEnemyEncountered())) {
-                        enemyFound = true;
-                        listOfEnemies.get(i).setEnemyEncountered(true);
-                        System.out.println("\u001B[31m" + "There's an enemy in the room!" );
-                        System.out.println(listOfEnemies.get(i).getEnemyName() + " is here!" + " He has " + listOfEnemies.get(i).getHealth() + " hp left" + "\u001B[0m" + "\n");
-                    }
-                if (listOfEnemies.get(i).getHealth() <= 0){
-                    System.out.printf("You have killed the enemy!" + "\n");
-                    listOfEnemies.remove(i);
-                    enemyFound=false;
-                }
-                }
+    /*public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition) {
+        for (Enemy enemy: listOfEnemies) {
+            Room tmp = enemy.getEnemyPosition();
+            if (tmp == playerposition && !(enemy.getEnemyEncountered())){
+                enemyFound = true;
+                enemy.setEnemyEncountered(true);
+                System.out.println("\u001B[31m" + "There's an enemy in the room!" );
+                System.out.println(enemy.getEnemyName() + " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n");
+            }
         }
+        }*/
 
     public void execute() throws InterruptedException {
         // Part 1: The room.
@@ -478,7 +473,7 @@ public class GameEngine {
 
     public void userChoice() {
         do {
-            player.lookForEnemy(creator.listOfEnemies);
+            player.lookForEnemy();
             warnWhenLowHp();
             ui.askPlayerForInput();
             String decision = scannerReturnToLowerCase();
@@ -506,7 +501,7 @@ public class GameEngine {
                 case "eat", "eat food", "snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
-                case "attack", "kill", "fire", "launch" -> player.attack(creator.getListOfEnemies());
+                case "attack", "kill", "fire", "launch" -> player.attack(findSomething);
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);

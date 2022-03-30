@@ -17,6 +17,7 @@ public class Room {
     private boolean roomDarkIntro;
     private ArrayList<Item> roomInventory;
     private Enemy thisEnemyInRoom;
+    protected ArrayList<Enemy> listOfEnemies = new ArrayList<>();
 
     private boolean itemPresent;
 
@@ -167,6 +168,14 @@ public class Room {
 
     public void setW(Room w) {
         this.w = w;
+    }
+
+    public ArrayList<Enemy> getListOfEnemies() {
+        return listOfEnemies;
+    }
+
+    public void addEnemy(Enemy enemy){
+        listOfEnemies.add(enemy);
     }
 
     @Override

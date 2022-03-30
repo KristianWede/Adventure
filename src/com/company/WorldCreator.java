@@ -7,7 +7,7 @@ public class WorldCreator {
 
     private Room starterRoom;
 
-    protected ArrayList<Enemy> listOfEnemies = new ArrayList<>();
+
 
 
     public void createWorldMap() {
@@ -133,9 +133,10 @@ public class WorldCreator {
                 alongside the walls. The kitchen appears extremely clean. You detect
                 a faint sweet smell. Perhaps something is rotten?""");
 
-        listOfEnemies.add(new Enemy("Timmy The Terminator", room2, 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
-        listOfEnemies.add(new Enemy("Hubert The Hungarian", room4, 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
-        listOfEnemies.add(new Enemy("Maxi Man", room6, 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
+        room2.addEnemy(new Enemy("timmy", 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
+        room8.addEnemy(new Enemy("randi", 100, new Weapon("Mini Blaster", "Pretty damn high tech", 3)));
+        room4.addEnemy(new Enemy("Hubert", 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
+        room6.addEnemy(new Enemy("Maxi", 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
@@ -246,8 +247,15 @@ public class WorldCreator {
         room3.addRoomInventory(new Item("Papers", "Just blank paper, seems to be rather useless"));
         room3.addRoomInventory(new MeleeWeapon("Golf Club", "Could have been used by a pro but who knows", 10));
         room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
+        room7.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
+        room15.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
         room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
+        room8.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
+        room9.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
+        room12.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
         room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
+        room8.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
+        room11.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
         room12.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
         room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5, 10));
         room6.addRoomInventory(new MeleeWeapon("Pipe", "Old rusty pipe", 15));
@@ -264,14 +272,6 @@ public class WorldCreator {
     //Getters
     public Room getStarterRoom() {
         return starterRoom;
-    }
-
-    public ArrayList<Enemy> getListOfEnemies() {
-        return listOfEnemies;
-    }
-
-    public String toString() {
-        return " " + getListOfEnemies() + " ";
     }
 
 }
