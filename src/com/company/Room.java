@@ -16,8 +16,7 @@ public class Room {
     private boolean roomHasSwitch;
     private boolean roomDarkIntro;
     private ArrayList<Item> roomInventory;
-    private Enemy thisEnemyInRoom;
-    protected ArrayList<Enemy> listOfEnemies = new ArrayList<>();
+    private ArrayList<Enemy> listOfEnemies = new ArrayList<>();
 
     private boolean itemPresent;
 

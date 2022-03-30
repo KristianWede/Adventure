@@ -389,7 +389,6 @@ public class GameEngine {
 
     public void equipCheckForWeapon(String searchWord) {
         if (searchWord != null) {
-
             if (doesPlayerHaveItems()) {
                 player.whichWeapon(searchWord);
             }

@@ -152,9 +152,6 @@ public class Player {
                 enemy.setEnemyEncountered(true);
                 return "\u001B[31m" + "There's an enemy in the room! " + enemy.getEnemyName() +
                     " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n";
-         /*       System.out.println("\u001B[31m" + "There's an enemy in the room! " + enemy.getEnemyName() +
-                        " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n");
-*/
             }
         }
         return "";
@@ -165,11 +162,11 @@ public class Player {
             if (enemy != null && weaponEquipped != null) {
                 if (enemy.getEnemyName().toLowerCase().equals(enemyName)) {
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
-                    return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks();
+                    return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
                 else if (enemyName == null) {
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
-                    return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks();
+                    return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
             } else if (weaponEquipped == null) {
                 return ui.noWeaponEquipped();

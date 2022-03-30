@@ -14,24 +14,22 @@ public class Enemy {
     this.enemyName = enemyName;
   }
 
-  public String enemyDead() {
+  public String enemyDead(Room room, Enemy enemy) {
+    room.getListOfEnemies().remove(enemy);
+    room.addRoomInventory(weaponEquipped);
     return "You have killed " + enemyName + "!";
+
   }
 
   public String attackedByPlayer(Weapon weapon) {
     setHealth(getHealth() - weapon.getDamage());
-    /*if (getHealth() <= 0) {
-      return enemyDead();*/
-//            System.out.println("You have killed the enemy!" + "\n");
-//        System.out.println("You attacked " + enemyName + ". He took " + weapon.getDamage() + " hp worth of damage.");
     return "You attacked " + enemyName + ". He took " + weapon.getDamage() + " hp worth of damage. He now has " + getHealth() + " hp left";
   }
 
-  public String enemyAttacks() {
+  public String enemyAttacks(Room room, Enemy enemy) {
     if (getHealth() <= 0) {
-      return enemyDead();
+      return enemyDead(room, enemy);
     }
-//        System.out.println("\u001B[33m" + getEnemyName() + " attacked you with his " + getWeaponEquipped().getItemName() + " and you took " + getWeaponEquipped().getDamage() + " damage." + "\u001B[0m");
     else {
       return "\u001B[33m" + getEnemyName() + " attacked you with his " + getWeaponEquipped().getItemName() + " and you took " + getWeaponEquipped().getDamage() + " damage." + "\u001B[0m";
     }
