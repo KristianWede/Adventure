@@ -473,7 +473,7 @@ public class GameEngine {
 
     public void userChoice() {
         do {
-            player.lookForEnemy();
+            player.checkForEnemy();
             warnWhenLowHp();
             ui.askPlayerForInput();
             String decision = scannerReturnToLowerCase();

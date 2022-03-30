@@ -133,7 +133,7 @@ public class WorldCreator {
 
         room2.addEnemy(new Enemy("timmy", 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
         room8.addEnemy(new Enemy("randi", 100, new Weapon("Mini Blaster", "Pretty damn high tech", 3)));
-        room4.addEnemy(new Enemy("Hubert", 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
+        room2.addEnemy(new Enemy("Hubert", 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
         room6.addEnemy(new Enemy("Maxi", 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
 
         //Maps out what "fields" are available to each other, use the map for reference.

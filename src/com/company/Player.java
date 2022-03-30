@@ -146,13 +146,13 @@ public class Player {
         tryEatFood(food);
     }
 
-    public void lookForEnemy() {
+   /* public void lookForEnemy() {
         checkForEnemy();
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
             enemy.enemyAttacks();
             setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
         }
-    }
+    }*/
 
     public void checkForEnemy() {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
@@ -168,11 +168,16 @@ public class Player {
     public void attack(String enemyName) {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
             if (enemy != null && weaponEquipped != null) {
-                if (enemyName == null) {
-                    ui.attackWho();
-                }
                 if (enemy.getEnemyName().equals(enemyName)) {
                     enemy.attackedByPlayer(weaponEquipped);
+                    enemy.enemyAttacks();
+                    setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
+                }
+                else if (enemyName == null) {
+                    enemy.attackedByPlayer(weaponEquipped);
+                    enemy.enemyAttacks();
+                    setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
+                    break;
                 }
             } else if (weaponEquipped == null) {
                 ui.noWeaponEquipped();
