@@ -200,32 +200,6 @@ public class UserInterface {
         System.out.println("\u001B[31m" + "You are dead!" + "\u001B[0m");
     }
 
-    public void printPlayerIsHealthy() {
-        System.out.println("\u001B[32m" + "You're perfectly healthy. Nothing wrong... Yet." + "\u001B[0m");
-    }
-
-    public void printPlayerSlightDamaged(int health) {
-        System.out.println("\u001B[32m" + "You are in great shape! You have " + health + " hp left!" + "\u001B[0m");
-    }
-
-    public void printPlayerModeratelyDamaged(int health) {
-        System.out.println("\u001B[33m" + "You have " + health + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m");
-    }
-
-    public void printPlayerCriticallyDamaged(int health) {
-        System.out.println("\u001B[31m" + "Health is critical! You only have " + health + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m");
-    }
-
-
-    public void giveName(Room playerPos) {
-        System.out.println(playerPos.getName());
-    }
-
-    public String noWeaponEquipped() {
-        return "You have no weapon equipped.";
-//        System.out.println("You have no weapon equipped.");
-    }
-
     public void grammarCheck(Room room) {
         char ch;
         String inventory = room.getRoomInventory().toString();
@@ -356,7 +330,7 @@ public class UserInterface {
     }
 
     public String printErrorAttack() {
-        return "There is no enemy in this room.";
+        return "There is no enemy in this room with that name.";
 //        System.out.println("There is no enemy in this room.");
     }
 

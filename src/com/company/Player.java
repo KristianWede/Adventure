@@ -8,7 +8,7 @@ public class Player {
     private Room playerPosition;
     private UserInterface ui;
     private GameEngine game;
-    protected int health = 100;
+    protected int health = 30;
     protected Weapon weaponEquipped;
 
     public void loadUserInterfaceInPlayer() {
@@ -159,7 +159,12 @@ public class Player {
 
     public String attack(String enemyName) {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
-            if (enemy != null && weaponEquipped != null) {
+            if (weaponEquipped.getDamage()<0) {
+
+                setHealth((getHealth()- enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
+                return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
+            }
+            else if (enemy != null && weaponEquipped != null) {
                 if (enemy.getEnemyName().toLowerCase().equals(enemyName)) {
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
@@ -169,12 +174,16 @@ public class Player {
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
             } else if (weaponEquipped == null) {
-                return ui.noWeaponEquipped();
+                return "You have no weapon equipped.";
             }
         }
-        return ui.printErrorAttack();
+        return "There is no enemy in this room with that name.";
     }
 
+    public String youHitYourself (){
+        setHealth((getHealth() + weaponEquipped.getDamage()));
+        return "You hit yourself in confusion..";
+    }
 
     //Getter
     public ArrayList<Item> getPlayerInventory() {

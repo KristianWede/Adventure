@@ -66,26 +66,29 @@ public class GameEngine {
         }
     }
 
-    public void userCheckHealth() {
+    public String userCheckHealth() {
         int health = player.getHealth();
         if (health >= 25 && health <= 50) {
-            ui.printPlayerModeratelyDamaged(health);
+            return "\u001B[33m" + "You have " + health + " hp left. Avoid combat if possible and find some food! " + "\u001B[0m";
         } else if (health >= 1 && health < 25) {
-            ui.printPlayerCriticallyDamaged(health);
+            return "\u001B[31m" + "Health is critical! You only have " + health + "hp left. Avoid combat by all means and find some food!" + "\u001B[0m";
         } else if (health > 50 && health < 100) {
-            ui.printPlayerSlightDamaged(health);
+            return "\u001B[32m" + "You are in great shape! You have " + health + " hp left!" + "\u001B[0m";
+
         } else if (health == 100) {
-            ui.MaxHP();
+            return "You have max health!";
         } else {
             ui.printPlayerHasDied();
             exitGame();
         }
+        return "";
     }
 
-    public void warnWhenLowHp() {
+    public String warnWhenLowHp() {
         if (player.getHealth() < 50) {
-            userCheckHealth();
+            return userCheckHealth();
         }
+        return "";
     }
 
     public void userInputCaseDirection(String direction) {
@@ -460,7 +463,7 @@ public class GameEngine {
         do {
             ui.printString(player.checkForEnemy());
             player.checkForEnemy();
-            warnWhenLowHp();
+            ui.printString(warnWhenLowHp());
             ui.askPlayerForInput();
             String decision = scannerReturnToLowerCase();
             ui.clearScreen();
