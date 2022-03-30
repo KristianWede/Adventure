@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GameEngine {
@@ -9,6 +10,7 @@ public class GameEngine {
   private UserInterface ui;
   private Player player;
   private Enemy enemy;
+  boolean enemyFound = false;
 
   private Room requestedRoomPos;
   private Room entangledRoom;
@@ -367,18 +369,6 @@ public class GameEngine {
     }
   }
 
-  /*
-  public void launchAttack() {
-    if (player.weaponEquipped != null){
-
-
-      player.attack(enemy.getEnemyPosition(), creator.listOfEnemies());
-    }
-    else {
-      ui.noWeaponEquipped();
-    }
-  }
-   */
   public void userInputCaseOnLightOff() {
     if (player.getPlayerPosition().isRoomHasSwitch()) {
       ui.printFoundLightswitch();
@@ -427,6 +417,20 @@ public class GameEngine {
     else ui.printUserNothingToEquip();
   }
 
+  public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition){
+    if (!enemyFound){
+    if (listOfEnemies != null) {
+      for (int i = 0; i < listOfEnemies.size(); i++) {
+        Room tmp = listOfEnemies.get(i).getEnemyPosition();
+        if (tmp == playerposition) {
+          enemyFound = true;
+          System.out.println("\u001B[31m" + "There's an enemy in the room!" + "\u001B[0m");
+          System.out.println(listOfEnemies.get(i).getEnemyName() + " is here! Prepare to fight.\n");
+        }
+        else enemyFound = false;
+      }}}
+  }
+
   public void execute() throws InterruptedException {
     // Part 1: The room.
 
@@ -457,6 +461,7 @@ public class GameEngine {
 
   }
 
+
   public String findCommand (String decision) {
     if (decision.contains(" ")) {
       return decision.substring(0, decision.indexOf(" ")).toLowerCase();
@@ -476,6 +481,7 @@ public class GameEngine {
   public void userChoice() {
     do {
       warnWhenLowHp();
+      player.lookForEnemy(creator.listOfEnemies);
       ui.askPlayerForInput();
       String decision = scannerReturnToLowerCase();
       ui.clearScreen();

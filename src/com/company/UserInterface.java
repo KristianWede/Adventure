@@ -351,6 +351,11 @@ public class UserInterface {
   }
 
   public void printUserNothingToEquip() {
-    System.out.println("Nothing to be unequipped");
+    System.out.println("Nothing to be unequipped.");
   }
+
+  public void printErrorAttack(){
+    System.out.println("There is no enemy in this room.");
+  }
+
 }

@@ -17,6 +17,10 @@ public class Enemy {
         this.enemyName = enemyName;
     }
 
+    public String enemyName(){
+        return enemyName;
+    }
+
     public Room getEnemyPosition() {
         return enemyPosition;
     }
@@ -48,6 +52,6 @@ public class Enemy {
 
     @Override
     public String toString() {
-        return enemyName + " " + weaponEquipped;
+        return enemyName + " ," + weaponEquipped;
     }
 }

@@ -146,27 +146,28 @@ public class Player {
     tryEatFood(food);
   }
 
+  public void lookForEnemy(ArrayList<Enemy> listOfEnemies){
+    game.checkForEnemy(listOfEnemies,getPlayerPosition());
+  }
   public void attack(ArrayList<Enemy> listOfEnemies) {
-    boolean enemyFound = false;
-    System.out.println(listOfEnemies);
-    if (listOfEnemies != null) {
 
+    if (game.enemyFound && weaponEquipped != null) {
       for (int i = 0; i < listOfEnemies.size(); i++) {
         Room tmp = listOfEnemies.get(i).getEnemyPosition();
         if (tmp == playerPosition) {
           listOfEnemies.get(i).setHealth(listOfEnemies.get(i).getHealth() - weaponEquipped.getDamage());
           System.out.println(listOfEnemies.get(i).getHealth());
           System.out.println(listOfEnemies.get(i).getEnemyName());
-          enemyFound = true;
           System.out.println("Enemy hit!");
         }
       }
-      if (!enemyFound) {
-        ui.printErrorCannotFindItem();
-      }
     }
-    System.out.println("Cannot find enemy!");
+      if (!game.enemyFound){
+      ui.printErrorAttack();
   }
+      if (weaponEquipped == null){
+        ui.noWeaponEquipped();
+      }}
 
   //Getter
   public ArrayList<Item> getPlayerInventory() {

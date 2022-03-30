@@ -133,9 +133,9 @@ public class WorldCreator {
         alongside the walls. The kitchen appears extremely clean. You detect
         a faint sweet smell. Perhaps something is rotten?""");
 
-    listOfEnemies.add(new Enemy("Timmy" ,room1, 100, new Weapon("Laser Blaster", "Pretty damn high tech", 40)));
-    listOfEnemies.add(new Enemy("Hubert" ,room4, 100, new Weapon("Laser Canon", "Pretty damn high tech", 40)));
-    listOfEnemies.add(new Enemy("Maxi",room6, 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
+    listOfEnemies.add(new Enemy("Timmy The Terminator" ,room2, 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
+    listOfEnemies.add(new Enemy("Hubert The Hungarian" ,room4, 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
+    listOfEnemies.add(new Enemy("Maxi Man",room6, 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
 
     //Maps out what "fields" are available to each other, use the map for reference.
     //Room 1
@@ -249,16 +249,16 @@ public class WorldCreator {
     room2.addRoomInventory(new Food("Rotten Banana", "Has probably been there for a while", -10));
     room1.addRoomInventory(new Food("Chips", "Classic potato chips", 3));
     room4.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
-    //room21.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
+    room12.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
     room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5,10));
     room6.addRoomInventory(new MeleeWeapon("Pipe","Old rusty pipe",15));
     room5.addRoomInventory(new Item("Sunglasses", "They look hella fresh."));
     room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?",20, 30));
     room4.addRoomInventory(new MeleeWeapon("The Repellent Stick", "The Repellent stick is neither powerful, nor visually stunning appealing.", 1));
-    //room18.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
+    room11.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
     room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
     room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
-    //room19.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop","Getting hit by this will only hurt your pride",3));
+    room6.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop","Getting hit by this will only hurt your pride",3));
   }
 
 
