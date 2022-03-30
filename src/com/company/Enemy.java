@@ -6,9 +6,10 @@ public class Enemy {
     private Room enemyPosition;
     private UserInterface ui;
     private GameEngine game;
-    protected int health = 100;
-    protected Weapon weaponEquipped;
-    protected String enemyName;
+    private int health = 100;
+    private Weapon weaponEquipped;
+    private String enemyName;
+    private boolean enemyEncountered = false;
 
     public Enemy(String enemyName, Room enemyPosition, int health, Weapon weaponEquipped) {
         this.enemyPosition = enemyPosition;
@@ -17,8 +18,12 @@ public class Enemy {
         this.enemyName = enemyName;
     }
 
-    public String enemyName() {
-        return enemyName;
+    public boolean getEnemyEncountered(){
+        return enemyEncountered;
+    }
+
+    public void setEnemyEncountered(boolean enemyEncountered){
+        this.enemyEncountered = enemyEncountered;
     }
 
     public Room getEnemyPosition() {

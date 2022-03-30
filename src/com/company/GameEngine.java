@@ -9,8 +9,8 @@ public class GameEngine {
     private Music music;
     private UserInterface ui;
     private Player player;
-    private Enemy enemy;
     boolean enemyFound;
+    boolean initialEncounter;
 
     private Room requestedRoomPos;
     private Room entangledRoom;
@@ -415,8 +415,9 @@ public class GameEngine {
     public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition) {
                 for (int i = 0; i < listOfEnemies.size(); i++) {
                     Room tmp = listOfEnemies.get(i).getEnemyPosition();
-                    if (tmp == playerposition) {
+                    if (tmp == playerposition && !(listOfEnemies.get(i).getEnemyEncountered())) {
                         enemyFound = true;
+                        listOfEnemies.get(i).setEnemyEncountered(true);
                         System.out.println("\u001B[31m" + "There's an enemy in the room!" );
                         System.out.println(listOfEnemies.get(i).getEnemyName() + " is here!" + " He has " + listOfEnemies.get(i).getHealth() + " hp left" + "\u001B[0m" + "\n");
                     }
