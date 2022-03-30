@@ -148,27 +148,37 @@ public class Player {
 
     public void lookForEnemy(ArrayList<Enemy> listOfEnemies) {
         game.checkForEnemy(listOfEnemies, getPlayerPosition());
+        for (int i = 0; i < listOfEnemies.size(); i++) {
+            Room tmp = listOfEnemies.get(i).getEnemyPosition();
+        if (tmp == playerPosition){
+        setHealth(getHealth() - listOfEnemies.get(i).getWeaponEquipped().getDamage());
+        System.out.println( "\u001B[33m" + listOfEnemies.get(i).getEnemyName() + " attacked you with his " + listOfEnemies.get(i).getWeaponEquipped().getItemName() + " and you took " + listOfEnemies.get(i).getWeaponEquipped().getDamage() + " damage." + "\u001B[0m");
+    }
+        }
     }
 
     public void attack(ArrayList<Enemy> listOfEnemies) {
-
         if (game.enemyFound && weaponEquipped != null) {
             for (int i = 0; i < listOfEnemies.size(); i++) {
                 Room tmp = listOfEnemies.get(i).getEnemyPosition();
                 if (tmp == playerPosition) {
                     listOfEnemies.get(i).setHealth(listOfEnemies.get(i).getHealth() - weaponEquipped.getDamage());
-                    System.out.println(listOfEnemies.get(i).getHealth());
-                    System.out.println(listOfEnemies.get(i).getEnemyName());
-                    System.out.println("Enemy hit!");
+                    System.out.println("You hit " + listOfEnemies.get(i).getEnemyName() + " and gave him " +  weaponEquipped.getDamage() + " hp worth of damage." );
                 }
+
             }
         }
-        if (!game.enemyFound) {
-            ui.printErrorAttack();
-        }
-        if (weaponEquipped == null) {
+
+        else if (weaponEquipped == null) {
             ui.noWeaponEquipped();
         }
+        else {
+            ui.printErrorAttack();
+        }
+    }
+
+    public void enemyAttacks(){
+
     }
 
     //Getter

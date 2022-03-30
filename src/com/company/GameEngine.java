@@ -10,7 +10,7 @@ public class GameEngine {
     private UserInterface ui;
     private Player player;
     private Enemy enemy;
-    boolean enemyFound = false;
+    boolean enemyFound;
 
     private Room requestedRoomPos;
     private Room entangledRoom;
@@ -413,19 +413,20 @@ public class GameEngine {
     }
 
     public void checkForEnemy(ArrayList<Enemy> listOfEnemies, Room playerposition) {
-        if (!enemyFound) {
-            if (listOfEnemies != null) {
                 for (int i = 0; i < listOfEnemies.size(); i++) {
                     Room tmp = listOfEnemies.get(i).getEnemyPosition();
                     if (tmp == playerposition) {
                         enemyFound = true;
-                        System.out.println("\u001B[31m" + "There's an enemy in the room!" + "\u001B[0m");
-                        System.out.println(listOfEnemies.get(i).getEnemyName() + " is here! Prepare to fight.\n");
-                    } else enemyFound = false;
+                        System.out.println("\u001B[31m" + "There's an enemy in the room!" );
+                        System.out.println(listOfEnemies.get(i).getEnemyName() + " is here!" + " He has " + listOfEnemies.get(i).getHealth() + " hp left" + "\u001B[0m" + "\n");
+                    }
+                if (listOfEnemies.get(i).getHealth() <= 0){
+                    System.out.printf("You have killed the enemy!" + "\n");
+                    listOfEnemies.remove(i);
+                    enemyFound=false;
                 }
-            }
+                }
         }
-    }
 
     public void execute() throws InterruptedException {
         // Part 1: The room.
@@ -476,8 +477,8 @@ public class GameEngine {
 
     public void userChoice() {
         do {
-            warnWhenLowHp();
             player.lookForEnemy(creator.listOfEnemies);
+            warnWhenLowHp();
             ui.askPlayerForInput();
             String decision = scannerReturnToLowerCase();
             ui.clearScreen();

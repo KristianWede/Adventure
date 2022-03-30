@@ -255,7 +255,7 @@ public class WorldCreator {
         room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?", 20, 30));
         room4.addRoomInventory(new MeleeWeapon("The Repellent Stick", "The Repellent stick is neither powerful, nor visually stunning appealing.", 1));
         room11.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
-        room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
+        room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 50));
         room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
         room6.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop", "Getting hit by this will only hurt your pride", 3));
     }
