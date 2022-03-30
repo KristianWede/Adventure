@@ -17,7 +17,7 @@ public class Enemy {
         this.enemyName = enemyName;
     }
 
-    public String enemyName(){
+    public String enemyName() {
         return enemyName;
     }
 
@@ -46,7 +46,7 @@ public class Enemy {
         this.weaponEquipped = weaponEquipped;
     }
 
-    public String getEnemyName(){
+    public String getEnemyName() {
         return enemyName;
     }
 
