@@ -123,7 +123,6 @@ public class GameEngine {
                 player.getPlayerPosition().setDiscoveredDoorN(true);
                 requestedRoomPos.setDiscoveredDoorS(true);
                 player.setPlayerPosition(requestedRoomPos);
-                //Checks if the room is dark, if it is, it doesn't display any description or name. <-NO
                 //Room 3 should have 2 states for name and description.
                 //One for each when the lights are off in the room.
                 //One for each when the lights are on in the room.
