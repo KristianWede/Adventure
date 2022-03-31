@@ -23,6 +23,7 @@ public class Music {
 
         clip.setMicrosecondPosition(clipTimePosition);
         clip.start();
+        clip.loop(Clip.LOOP_CONTINUOUSLY);
 
       } else {
         System.out.println("Can't find file");
