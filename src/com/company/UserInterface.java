@@ -300,4 +300,34 @@ public class UserInterface {
         gameTextPrinter(text);
     }
 
+    public void printPlayerPlantingBomb() throws InterruptedException {
+        System.out.println(".");
+        Thread.sleep(1000);
+        System.out.println(". .");
+        Thread.sleep(1000);
+        System.out.println(". . .");
+        Thread.sleep(1000);
+        System.out.println("TAKE COVER!");
+        Thread.sleep(1000);
+        System.out.println("* boom *");
+        Thread.sleep(1250);
+        System.out.println("You destroyed the time machine! You saved humanity!");
+    }
+
+    public void printPlayerBeforePlant() throws InterruptedException {
+        gameTextPrinter("This gives me deja vu, have I played a game about this before?");
+        gameTextPrinter("Bomb has been planted...");
+    }
+
+    public void printPlayerCantPlant(){
+        System.out.println("I can't plant it here!");
+    }
+
+    public void printPlayerCantFindBomb(){
+        System.out.println("Plant what?");
+    }
+
+    public void printPlayerCantPlantItem(){
+        System.out.println("I can't plant that");
+    }
 }

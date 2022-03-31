@@ -236,6 +236,9 @@ public class WorldCreator {
         room15.setS(room12);
         room15.setW(null);
 
+        //Room 15 can set off bomb
+        room5.setBombRoom(true);
+
 
         starterRoom = room1;
 
@@ -265,6 +268,7 @@ public class WorldCreator {
         room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
         room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
         room6.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop", "Getting hit by this will only hurt your pride", 3));
+        room15.addRoomInventory(new Item("A bomb(?)", "Looks pretty dangerous if you ask me, maybe I can put this somewhere?"));
     }
 
 

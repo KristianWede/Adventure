@@ -412,6 +412,27 @@ public class GameEngine {
         } else ui.printUserNothingToEquip();
     }
 
+    public void userInputCasePlantBomb(String bomb) throws InterruptedException {
+        if ( bomb.equals("bomb")){
+            if (player.getPlayerPosition().isBombRoom()) {
+            if (player.findItemInInventory(bomb)){
+                ui.printPlayerBeforePlant();
+                ui.printPlayerPlantingBomb();
+                exitGame();
+            } else {
+                ui.printPlayerCantFindBomb();
+            }
+            } else {
+                ui.printPlayerCantPlant();
+            }
+        } else if (bomb == null){
+            ui.printPlayerCantFindBomb();
+        } else {
+            ui.printPlayerCantPlantItem();
+        }
+
+    }
+
     public void execute() throws InterruptedException {
         // Part 1: The room.
 
@@ -490,6 +511,7 @@ public class GameEngine {
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
                 case "attack", "kill", "fire", "launch" -> ui.gameTextPrinter(player.attack(findSomething));
+                case "plant" -> userInputCasePlantBomb(findSomething);
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);

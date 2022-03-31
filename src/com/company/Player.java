@@ -66,6 +66,17 @@ public class Player {
     }
   }
 
+  public boolean findItemInInventory(String searchWord){
+    for (int i = 0; i < playerInventory.size(); i++) {
+      Item tmp = playerInventory.get(i);
+      if (tmp.getItemName().toLowerCase().contains(searchWord)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+
   public void removeItemFromPlayerInventory(String searchWord, Room room) throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {

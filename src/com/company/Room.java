@@ -17,6 +17,7 @@ public class Room {
     private boolean roomDarkIntro;
     private ArrayList<Item> roomInventory;
     private ArrayList<Enemy> listOfEnemies = new ArrayList<>();
+    private boolean bombRoom;
 
     private boolean itemPresent;
 
@@ -175,6 +176,14 @@ public class Room {
 
     public void addEnemy(Enemy enemy){
         listOfEnemies.add(enemy);
+    }
+
+    public boolean isBombRoom() {
+        return bombRoom;
+    }
+
+    public void setBombRoom(boolean bombRoom) {
+        this.bombRoom = bombRoom;
     }
 
     @Override
