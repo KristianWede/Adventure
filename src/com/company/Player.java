@@ -151,23 +151,22 @@ public class Player {
             if (!(enemy.getEnemyEncountered())) {
                 enemy.setEnemyEncountered(true);
                 return "\u001B[31m" + "There's an enemy in the room! " + enemy.getEnemyName() +
-                    " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n";
+                        " is here!" + " He has " + enemy.getHealth() + " hp left" + "\u001B[0m" + "\n";
             }
         }
         return "";
     }
 
-    public int checkIfRangedWeapon(Weapon weaponEquipped){
-      if (weaponEquipped instanceof MeleeWeapon){
-          return 1;
-      }
-      int getUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
-      if (getUses == 0){
-          return 0;
-      }
-        else if (weaponEquipped instanceof RangedWeapon){
+    public int checkIfRangedWeapon(Weapon weaponEquipped) {
+        if (weaponEquipped instanceof MeleeWeapon) {
+            return 1;
+        }
+        int getUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
+        if (getUses == 0) {
+            return 0;
+        } else if (weaponEquipped instanceof RangedWeapon) {
             ((RangedWeapon) weaponEquipped).setAvailableUses((getUses - 1));
-        return getUses;
+            return getUses;
         }
         return 0;
     }
@@ -176,12 +175,10 @@ public class Player {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
             if (weaponEquipped == null) {
                 return "You have no weapon equipped.";
-            }
-            else if (checkIfRangedWeapon(weaponEquipped) == 0){
+            } else if (checkIfRangedWeapon(weaponEquipped) == 0) {
 
                 return "You ran out of ammo." + enemy.enemyAttacks(playerPosition, enemy);
-            }
-            else if (weaponEquipped.getDamage() < 0) {
+            } else if (weaponEquipped.getDamage() < 0) {
                 setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
                 return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
             } else if (enemy != null && weaponEquipped != null) {
@@ -195,10 +192,10 @@ public class Player {
                 }
             }
         }
-            return "There is no enemy in this room with that name.";
+        return "There is no enemy in this room with that name.";
     }
 
-    public String youHitYourself (){
+    public String youHitYourself() {
         setHealth((getHealth() + weaponEquipped.getDamage()));
         return "You hit yourself in confusion.. \n";
     }
