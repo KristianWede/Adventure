@@ -329,16 +329,8 @@ public class UserInterface {
         System.out.println("Nothing to be unequipped.");
     }
 
-    public String printErrorAttack() {
-        return "There is no enemy in this room with that name.";
-//        System.out.println("There is no enemy in this room.");
-    }
-
     public void printString(String text) {
         System.out.println(text);
     }
 
-    public void attackWho() {
-        System.out.println("Attack who?");
-    }
 }

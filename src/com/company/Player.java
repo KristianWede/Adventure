@@ -161,32 +161,31 @@ public class Player {
         if (weaponEquipped instanceof MeleeWeapon) {
             return 1;
         }
-        int getUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
-        if (getUses == 0) {
+        int getAvailableUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
+        if (getAvailableUses == 0) {
             return 0;
         } else {
-            ((RangedWeapon) weaponEquipped).setAvailableUses((getUses - 1));
-            return getUses;
+            ((RangedWeapon) weaponEquipped).setAvailableUses((getAvailableUses - 1));
+            return getAvailableUses;
         }
     }
 
     public String attack(String enemyName) {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
+            int damageFromEnemy = enemy.getWeaponEquipped().getDamage();
             if (weaponEquipped == null) {
                 return "You have no weapon equipped.";
             } else if (checkIfRangedWeapon(weaponEquipped) == 0) {
-
                 return "You ran out of ammo." + enemy.enemyAttacks(playerPosition, enemy);
             } else if (weaponEquipped.getDamage() < 0) {
-                setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
+                setHealth((getHealth() - damageFromEnemy + weaponEquipped.getDamage()));
                 return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
             } else if (enemy != null && weaponEquipped != null) {
                 if (enemy.getEnemyName().toLowerCase().equals(enemyName)) {
-                    setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
+                    setHealth((getHealth() - damageFromEnemy));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 } else if (enemyName == null) {
-
-                    setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
+                    setHealth((getHealth() - damageFromEnemy));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
             }

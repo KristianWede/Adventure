@@ -486,7 +486,7 @@ public class GameEngine {
                 case "drop" -> userInputDropItem(findSomething);
                 case "inspect", "check" -> userInputCaseInspectItem();
                 case "connor", "connar", "get to the chopper" -> magicWord();
-                case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> userCheckHealth();
+                case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> ui.printString(userCheckHealth());
                 case "eat", "eat food", "snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
