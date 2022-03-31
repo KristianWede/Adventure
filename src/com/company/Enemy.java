@@ -28,8 +28,7 @@ public class Enemy {
   public String enemyAttacks(Room room, Enemy enemy) {
     if (getHealth() <= 0) {
       return enemyDead(room, enemy);
-    }
-    else {
+    } else {
       return "\u001B[33m" + getEnemyName() + " attacked you with his " + getWeaponEquipped().getItemName() + " and you took " + getWeaponEquipped().getDamage() + " damage." + "\u001B[0m";
     }
   }
