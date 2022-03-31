@@ -131,10 +131,11 @@ public class WorldCreator {
                 alongside the walls. The kitchen appears extremely clean. You detect
                 a faint sweet smell. Perhaps something is rotten?""");
 
-        room2.addEnemy(new Enemy("Timmy", 100, new Weapon("Laser Blaster", "Pretty damn high tech", 8)));
-        room8.addEnemy(new Enemy("Randi", 100, new Weapon("Mini Blaster", "Pretty damn high tech", 3)));
-        room2.addEnemy(new Enemy("Hubert", 100, new Weapon("Laser Canon", "Pretty damn high tech", 23)));
-        room6.addEnemy(new Enemy("Maxi", 100, new Weapon("Laser Blaster3", "Pretty damn high tech", 40)));
+        room2.addEnemy(new Enemy("Ivan", 100, new MeleeWeapon("Laser Blaster", "Pretty damn high tech", 20)));
+        room8.addEnemy(new Enemy("Discount T-600", 100, new MeleeWeapon("Metal Bat", "Pretty shitty", 10)));
+        room2.addEnemy(new Enemy("Hydrobot", 100, new MeleeWeapon("Wannabe Doctor Octavius Fingers", "Pretty damn high tech", 23)));
+        room6.addEnemy(new Enemy("Moto-Terminator", 100, new MeleeWeapon("BladeBike", "Crazy bike yo!", 40)));
+
 
         //Maps out what "fields" are available to each other, use the map for reference.
         //Room 1
@@ -261,7 +262,7 @@ public class WorldCreator {
         room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?", 20, 30));
         room4.addRoomInventory(new MeleeWeapon("The Repellent Stick", "The Repellent stick is neither powerful, nor visually stunning appealing.", 1));
         room11.addRoomInventory(new MeleeWeapon("The Drill Bucket", "Place it on the head of your enemies and they will die instantly", 100));
-        room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 50));
+        room1.addRoomInventory(new MeleeWeapon("Rubber Duck", "This little bastard has been filled with concrete, which makes it quite violent", 30));
         room2.addRoomInventory(new MeleeWeapon("Nunchaku", "Good luck using these!", -10));
         room6.addRoomInventory(new MeleeWeapon("Grandma's old flip-flop", "Getting hit by this will only hurt your pride", 3));
     }

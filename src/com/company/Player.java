@@ -157,37 +157,50 @@ public class Player {
         return "";
     }
 
-    public String attack(String enemyName, RangedWeapon weapon) {
-        for (Enemy enemy : playerPosition.getListOfEnemies()) {
-            if (weaponEquipped.getDamage()<0) {
+    public int checkIfRangedWeapon(Weapon weaponEquipped){
+      if (weaponEquipped instanceof MeleeWeapon){
+          return 1;
+      }
+      int getUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
+      if (getUses == 0){
+          return 0;
+      }
+        else if (weaponEquipped instanceof RangedWeapon){
+            ((RangedWeapon) weaponEquipped).setAvailableUses((getUses - 1));
+        return getUses;
+        }
+        return 0;
+    }
 
-                setHealth((getHealth()- enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
-                return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
+    public String attack(String enemyName) {
+        for (Enemy enemy : playerPosition.getListOfEnemies()) {
+            if (weaponEquipped == null) {
+                return "You have no weapon equipped.";
             }
-            else if (enemy != null && weaponEquipped != null && weapon.getAvailableUses() != 0) {
-                weapon.setAvailableUses(weapon.getAvailableUses() - 1);
+            else if (checkIfRangedWeapon(weaponEquipped) == 0){
+
+                return "You ran out of ammo." + enemy.enemyAttacks(playerPosition, enemy);
+            }
+            else if (weaponEquipped.getDamage() < 0) {
+                setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
+                return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
+            } else if (enemy != null && weaponEquipped != null) {
                 if (enemy.getEnemyName().toLowerCase().equals(enemyName)) {
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
-                }
-                else if (enemyName == null) {
-                    weapon.setAvailableUses(weapon.getAvailableUses() - 1);
+                } else if (enemyName == null) {
+
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
-            } else if (weaponEquipped == null) {
-                return "You have no weapon equipped.";
-            }
-            else if (weapon.getAvailableUses() == 0){
-                return "Your T-shirt cannon is out of ammo. You need to switch to another weapon!";
             }
         }
-        return "There is no enemy in this room with that name.";
+            return "There is no enemy in this room with that name.";
     }
 
     public String youHitYourself (){
         setHealth((getHealth() + weaponEquipped.getDamage()));
-        return "You hit yourself in confusion..";
+        return "You hit yourself in confusion.. \n";
     }
 
     //Getter
