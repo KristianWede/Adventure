@@ -164,11 +164,10 @@ public class Player {
         int getUses = ((RangedWeapon) weaponEquipped).getAvailableUses();
         if (getUses == 0) {
             return 0;
-        } else if (weaponEquipped instanceof RangedWeapon) {
+        } else {
             ((RangedWeapon) weaponEquipped).setAvailableUses((getUses - 1));
             return getUses;
         }
-        return 0;
     }
 
     public String attack(String enemyName) {
