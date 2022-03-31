@@ -490,7 +490,7 @@ public class GameEngine {
                 case "eat", "eat food", "snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
-                case "attack", "kill", "fire", "launch" -> ui.printString(player.attack(findSomething));
+                case "attack", "kill", "fire", "launch" -> ui.printString(player.attack(findSomething, (RangedWeapon) player.weaponEquipped));
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);

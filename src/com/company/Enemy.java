@@ -18,7 +18,6 @@ public class Enemy {
     room.getListOfEnemies().remove(enemy);
     room.addRoomInventory(weaponEquipped);
     return "You have killed " + enemyName + "!";
-
   }
 
   public String attackedByPlayer(Weapon weapon) {

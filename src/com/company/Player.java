@@ -8,7 +8,7 @@ public class Player {
     private Room playerPosition;
     private UserInterface ui;
     private GameEngine game;
-    protected int health = 30;
+    protected int health = 100;
     protected Weapon weaponEquipped;
 
     public void loadUserInterfaceInPlayer() {
@@ -157,24 +157,29 @@ public class Player {
         return "";
     }
 
-    public String attack(String enemyName) {
+    public String attack(String enemyName, RangedWeapon weapon) {
         for (Enemy enemy : playerPosition.getListOfEnemies()) {
             if (weaponEquipped.getDamage()<0) {
 
                 setHealth((getHealth()- enemy.getWeaponEquipped().getDamage()) + weaponEquipped.getDamage());
                 return youHitYourself() + enemy.enemyAttacks(playerPosition, enemy);
             }
-            else if (enemy != null && weaponEquipped != null) {
+            else if (enemy != null && weaponEquipped != null && weapon.getAvailableUses() != 0) {
+                weapon.setAvailableUses(weapon.getAvailableUses() - 1);
                 if (enemy.getEnemyName().toLowerCase().equals(enemyName)) {
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
                 else if (enemyName == null) {
+                    weapon.setAvailableUses(weapon.getAvailableUses() - 1);
                     setHealth((getHealth() - enemy.getWeaponEquipped().getDamage()));
                     return enemy.attackedByPlayer(weaponEquipped) + "\n" + enemy.enemyAttacks(playerPosition, enemy);
                 }
             } else if (weaponEquipped == null) {
                 return "You have no weapon equipped.";
+            }
+            else if (weapon.getAvailableUses() == 0){
+                return "Your T-shirt cannon is out of ammo. You need to switch to another weapon!";
             }
         }
         return "There is no enemy in this room with that name.";

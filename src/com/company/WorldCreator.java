@@ -255,7 +255,7 @@ public class WorldCreator {
         room8.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
         room11.addRoomInventory(new Food("Can of tuna", "A small can of Tuna", 20));
         room12.addRoomInventory(new Food("Medkit", "This medkit will heal you to max!", 100));
-        room4.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5, 10));
+        room1.addRoomInventory(new RangedWeapon("T-shirt Cannon", "Free T-shirts for EVERYONE", 5, 1));
         room6.addRoomInventory(new MeleeWeapon("Pipe", "Old rusty pipe", 15));
         room5.addRoomInventory(new Item("Sunglasses", "They look hella fresh."));
         room6.addRoomInventory(new RangedWeapon("Krummlauf", "The curved barrel might confuse the enemy?", 20, 30));
