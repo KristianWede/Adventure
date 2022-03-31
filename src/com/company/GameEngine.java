@@ -15,7 +15,7 @@ public class GameEngine {
     private Room tempEntangledRoom;
     Scanner sc = new Scanner(System.in);
 
-    public void printAvailableDoors() {
+    public void printAvailableDoors() throws InterruptedException {
         //At the start tries to narrow down the doors that actually exist and then "unlocking" them by making them visible to the player if they've been there before, and then tell them.
         if (player.getPlayerPosition().isDiscoveredDoorN()) {
             ui.printDoorNorthAvailable();
@@ -37,7 +37,7 @@ public class GameEngine {
         }
     } //Unused for the time being. //TODO: Add graphics for each scene. SCRAPPED
 
-    public void lightsAreOff() {
+    public void lightsAreOff() throws InterruptedException {
         if (player.getPlayerPosition().isRoomDarkIntro()) {
             ui.giveDescription(player.getPlayerPosition());
             player.getPlayerPosition().setRoomDarkIntro(false);
@@ -46,7 +46,7 @@ public class GameEngine {
         }
     }
 
-    public void magicWord() {
+    public void magicWord() throws InterruptedException {
         //Xyzzy "sussy" magic word
         //First teleports the player from anywhere on the map to room1.
         //Then it saves the place from which the player comes from.
@@ -91,7 +91,7 @@ public class GameEngine {
         return "";
     }
 
-    public void userInputCaseDirection(String direction) {
+    public void userInputCaseDirection(String direction) throws InterruptedException {
 
         switch (direction) {
             case "north", "n" -> userInputCaseNorth();
@@ -104,7 +104,7 @@ public class GameEngine {
     }
 
 
-    public void userInputCaseNorth() {
+    public void userInputCaseNorth() throws InterruptedException {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getN() == null) {
             ui.printPathBlocked();
@@ -142,7 +142,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseSouth() {
+    public void userInputCaseSouth() throws InterruptedException {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getS() == null) {
             ui.printPathBlocked();
@@ -176,7 +176,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseEast() {
+    public void userInputCaseEast() throws InterruptedException {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getE() == null) {
             ui.printPathBlocked();
@@ -210,7 +210,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseWest() {
+    public void userInputCaseWest() throws InterruptedException {
         //Checks if chosen direction is optional, if it is, it will set the new currentroom variable to the direction.
         if (player.getPlayerPosition().getW() == null) {
             ui.printPathBlocked();
@@ -246,13 +246,13 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseLook() {
+    public void userInputCaseLook() throws InterruptedException {
         //Checks if the room is dark, if it is, it doesn't display any description or name.
         if (isRoomDark()) {
             lightsAreOff();
         } else {
             ui.printPlayerLooksAround();
-            System.out.println(player.getPlayerPosition().getDescription());
+            ui.gameTextPrinter(player.getPlayerPosition().getDescription());
             System.out.println();
             if (doesRoomHaveItem()) {
                 ui.printReactionToFoundItem(player.getPlayerPosition());
@@ -260,7 +260,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseLookItem() {
+    public void userInputCaseLookItem() throws InterruptedException {
         //Checks if the room has items
         if (doesPlayerHaveItems()) {
             ui.printInventory(player.getPlayerInventory());
@@ -269,7 +269,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputDropItem(String searchWord) {
+    public void userInputDropItem(String searchWord) throws InterruptedException {
         if (searchWord != null) {
             if (doesPlayerHaveItems()) {
                 player.removeItemFromPlayerInventory(searchWord, player.getPlayerPosition());
@@ -318,7 +318,7 @@ public class GameEngine {
         System.exit(0);
     }
 
-    public void userInputCaseOnUnlock() {
+    public void userInputCaseOnUnlock() throws InterruptedException {
         if (requestedRoomPos != null) {
             if (requestedRoomPos.isLockedRoom()) {
                 requestedRoomPos.setLockedRoom(false);
@@ -331,7 +331,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseOnLightOn() {
+    public void userInputCaseOnLightOn() throws InterruptedException {
         if (player.getPlayerPosition().isRoomHasSwitch()) {
             ui.printFoundLightswitch();
             if (player.getPlayerPosition().isRoomDark()) {
@@ -351,7 +351,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputTakeItem(String searchWord) {
+    public void userInputTakeItem(String searchWord) throws InterruptedException {
         if (searchWord != null) {
             if (!isRoomDark()) {
                 if (doesRoomHaveItem()) {
@@ -367,7 +367,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseOnLightOff() {
+    public void userInputCaseOnLightOff() throws InterruptedException {
         if (player.getPlayerPosition().isRoomHasSwitch()) {
             ui.printFoundLightswitch();
             if (!player.getPlayerPosition().isRoomDark()) {
@@ -381,7 +381,7 @@ public class GameEngine {
         }
     }
 
-    public void userInputCaseInspectItem() {
+    public void userInputCaseInspectItem() throws InterruptedException {
         if (doesPlayerHaveItems()) {
             ui.printPlayerActionOpenInventory();
             player.inspectItemFromInventory();
@@ -390,7 +390,7 @@ public class GameEngine {
         }
     }
 
-    public void equipCheckForWeapon(String searchWord) {
+    public void equipCheckForWeapon(String searchWord) throws InterruptedException {
         if (searchWord != null) {
             if (doesPlayerHaveItems()) {
                 player.whichWeapon(searchWord);
@@ -427,7 +427,7 @@ public class GameEngine {
         player.loadUserInterfaceInPlayer();
         player.loadGameEngineInPlayer();
 
-//    music.playBackground();
+        music.playBackground();
 
         ui.clearScreen();
 
@@ -459,12 +459,11 @@ public class GameEngine {
         }
     }
 
-    public void userChoice() {
+    public void userChoice() throws InterruptedException {
         do {
-            ui.printString(player.checkForEnemy());
-            player.checkForEnemy();
-            ui.printString(warnWhenLowHp());
-            ui.askPlayerForInput();
+            ui.gameTextPrinter(player.checkForEnemy());
+            ui.gameTextPrinter(warnWhenLowHp());
+            ui.gameTextPrinter(ui.askPlayerForInput());
             String decision = scannerReturnToLowerCase();
             ui.clearScreen();
 
@@ -486,11 +485,11 @@ public class GameEngine {
                 case "drop" -> userInputDropItem(findSomething);
                 case "inspect", "check" -> userInputCaseInspectItem();
                 case "connor", "connar", "get to the chopper" -> magicWord();
-                case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> ui.printString(userCheckHealth());
+                case "health", "hp", "status", "how do i feel", "heal", "am i hurt" -> ui.gameTextPrinter(userCheckHealth());
                 case "eat", "eat food", "snack time", "nomnom", "eat item", "consume" -> player.whichFood(findSomething);
                 case "equip", "this is sparta", "prepare for battle", "aim" -> equipCheckForWeapon(findSomething);
                 case "unequip" -> unEquipCheckForWeapon(findSomething);
-                case "attack", "kill", "fire", "launch" -> ui.printString(player.attack(findSomething));
+                case "attack", "kill", "fire", "launch" -> ui.gameTextPrinter(player.attack(findSomething));
                 default -> ui.errorMessageInvalidMove();
             }
         } while (true);

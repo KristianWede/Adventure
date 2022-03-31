@@ -22,6 +22,9 @@ public class Enemy {
 
   public String attackedByPlayer(Weapon weapon) {
     setHealth(getHealth() - weapon.getDamage());
+    if (getHealth() <0 ){
+      setHealth(0);
+    }
     return "You attacked " + enemyName + ". He took " + weapon.getDamage() + " hp worth of damage. He now has " + getHealth() + " hp left";
   }
 

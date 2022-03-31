@@ -22,7 +22,7 @@ public class Player {
   private ArrayList<Item> playerInventory = new ArrayList<>();
 
 
-  public int tryEatFood(Food food) {
+  public int tryEatFood(Food food) throws InterruptedException {
     if (getHealth() == 100) {
       return health;
     }
@@ -36,22 +36,24 @@ public class Player {
     }
   }
 
-  public void inspectItemFromInventory() {
+  public void inspectItemFromInventory() throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
-      ui.printPlayerInventorySingularNumbered(tmp, i);
+//      ui.printPlayerInventorySingularNumbered(tmp, i);
     }
-    ui.printChooseItemToInspect();
+//    ui.printChooseItemToInspect();
+/*
     Scanner sc = new Scanner(System.in);
     String choice = sc.nextLine();
+*/
 
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
-      if (tmp.getItemName().toLowerCase().contains(choice)) {
-        ui.printNameAndDescriptionOfItem(tmp);
+      ui.printNameAndDescriptionOfItem(tmp, i);
+//      if (tmp.getItemName().toLowerCase().contains(choice)) {
         itemFound = true;
-      }
+//      }
     }
     if (!itemFound) {
       ui.printErrorCannotFindItem();
@@ -60,7 +62,7 @@ public class Player {
 
   //Setter
 
-  public void addItemToPlayerInventory(String searchWord, Room room) {
+  public void addItemToPlayerInventory(String searchWord, Room room) throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < room.getRoomInventory().size(); i++) {
       Item tmp = room.getRoomInventory().get(i);
@@ -76,7 +78,7 @@ public class Player {
     }
   }
 
-  public void removeItemFromPlayerInventory(String searchWord, Room room) {
+  public void removeItemFromPlayerInventory(String searchWord, Room room) throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
@@ -92,21 +94,22 @@ public class Player {
     }
   }
 
-  public void whichFood(String foodItem) {
+  public String whichFood(String foodItem) throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
-      Food food = (Food) playerInventory.get(i);
+      Item food = playerInventory.get(i);
       if (food.getItemName().toLowerCase().contains(foodItem)) {
         itemFound = true;
-        userEatsFood(food);
+        ui.gameTextPrinter(userEatsFood((Food) food));
       }
     }
     if (!itemFound) {
       ui.printErrorCannotFindItem();
     }
+    return "";
   }
 
-  public void whichWeapon(String weaponChoice) {
+  public void whichWeapon(String weaponChoice) throws InterruptedException {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
       Item weapon = playerInventory.get(i);
@@ -123,7 +126,7 @@ public class Player {
     }
   }
 
-  private void userEquipsWeapon(Weapon weapon) {
+  private void userEquipsWeapon(Weapon weapon) throws InterruptedException {
     if (weaponEquipped != null) {
       ui.printWeaponAlreadyEquipped();
     } else {
@@ -132,21 +135,23 @@ public class Player {
     }
   }
 
-  public void userEatsFood(Food food) {
+  public String userEatsFood(Food food) throws InterruptedException {
     int tmp = food.getHealth();
     if (tmp == 0) {
-      ui.notEdible(food);
+      return food + " is not edible";
     } else if (tmp < 0) {
-      ui.poisoned(food);
+      return "Ew something is wrong with this " + food;
     } else if (tmp > 0 && getHealth() > 100) {
-      ui.full(food);
+      return "You're already full. Saving " + food + " for another time.";
     } else if (getHealth() == 100) {
-      ui.full(food);
-    } else ui.edible(food);
+      return "You're already full. Saving " + food + " for another time.";
+    } else
     tryEatFood(food);
+    return "Yummy in my tummy, this " + food + " was delicious!";
   }
 
   public String checkForEnemy() {
+
     for (Enemy enemy : playerPosition.getListOfEnemies()) {
       if (!(enemy.getEnemyEncountered())) {
         enemy.setEnemyEncountered(true);
@@ -170,7 +175,8 @@ public class Player {
     }
   }
 
-  public String attack(String enemyName) {
+  public String attack(String enemyName) throws InterruptedException {
+    Thread.sleep(500);
     for (Enemy enemy : playerPosition.getListOfEnemies()) {
       int damageFromEnemy = enemy.getWeaponEquipped().getDamage();
       if (weaponEquipped == null) {

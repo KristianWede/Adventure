@@ -28,28 +28,29 @@ public class UserInterface {
                 "                            'equip' to equip weapon.\n" +
                 "                            'attack' to attack enemy.\n");
 
-        System.out.println("You can also during the game type 'help' to display the above commands again. \n");
-        System.out.println("Press \"ENTER\" to continue...");
+        gameTextPrinter("You can also during the game type 'help' to display the above commands again. \n");
+        gameTextPrinter("Press \"ENTER\" to continue...");
         Scanner sc = new Scanner(System.in);
         sc.nextLine();
     }
 
-    public void clearScreen() {
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n");
+    public void clearScreen() throws InterruptedException {
+        gameTextPrinter("\n\n\n\n\n\n\n\n\n\n\n");
     }
 
     //This printer can be used for all "souts" so that the text fits the aestetic.
     public void gameTextPrinter(String text) throws InterruptedException {
         for (int i = 0; i <= text.length() - 1; i++) {
             System.out.print(text.charAt(i));
-            Thread.sleep(0);
+            Thread.sleep(5);
         }
         System.out.println();
     }
 
-    public void askPlayerForInput() {
-        System.out.println("What is your next move?");
-        System.out.println("Type 'help' for help.");
+    public String askPlayerForInput() throws InterruptedException {
+        gameTextPrinter("What is your next move?");
+        gameTextPrinter("Type 'help' for help.");
+        return "";
     }
 
     public void introduction() throws InterruptedException {
@@ -67,8 +68,8 @@ public class UserInterface {
     }
 
 
-    public void userInputCaseHelp() {
-        System.out.println("""
+    public void userInputCaseHelp() throws InterruptedException {
+        gameTextPrinter("""
                 You can go either north, east, west or south by: 'go (direction)'
                 'help' to repeat this message.
                 'look' to look around in current room.
@@ -88,96 +89,96 @@ public class UserInterface {
                 \n""");
     }
 
-    public void userInputCaseExit() {
-        System.out.println("Exiting game...");
-        System.out.println("Hope you saved your progress, cause I didn't!");
+    public void userInputCaseExit() throws InterruptedException {
+        gameTextPrinter("Exiting game...");
+        gameTextPrinter("Hope you saved your progress, cause I didn't!");
     }
 
-    public void errorMessageInvalidMove() {
-        System.out.println("Not a valid choice!");
+    public void errorMessageInvalidMove() throws InterruptedException {
+        gameTextPrinter("Not a valid choice!");
     }
 
-    public void printPlayerReactionDark() {
-        System.out.println("It's very dark in here! I can barely see anything.");
-        System.out.println("Better look for a lightswitch or something somewhere.");
+    public void printPlayerReactionDark() throws InterruptedException {
+        gameTextPrinter("It's very dark in here! I can barely see anything.");
+        gameTextPrinter("Better look for a lightswitch or something somewhere.");
     }
 
-    public void printDoorNorthAvailable() {
-        System.out.println("There's a door to the North");
+    public void printDoorNorthAvailable() throws InterruptedException {
+        gameTextPrinter("There's a door to the North");
         System.out.println();
     }
 
-    public void printDoorEastAvailable() {
-        System.out.println("There's a door to the East.");
+    public void printDoorEastAvailable() throws InterruptedException {
+        gameTextPrinter("There's a door to the East.");
         System.out.println();
     }
 
-    public void printDoorWestAvailable() {
-        System.out.println("There's a door to the West.");
+    public void printDoorWestAvailable() throws InterruptedException {
+        gameTextPrinter("There's a door to the West.");
         System.out.println();
     }
 
-    public void printDoorSouthAvailable() {
-        System.out.println("There's a door to the South.");
+    public void printDoorSouthAvailable() throws InterruptedException {
+        gameTextPrinter("There's a door to the South.");
         System.out.println();
     }
 
-    public void giveDescription(Room playerPos) {
-        System.out.println(playerPos.getDescription());
+    public void giveDescription(Room playerPos) throws InterruptedException {
+        gameTextPrinter(playerPos.getDescription());
     }
 
-    public void printPlayerReactionTeleNothing() {
-        System.out.println("huh, nothing happened.");
+    public void printPlayerReactionTeleNothing() throws InterruptedException {
+        gameTextPrinter("huh, nothing happened.");
     }
 
-    public void printPlayerReactionTeleFirstRoom() {
-        System.out.println("Poof! Seems like I teleported to the first room?");
+    public void printPlayerReactionTeleFirstRoom() throws InterruptedException {
+        gameTextPrinter("Poof! Seems like I teleported to the first room?");
     }
 
-    public void printPlayerTeleported() {
-        System.out.println("Woosh! Seems like I teleported somewhere?");
+    public void printPlayerTeleported() throws InterruptedException {
+        gameTextPrinter("Woosh! Seems like I teleported somewhere?");
     }
 
-    public void printPathBlocked() {
-        System.out.println("Seems like that way is blocked.");
+    public void printPathBlocked() throws InterruptedException {
+        gameTextPrinter("Seems like that way is blocked.");
     }
 
-    public void printDoorIsLocked() {
-        System.out.println("Seems like that door is locked.");
+    public void printDoorIsLocked() throws InterruptedException {
+        gameTextPrinter("Seems like that door is locked.");
     }
 
-    public void printPlayerGoesNorth() {
-        System.out.println("Going North.");
+    public void printPlayerGoesNorth() throws InterruptedException {
+        gameTextPrinter("Going North.");
     }
 
-    public void printPlayerGoesSouth() {
-        System.out.println("Going South.");
+    public void printPlayerGoesSouth() throws InterruptedException {
+        gameTextPrinter("Going South.");
     }
 
-    public void printPlayerGoesEast() {
-        System.out.println("Going East.");
-
-    }
-
-    public void printPlayerGoesWest() {
-        System.out.println("Going West.");
-    }
-
-    public void printPlayerLooksAround() {
-        System.out.println("Looking around.");
+    public void printPlayerGoesEast() throws InterruptedException {
+        gameTextPrinter("Going East.");
 
     }
 
-    public void printDoorUnlocked() {
-        System.out.println("I unlocked the door!");
+    public void printPlayerGoesWest() throws InterruptedException {
+        gameTextPrinter("Going West.");
     }
 
-    public void printNothingToUnlock() {
-        System.out.println("I don't see anything to unlock!");
+    public void printPlayerLooksAround() throws InterruptedException {
+        gameTextPrinter("Looking around.");
+
     }
 
-    public void printFoundLightswitch() {
-        System.out.println("There's a lightswitch!");
+    public void printDoorUnlocked() throws InterruptedException {
+        gameTextPrinter("I unlocked the door!");
+    }
+
+    public void printNothingToUnlock() throws InterruptedException {
+        gameTextPrinter("I don't see anything to unlock!");
+    }
+
+    public void printFoundLightswitch() throws InterruptedException {
+        gameTextPrinter("There's a lightswitch!");
     }
 
     public void printLightIsOn() {
@@ -210,99 +211,64 @@ public class UserInterface {
             System.out.print("a ");
     }
 
-/*  public void checkForAnd (Room room){ //TODO And to last item.
-    int last = room.getRoomInventory().size();
 
-    if (last > 1){
-      last = room.getRoomInventory().size();
-      System.out.println(TEXT_YELLOW + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "").replace(","," &") + TEXT_RESET);
-    }
-    else printOutItemInRoom(room);
-  }*/
-
-
-    public void printReactionToFoundItem(Room room) {
+    public void printReactionToFoundItem(Room room) throws InterruptedException {
         System.out.println("Wait, I see something!");
         System.out.print("I see ");
         grammarCheck(room);
 
-//    checkForAnd(room);
         printOutItemInRoom(room);
     }
 
-    public void printReactionPickUp(Item item) {
+    public void printReactionPickUp(Item item) throws InterruptedException {
         System.out.print("You picked up the ");
-        System.out.println(TEXT_YELLOW + item + TEXT_RESET);
+        gameTextPrinter(TEXT_YELLOW + item + TEXT_RESET);
     }
 
-    public void printInventory(ArrayList<Item> playerInventory) {
-        System.out.println("Your inventory:");
+    public void printInventory(ArrayList<Item> playerInventory) throws InterruptedException {
+        gameTextPrinter("Your inventory:");
         System.out.println(TEXT_YELLOW + Arrays.toString(playerInventory.toArray()).replace("[", "").replace("]", "") + TEXT_RESET);
     }
 
-    public void printPlayerHasNoItems() {
-        System.out.println("You don't have any items.");
+    public void printPlayerHasNoItems() throws InterruptedException {
+        gameTextPrinter("You don't have any items.");
     }
 
-    public void printPlayerHasNoWeapon() {
-        System.out.println("This item cannot be equipped as a weapon.");
+    public void printPlayerHasNoWeapon() throws InterruptedException {
+        gameTextPrinter("This item cannot be equipped as a weapon.");
     }
 
-    public void printNoItemsOnGround() {
-        System.out.println("There are no items to pick up.");
+    public void printNoItemsOnGround() throws InterruptedException {
+        gameTextPrinter("There are no items to pick up.");
     }
 
-    public void printOutItemInRoom(Room room) {
-        System.out.println("\u001B[33m" + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + "\u001B[0m");
+    public void printOutItemInRoom(Room room) throws InterruptedException {
+        gameTextPrinter("\u001B[33m" + Arrays.toString(room.getRoomInventory().toArray()).replace("[", "").replace("]", "") + "\u001B[0m");
     }
 
-    public void printErrorCannotFindItem() {
-        System.out.println("Couldn't find any items with that name! Try again!");
+    public void printErrorCannotFindItem() throws InterruptedException {
+        gameTextPrinter("Couldn't find any items with that name! Try again!");
     }
 
-    public void printAddedItemRoom(Item item) {
-        System.out.println("You took " + "\u001B[33m" + item + "\u001B[0m" + " out of your bag and put it on the ground.");
+    public void printAddedItemRoom(Item item) throws InterruptedException {
+        gameTextPrinter("You took " + "\u001B[33m" + item + "\u001B[0m" + " out of your bag and put it on the ground.");
     }
 
-    public void notEdible(Food food) {
-        System.out.println(food + " is not edible");
+    public void MaxHP() throws InterruptedException {
+        gameTextPrinter("You have max health!");
     }
 
-    public void poisoned(Food food) {
-        System.out.println("Ew something is wrong with this " + food);
-    }
 
-    public void edible(Food food) {
-        System.out.println("Yummy in my tummy, this " + food + " was delicious!");
-    }
-
-    public void full(Food food) {
-        System.out.println("You're already full. Saving " + food + " for another time.");
-    }
-
-    public void MaxHP() {
-        System.out.println("You have max health!");
-    }
-
-    public void printPlayerInventorySingularNumbered(Item item, int number) {
-        System.out.println("\t" + (number + 1) + ". " + item); //Added plus 1 so that the arraylist never shows 0.
-    }
-
-    public void printChooseItemToInspect() {
-        System.out.println("What item do you want to inspect?");
-    }
-
-    public void printNameAndDescriptionOfItem(Item item) {
-        System.out.println(item.getItemName() + "  -  " + item.getItemDescription());
-        System.out.println();
+    public void printNameAndDescriptionOfItem(Item item, int number) throws InterruptedException {
+        gameTextPrinter("\t" + (number + 1) + ". " + item.getItemName() + "  -  " + item.getItemDescription());
     }
 
     public void printPlayerActionOpenInventory() {
         System.out.println("Your inventory:");
     }
 
-    public void printWeaponEquipped(Weapon weapon) {
-        System.out.println(weapon + " has now been equipped!");
+    public void printWeaponEquipped(Weapon weapon) throws InterruptedException {
+        gameTextPrinter(weapon + " has now been equipped!");
     }
 
     public void printUserNotDeclaringDirection() {
@@ -317,8 +283,8 @@ public class UserInterface {
         System.out.println("Drop what?");
     }
 
-    public void printWeaponAlreadyEquipped() {
-        System.out.println("You already have a weapon equipped.");
+    public void printWeaponAlreadyEquipped() throws InterruptedException {
+        gameTextPrinter("You already have a weapon equipped.");
     }
 
     public void printUnEquip(Weapon weapon) {
@@ -329,8 +295,9 @@ public class UserInterface {
         System.out.println("Nothing to be unequipped.");
     }
 
-    public void printString(String text) {
-        System.out.println(text);
+    public void printString(String text) throws InterruptedException {
+        Thread.sleep(100);
+        gameTextPrinter(text);
     }
 
 }
