@@ -58,10 +58,6 @@ public class Enemy {
     return weaponEquipped;
   }
 
-  public void setWeaponEquipped(Weapon weaponEquipped) {
-    this.weaponEquipped = weaponEquipped;
-  }
-
   public String getEnemyName() {
     return enemyName;
   }

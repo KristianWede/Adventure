@@ -40,20 +40,8 @@ public class Player {
     boolean itemFound = false;
     for (int i = 0; i < playerInventory.size(); i++) {
       Item tmp = playerInventory.get(i);
-//      ui.printPlayerInventorySingularNumbered(tmp, i);
-    }
-//    ui.printChooseItemToInspect();
-/*
-    Scanner sc = new Scanner(System.in);
-    String choice = sc.nextLine();
-*/
-
-    for (int i = 0; i < playerInventory.size(); i++) {
-      Item tmp = playerInventory.get(i);
       ui.printNameAndDescriptionOfItem(tmp, i);
-//      if (tmp.getItemName().toLowerCase().contains(choice)) {
         itemFound = true;
-//      }
     }
     if (!itemFound) {
       ui.printErrorCannotFindItem();
