@@ -11,7 +11,7 @@ public class UserInterface {
 
     public void mainMenu() throws InterruptedException {
         gameTextPrinter("Welcome to Terminator Maze!");
-        gameTextPrinter("You're about to go on an epic journey in a mysterious maze..");
+        gameTextPrinter("You're about to go on an epic journey in a mysterious maze..\nYour objective is to find a bomb and plant it in the Device Room.. Good luck!");
         gameTextPrinter("In order to navigate the maze, you must type your desired direction." +
                 "\n Useful commands: \n" +
                 "                            You can go either north, east, west or south by: 'go (direction)'\n" +
@@ -26,6 +26,7 @@ public class UserInterface {
                 "                            'inspect' will inspect item in your inventory.\n" +
                 "                            'eat' to consume food in your inventory  \n" +
                 "                            'equip' to equip weapon.\n" +
+                "                            'plant' to plant the bomb.\n" +
                 "                            'attack' to attack enemy.\n");
 
         gameTextPrinter("You can also during the game type 'help' to display the above commands again. \n");
@@ -81,11 +82,12 @@ public class UserInterface {
                 'take' to pick up item in current room.
                 'drop' to drop item. Use drop + name of the item to drop specific item. 
                 'health' or 'hp' To display health left.
-                'inspect' will inspect item in your inventory.
+                'inspect' will inspect items in your inventory.
                 'eat' to consume food in your inventory.
                 'equip' to equip weapon.
                 'unequip' to unequip weapon.
                 'attack' to attack enemy.
+                'plant' to plant the bomb.
                 \n""");
     }
 
